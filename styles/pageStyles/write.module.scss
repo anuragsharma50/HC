@@ -1,0 +1,69 @@
+@import '../commons.scss';
+
+/* base styles */
+.container{
+    :global(.form-title){
+        padding: 15px;
+        font-size: 20px;
+        font-family: 'Helverica Bold';
+    }
+
+    :global(.form){
+        align-items: center;
+
+        :global(.form-input){
+            max-width: 100%;
+            height: 100%;
+
+            textarea {
+                height: 80%;
+                resize: none;
+            }
+
+            :global(.slider-container){
+                @include display-flex();
+
+                div{
+                    margin: 0px 10px 0px 0px;
+                }
+            }
+
+            :global(.radio-buttons){
+                @include display-flex();
+
+                input[type='radio']{
+                    width: 20px;
+                    margin: 0px;
+                }
+            }
+
+            :global(.budget-slider){
+                cursor: pointer;
+                margin: 0px;
+            }
+        }
+    }
+}
+
+/* small tablet styles */
+@media screen and (min-width: 768px) {
+}
+
+/* large tablet and desktop styles */
+@media screen and (min-width: 992px) {
+    .container{
+        :global(.form){
+            flex: 1;
+        }
+    }
+}
+
+/* desktop */
+@media screen and (min-width: 1200px) {  
+    .container{ 
+        :global(.form-input){
+            max-width: 500px;
+        }
+    }
+
+}

@@ -1,0 +1,119 @@
+/* commons*/
+@import '../../styles/commons.scss';
+
+/* base styles */
+.nav{
+    border-bottom: 2px solid;
+    @include display-flex();
+    justify-content: space-between;
+
+    .nav-start{
+        @include display-flex();
+    }
+
+    .nav-buttons{
+        .btn{
+            @include button(); 
+        }
+
+        .secondry{
+            @include sec-button();
+        }
+    }
+}
+
+/* mobile styles */
+.nav {
+    padding: 5px 15px;
+
+    .logo{
+        width: 120px;
+        height: 34px;
+        position: relative;
+    }
+
+    .menu {
+        width: 30px;
+    }
+}
+
+.nav-links{
+    display: none;
+}
+
+.nav-buttons{
+    display: none;
+}
+
+/* small tablet styles */
+@media screen and (min-width: 768px) {
+
+    .nav{
+        padding: 5px 10px;
+
+        .logo{
+            width: 120px;
+        }
+
+        .nav-buttons{
+            display: flex;
+            width: 190px;
+            justify-content: space-between;
+    
+            .btn{
+                font-size: 14px;
+            }
+        }
+    }
+
+    .nav-links{
+        display: block;
+        ul{
+            @include display-flex();
+            margin-left: 5px;
+            font-size: 14px;
+    
+            li{
+                padding: 0 8px;
+            }
+        }
+    }
+
+    .menu{
+        display: none;
+    }
+}
+/* large tablet and desktop styles */
+@media screen and (min-width: 992px) {
+    .nav{
+        padding: 5px 25px 5px 15px;
+
+        .logo{
+            width: 150px;
+        }
+
+        .nav-buttons{
+            .btn{
+                font-size: 15px;
+            }
+        }
+    }
+
+    .nav-links{
+        ul{
+            margin-left: 25px;
+            font-size: 15px;
+    
+            li{
+                padding: 0 15px;
+            }
+        }
+    }
+}
+
+/* desktop */
+@media screen and (min-width: 1200px) {
+    
+    
+
+}

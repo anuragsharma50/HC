@@ -1,0 +1,129 @@
+/* commons*/
+@import '../../styles/commons.scss';
+
+/* base styles */
+.footer{
+    border-top: 1px solid #4c4c4c;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    padding: 10px;
+
+    .footer-links{
+        display: flex;
+        justify-content: space-around;
+        padding-top: 10px;
+
+        ul{
+            padding: 0px 10px;
+            li{
+                padding-bottom: 10px;
+            }
+    
+            .links-heading{
+                font-weight: bold;
+                color: #A61F00;
+            }
+    
+        }
+
+        .social {
+            @include display-flex();
+            flex-direction: column;
+        }
+
+    }
+
+    .footer-logo{
+        @include display-flex();
+        flex-direction: column;
+        padding: 10px;
+
+        .logo{
+            width: 150px;
+            border: 1px solid;
+            padding: 5px;
+            margin: 5px;
+        }
+    }
+
+    .footer-bottom{
+        @include display-flex();
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 10px;
+        justify-content: space-evenly;
+
+        h3{
+            font-size: 14px;
+        }
+
+        .copyright{
+            color: #929292;
+        }
+
+        .terms{
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            padding: 20px 0px;
+            max-width: 370px;
+        }
+    }
+}
+
+/* mobile styles */
+
+
+/* small tablet styles */
+@media screen and (min-width: 768px) {
+    .footer{
+        font-size: 16px;
+
+        .footer-top{
+            display: flex;
+            justify-content: space-around;
+    
+            .footer-links{
+                flex: 0.6;
+            }
+    
+            .footer-logo{
+                float: 0.4;
+                
+                img{
+                    width: 180px;
+                }
+            }
+        }
+    
+        .footer-bottom{
+            flex-direction: row-reverse;
+    
+            .copyright{
+                flex: 0.6;
+            }
+    
+            .terms{
+                flex: 0.4;
+            }
+        }
+
+    }
+}
+
+/* large tablet and desktop styles */
+@media screen and (min-width: 992px) {
+    .footer{
+        .footer-bottom{
+            .copyright{
+                flex: 0.4;
+            }
+    
+            .terms{
+                flex: 0.6;
+                max-width: 450px;
+            }
+        }
+    }
+}

@@ -1,0 +1,110 @@
+@import '../commons.scss';
+
+.container{
+    :global(.social-login){
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        li{
+            width: 80px;
+            height: 40px;
+            background: #EAF0F3;
+            @include display-flex();
+            margin: 0px 10px;
+            border-radius: 8px;
+
+            *{
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+
+    :global(.or){
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+        color:#A4A4A4;
+        width: 100%;
+
+        hr{
+            width: 170px;
+            margin: 10px;
+        }
+    }
+
+    :global(.reset-password){
+        text-align: end;
+        width: 100%;
+        padding: 5px 10px;
+        font-size: 14px;
+        max-width: 370px;
+    }
+
+    :global(.signup-link){
+        font-size: 14px;
+        display: flex;
+        width: 100%;
+        max-width: 370px;
+        margin: 20px 0px 0px 20px;
+        flex-wrap: wrap;
+
+        a{
+            margin-left: 2px; 
+        }
+    }
+}
+
+/* small tablet styles */
+@media screen and (min-width: 768px) {
+    .container{
+        :global(.social-login){   
+            li{
+                height: 40px;
+
+                img{
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+        }
+
+        :global(.reset-password){
+            padding: 0px 10px;
+            font-size: 14px;
+        }
+
+        :global(.signup-link){
+            font-size: 14px;
+        }
+    }
+
+}
+/* large tablet and desktop styles */
+@media screen and (min-width: 992px) {
+    .container{
+        :global(.form-input), :global(.submit), :global(.reset-password), 
+        :global(.signup-link){
+            max-width: 400px;
+        }
+    }
+}
+
+/* desktop */
+@media screen and (min-width: 1200px) {
+    .container{
+        :global(.or){
+            hr{
+                width: 200px;
+            }
+        }
+    
+        :global(.form-input), :global(.submit), :global(.reset-password), 
+        :global(.signup-link){
+            max-width: 450px;
+        }
+    }
+
+}

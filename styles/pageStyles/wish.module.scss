@@ -1,0 +1,49 @@
+@import '../commons.scss';
+
+/* base styles */
+.container{
+    :global(.form-title){
+        padding: 15px;
+        font-size: 20px;
+        font-family: 'Helverica Bold';
+    }
+
+    :global(.relation-age){
+        @include display-flex();
+        align-items: flex-end;
+        justify-content: space-between;
+
+        :global(.relation-container){
+            flex: 0.75;
+        }
+
+        :global(.age-container){
+            flex: 0.2;
+        }
+    }
+}
+
+/* small tablet styles */
+@media screen and (min-width: 768px) {
+    .container{
+        :global(.form){
+            :global(.form-title){
+                font-size: 24px;
+            }
+        }
+    }
+}
+
+/* large tablet and desktop styles */
+@media screen and (min-width: 992px) {
+}
+
+/* desktop */
+@media screen and (min-width: 1200px) {  
+    .container{ 
+        :global(.form-input){
+            max-width: 500px;
+        }
+    }
+
+}

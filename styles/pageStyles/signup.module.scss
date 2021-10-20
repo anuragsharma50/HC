@@ -1,0 +1,121 @@
+@import '../commons.scss';
+
+.container{
+    flex-direction: row-reverse;
+
+    :global(.social-login){
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        li{
+            width: 80px;
+            height: 40px;
+            background: #EAF0F3;
+            @include display-flex();
+            margin: 0px 10px;
+            border-radius: 8px;
+
+            *{
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+
+    :global(.or){
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+        color:#A4A4A4;
+        width: 100%;
+        font-size: 15px;
+
+        hr{
+            width: 170px;
+            margin: 10px;
+        }
+    }
+
+    :global(.t-and-c){
+        width: 100%;
+        max-width: 370px;
+        padding: 5px 10px;
+        align-items: center;
+        display: flex;
+        font-size: 12px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+
+        *{
+            margin-right: 5px;
+        }
+
+        :global(.tc-checkbox){
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+    :global(.signup-link){
+        font-size: 14px;
+        display: flex;
+        width: 100%;
+        max-width: 370px;
+        margin: 10px 0px 0px 20px;
+        flex-wrap: wrap;
+
+        a{
+            margin-left: 2px; 
+        }
+    }
+}
+
+/* small tablet styles */
+@media screen and (min-width: 768px) {
+
+    .container{
+        :global(.social-login){   
+            li{
+                height: 40px;
+
+                *{
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+        }
+
+        :global(.t-and-c){
+            padding: 0px 10px;
+            font-size: 14px;
+        }
+    }
+
+}
+/* large tablet and desktop styles */
+@media screen and (min-width: 992px) {
+
+    .container{
+        :global(.form-input),:global(.submit), :global(.signup-link), :global(.t-and-c){
+            max-width: 400px;
+        }
+    }
+}
+
+/* desktop */
+@media screen and (min-width: 1200px) {
+    .container{
+        :global(.or){
+            hr{
+                width: 200px;
+            }
+        }
+
+        :global(.form-input),:global(.submit), :global(.t-and-c), :global(.signup-link){
+            max-width: 450px;
+        }
+    }
+
+}

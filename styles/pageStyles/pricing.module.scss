@@ -1,0 +1,133 @@
+@import '../commons.scss';
+
+/* base styles */
+.container{
+    :global(.price-list){
+        padding: 10px;
+    }
+
+    :global(.lists){
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+        min-height: 70vh;
+    }
+
+    :global(.details){
+        width: 100%;
+        padding: 10px;
+        box-shadow: 1px 1px 10px #80808040;
+        border-radius: 8px;
+        margin: 10px 0px;
+        max-width: 370px;
+        background-color: white;
+
+        :global(.detail-title){
+            @include display-flex();
+            justify-content: space-between;
+
+            :global(.amount){
+                display: flex;
+
+                span{
+                    padding: 0px 2px;
+                }
+            }
+
+            h1{
+                color: #D06706;
+                font-size: 24px;
+                font-family: 'Helverica Bold';
+            }
+
+            h2{
+                font-size: 18px;
+            }
+
+        }
+
+        ul{
+            @include display-flex();
+            padding: 10px 20px;
+            font-size: 14px;
+            flex-direction: column;
+            align-items: baseline;
+
+            li{
+                list-style-type: unset;
+                padding: 5px;
+                font-variant: lining-nums;
+            }
+        }
+    }
+    
+}
+
+/* small tablet styles */
+@media screen and (min-width: 768px) {
+    .container{
+        :global(.details){
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 340px;
+
+            :global(.detail-title){
+                h1{
+                    font-size: 28px;
+                }
+    
+                h2{
+                    font-size: 20px;
+                }
+            }
+    
+            ul{
+                font-size: 16px;
+
+                li{
+                    padding: 10px;
+                }
+            }
+        }
+        
+    }
+}
+
+/* large tablet and desktop styles */
+@media screen and (min-width: 992px) {
+    .container{
+        :global(.details){
+            height: 380px;
+
+            :global(.detail-title){
+                h1{
+                    font-size: 32px;
+                }
+    
+                h2{
+                    font-size: 24px;
+                }
+            }
+    
+            ul{
+                font-size: 18px;
+            }
+        }
+        
+    }
+
+}
+
+/* desktop */
+@media screen and (min-width: 1200px) {  
+    .container{ 
+        :global(.details){
+            padding: 20px;
+            height: 420px;
+        }
+    }
+}
