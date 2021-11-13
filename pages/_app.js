@@ -1,3 +1,6 @@
+import { useEffect,useState } from 'react'
+import axios from 'axios'
+
 import Header from '../components/header/header'
 import Footer from '../components/footer/footer'
 
@@ -8,6 +11,29 @@ import '../components/footer/footer.scss'
 import Head from 'next/head'
 
 function MyApp({ Component, pageProps }) {
+
+  const [user, setUser] = useState()
+
+  const updateUser = ( ) => {
+    axios.get('http://localhost:5500/auth/getuser',
+    {withCredentials:true},
+    ).then((response) => {
+        console.log(response)
+        if(response.data){
+          if(!response.data.error){
+            setUser(response.data.user)
+          }
+        }
+    }).catch((err) => {
+      console.log("Error" ,err.response)
+      setUser()
+    })  
+  }
+
+  useEffect(() => {
+      updateUser()
+}, [])
+
   return (
     <>
       <Head>
@@ -16,8 +42,8 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/C.png" />
       </Head>
 
-      <Header />
-      <Component {...pageProps} />
+      <Header user={user} updateUser={updateUser} />
+      <Component {...pageProps } user={user} updateUser={updateUser} />
       <Footer />
     </>
   )

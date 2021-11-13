@@ -1,16 +1,14 @@
 import Image from 'next/image'
-
+import Link from 'next/link'
 import { useState } from 'react'
 
 import styles from '../styles/pageStyles/signup.module.scss'
 
-import LoginImage from '../assets/login.png'
-import GoogleIcon from '../assets/google-icon.png'
-import AppleIcon from '../assets/apple-icon.png'
-import FbIcon from '../assets/facebook-icon.png'
+import LoginImage from '../assets/images/login.png'
 import SignUpForm from '../components/forms/signUpForm'
+import SocialLogins from '../components/social-login/SocialLogins'
 
-function SignUp() {
+const SignUp = ({updateUser}) => {
 
     const [checked, setChecked] = useState(true)
 
@@ -27,14 +25,10 @@ function SignUp() {
 
         <div className="form">
             <div className="heading">
-                <h2>Sign In</h2>
+                <h2>SignUp</h2>
             </div>
 
-            <ul className="social-login">
-                <li><Image src={GoogleIcon} alt="google icon" /></li>
-                <li><Image src={AppleIcon} alt="apple icon" /></li>
-                <li><Image src={FbIcon} alt="facebook icon" /></li>
-            </ul>
+            <SocialLogins updateUser={updateUser} />
 
             <div className="or">
                 <hr />
@@ -61,7 +55,10 @@ function SignUp() {
             </div>
 
             <div className="signup-link">
-                <p>Don’t have an account yet? </p><a>Create New Account</a>
+                <p>Already have an account?</p>            
+                <Link href="/signin">
+                    <a>Login</a>
+                </Link>
             </div>
 
         </div>

@@ -1,9 +1,7 @@
 import Image from 'next/image'
 import CelebrateForm from '../components/forms/celebrateForm'
-
 import styles from '../styles/pageStyles/celebrate.module.scss'
-
-import LoginImage from '../assets/login.png'
+import LoginImage from '../assets/images/login.png'
 
 function Gift() {
     return (

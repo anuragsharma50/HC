@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import styles from '../styles/pageStyles/celebrate.module.scss'
 
-import LoginImage from '../assets/login.png'
+import LoginImage from '../assets/images/login.png'
 import CelebrateForm from '../components/forms/celebrateForm'
 
 function celebrate() {

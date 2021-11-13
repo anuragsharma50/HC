@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import styles from '../styles/pageStyles/wish.module.scss'
 
-import LoginImage from '../assets/login.png'
+import LoginImage from '../assets/images/login.png'
 import WishForm from '../components/forms/wishForm'
 
 function Wish() {

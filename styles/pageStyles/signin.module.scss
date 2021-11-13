@@ -13,6 +13,7 @@
             @include display-flex();
             margin: 0px 10px;
             border-radius: 8px;
+            cursor: pointer;
 
             *{
                 width: 30px;
@@ -53,6 +54,7 @@
 
         a{
             margin-left: 2px; 
+            cursor: pointer;
         }
     }
 }

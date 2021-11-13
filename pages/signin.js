@@ -1,14 +1,26 @@
+import { useEffect,useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from "next/router";
 
 import styles from '../styles/pageStyles/signin.module.scss'
 
-import LoginImage from '../assets/login.png'
-import GoogleIcon from '../assets/google-icon.png'
-import AppleIcon from '../assets/apple-icon.png'
-import FbIcon from '../assets/facebook-icon.png'
+import LoginImage from '../assets/images/login.png'
 import SignInForm from '../components/forms/signInForm'
+import SocialLogins from '../components/social-login/SocialLogins'
 
-function SignIn() {
+function SignIn({updateUser,user}) {
+
+    const router = useRouter()
+
+    useEffect(() => {
+        if(user){
+            console.log('nahi karenge redirect')
+            router.push('/')
+        }
+        
+    }, [user])
+
     return (
         <div className={`${styles.container} container`}>
             <div className="image">
@@ -20,31 +32,15 @@ function SignIn() {
                 <h2>Sign In</h2>
             </div>
 
-            <ul className="social-login">
-                <li><Image src={GoogleIcon} alt="google icon" /></li>
-                <li><Image src={AppleIcon} alt="apple icon" /></li>
-                <li><Image src={FbIcon} alt="facebook icon" /></li>
-            </ul>
+            <SocialLogins />
 
             <div className="or">
                 <hr />
                 <span>or</span>
                 <hr />
             </div>
-            
-            {/* <form className="form-input">
-                <div className="label-error">
-                    <label htmlFor="email">Email</label>
-                    <span className="error-text">Invalid Email</span>
-                    </div>
-                <input type="text" id="email" name="email" placeholder="user@gmail.com" />
-                    <br />
-                <label htmlFor="password">Password</label>
-                <br />
-                <input type="password" id="password" name="password" placeholder="Password" />
-            </form> */}
 
-            <SignInForm />
+            <SignInForm updateUser={updateUser} />
 
             <div className="reset-password">
                 <a href="">Forgot Password?</a>
@@ -55,7 +51,10 @@ function SignIn() {
             </div>
 
             <div className="signup-link">
-                <p>Don’t have an account yet? </p><a>Create New Account</a>
+                <p>Don’t have an account yet? </p>
+                <Link href="/signup">
+                    <a>Create New Account</a>
+                </Link>
             </div>
 
         </div>

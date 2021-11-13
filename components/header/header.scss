@@ -30,6 +30,7 @@
         width: 120px;
         height: 34px;
         position: relative;
+        cursor: pointer;
     }
 
     .menu {
@@ -75,6 +76,7 @@
     
             li{
                 padding: 0 8px;
+                cursor: pointer
             }
         }
     }

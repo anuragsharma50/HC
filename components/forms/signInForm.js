@@ -1,21 +1,40 @@
+import { useState } from 'react'
 import { Formik,Form,Field,ErrorMessage} from 'formik'
 import * as Yup from 'yup'
+import axios from 'axios'
+import { useRouter } from "next/router";
 
-const initialValues = {
-    email: '',
-    password: ''
-}
+const SignInForm = ({updateUser}) => {
+    
+    const [errorMessage, setErrorMessage] = useState('')
+    const router = useRouter()
 
-const onSubmit = values => {
-    console.log('Form values',values)
-}
+    const initialValues = {
+        email: '',
+        password: ''
+    }
+    
+    const validationSchema = Yup.object({
+        email: Yup.string().email('Invalid Email Format').required('Required'),
+        password: Yup.string().required('Required'),
+    })
 
-const validationSchema = Yup.object({
-    email: Yup.string().email('Invalid Email Format').required('Required'),
-    password: Yup.string().required('Required'),
-})
+    const onSubmit = values => {
+        axios.post('http://localhost:5500/auth/signin',{
+            email : values.email,
+            password : values.password,
+        }).then((res) => {
+            console.log(res)
+            updateUser()
+            router.push('/')
+        }).catch((e) => {
+            if (e.response && e.response.data) {
+                console.log(e.response.data.message)
+                setErrorMessage(e.response.data.message)
+            }
+        })
+    }
 
-function SignInForm() {
     return (
         <Formik 
             initialValues={initialValues}
@@ -23,6 +42,7 @@ function SignInForm() {
             validationSchema={validationSchema}
         >
             <Form className="form-input" id='signin-form'>
+                <div className="error-text top-error">{errorMessage}</div>
                 <div className="label-error">
                     <label htmlFor="email">Email</label>
                     <ErrorMessage name="email">

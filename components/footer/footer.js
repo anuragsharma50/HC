@@ -1,9 +1,9 @@
 import Image from 'next/image'
 
-import Logo from '../../assets/Logo.png'
-import FB from '../../assets/fb-footer.png'
-import Insta from '../../assets/insta-footer.png'
-import Twitter from '../../assets/twitter-footer.png'
+import Logo from '../../assets/images/Logo.png'
+import FB from '../../assets/images/fb-footer.png'
+import Insta from '../../assets/images/insta-footer.png'
+import Twitter from '../../assets/images/twitter-footer.png'
 
 function Footer() {
     return (
