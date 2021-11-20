@@ -1,4 +1,7 @@
 import { useEffect,useState } from 'react'
+import Head from 'next/head'
+
+import { PopupProvider } from "react-popup-manager";
 import axios from 'axios'
 
 import Header from '../components/header/header'
@@ -7,8 +10,7 @@ import Footer from '../components/footer/footer'
 import '../styles/globals.scss'
 import '../components/header/header.scss'
 import '../components/footer/footer.scss'
-
-import Head from 'next/head'
+import '../styles/select-search/select-search.scss'
 
 function MyApp({ Component, pageProps }) {
 
@@ -21,7 +23,7 @@ function MyApp({ Component, pageProps }) {
         console.log(response)
         if(response.data){
           if(!response.data.error){
-            setUser(response.data.user)
+            setUser(response.data)
           }
         }
     }).catch((err) => {
@@ -42,8 +44,11 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/C.png" />
       </Head>
 
-      <Header user={user} updateUser={updateUser} />
-      <Component {...pageProps } user={user} updateUser={updateUser} />
+      <PopupProvider>
+        <Header user={user} updateUser={updateUser} />
+        <Component {...pageProps } user={user} updateUser={updateUser} />
+        {/* <MrModal /> */}
+      </PopupProvider>
       <Footer />
     </>
   )

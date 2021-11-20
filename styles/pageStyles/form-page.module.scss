@@ -3,9 +3,17 @@
 /* base styles */
 .container{
     :global(.form-title){
-        padding: 15px;
+        padding: 5px 5px 10px;
         font-size: 18px;
         font-family: 'Helverica Bold';
+    }
+
+    :global(.info) {
+        font-size: 14px;
+
+        a{
+            cursor: pointer;
+        }
     }
 }
 

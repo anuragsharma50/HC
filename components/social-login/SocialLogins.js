@@ -4,6 +4,8 @@ import GoogleIcon from '../../assets/images/google-icon.png'
 import AmazonIcon from '../../assets/images/amazon-icon.png'
 import FbIcon from '../../assets/images/facebook-icon.png'
 
+import Styles from './social-logins.module.scss'
+
 const SocialLogins = () => {
 
     const googleLogin = () => {
@@ -19,11 +21,19 @@ const SocialLogins = () => {
     }
 
     return ( 
-        <ul className="social-login">
-            <li onClick={googleLogin}><Image src={GoogleIcon} alt="google" /></li>
-            <li onClick={amazonLogin}><Image src={AmazonIcon} alt="amazon" /></li>
-            <li onClick={facebookLogin}><Image src={FbIcon} alt="facebook" /></li>
-        </ul>
+        <>
+            <ul className={Styles.socialLogin}>
+                <li onClick={googleLogin}><Image src={GoogleIcon} alt="google" /></li>
+                <li onClick={amazonLogin}><Image src={AmazonIcon} alt="amazon" /></li>
+                <li onClick={facebookLogin}><Image src={FbIcon} alt="facebook" /></li>
+            </ul>
+
+            <div className={Styles.or}>
+                <hr />
+                <span>or</span>
+                <hr />
+            </div>
+        </>
     )
 }
 

@@ -28,23 +28,23 @@ const SignUp = ({updateUser}) => {
                 <h2>SignUp</h2>
             </div>
 
-            <SocialLogins updateUser={updateUser} />
+            <SocialLogins />
 
-            <div className="or">
+            {/* <div className="or">
                 <hr />
                 <span>or</span>
                 <hr />
-            </div>
+            </div> */}
 
-            <SignUpForm />
+            <SignUpForm updateUser={updateUser} />
 
             <div className="t-and-c">
                 <input 
-                defaultChecked
-                onClick={e => handleChecked(e)} 
-                type="checkbox" name="tc-checkbox" 
-                value="tc-checkbox" 
-                className="tc-checkbox" 
+                    defaultChecked
+                    onClick={e => handleChecked(e)} 
+                    type="checkbox" name="tc-checkbox" 
+                    value="tc-checkbox" 
+                    className="tc-checkbox" 
                 />
                 <label htmlFor="tc-checkbox">I agree with</label>
                 <a href="">Terms and conditions</a>

@@ -36,6 +36,7 @@ body{
         align-items: center;
         flex-direction: column;
         width: 100%;
+        z-index: 0;
 
         .heading{
             width: 100%;
@@ -43,7 +44,7 @@ body{
             height: 50px;
             background: #E7E7E7;
             @include display-flex();
-            margin: 0px 10px 10px 10px;
+            margin: 10px;
             text-transform: uppercase;
             
             h2{
@@ -66,6 +67,9 @@ body{
         .error-text{
             color: red;
             font-weight: bold;
+            @include display-flex();
+            margin-top: -5px;
+            padding-bottom: 10px;
         }
 
         .label-error{
@@ -98,6 +102,43 @@ body{
         input::placeholder{
             color: #A5ACB8;
             font-weight: normal;
+        }
+
+        .radio-container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+
+            .radio-buttons {
+                max-width: 370px;
+                @include display-flex();
+                height: 45px;
+                margin: 5px 0px 12px 0px;
+                justify-content: space-around;
+                width: 100%;
+
+                .radio-item {
+                    @include display-flex();
+                }
+
+                input[type='radio']{
+                    height: 16px;
+                    width: 16px;
+                    margin: 0px 5px;
+                }
+
+                label {
+                    font-size: 15px;
+                    font-family: 'Raleway Regular';
+                    font-weight: bold;
+                    color: black;
+                }
+
+                :global(.disable) {
+                    color: $disable;
+                }
+            }
         }
     }
 
@@ -145,7 +186,6 @@ body{
     .container{
         .form, .sub-container{
             .heading{
-                margin: 10px 20px 20px 20px;
                 height: 45px;
                 border-radius: 4px;
 
@@ -163,7 +203,7 @@ body{
             }
 
             label{
-                font-size: 15px;
+                font-size: 17px;
             }
     
             input,select{
@@ -195,6 +235,12 @@ body{
                 width: 100%;
                 max-width: 500px;
             }
+
+            .form-input {
+                label{
+                    font-size: 18px;
+                }
+            }
         }
 
         .form{
@@ -212,10 +258,20 @@ body{
                 height: 55px;
                 border-radius: 8px;
             }
+
+            .form-input {
+                label{
+                    font-size: 20px;
+                }
+            }
         }
     
         .submit, .btn {
             max-width: 500px;
+
+            .submit-btn{
+                margin: 0px;
+            }
         }
     }
 

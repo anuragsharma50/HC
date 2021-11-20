@@ -1,0 +1,81 @@
+@import '../../styles/commons.scss';
+
+.modal {
+    position: absolute;
+    inset: 40px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    top: 20%;
+    left: 10%;
+    width: 80%;
+    max-height: 60%;
+    bottom: auto;
+    border: 1px solid black;
+
+    .modalTitle {
+        text-align: center;
+        font-family: 'Helverica Bold';
+    }
+
+    .modalContent {
+        padding: 20px 5px;
+        text-align: center;
+    }
+
+    .modalButtons {
+        @include display-flex();
+        justify-content: space-evenly;
+        padding: 5px;
+
+        .btn {
+            @include button();
+            padding: 5px;
+            width: 100px;
+            height: 35px;
+        }
+    
+        .secondry {
+            @include sec-button();
+            font-weight: bold;
+        }
+    }
+}
+
+@media screen and (min-width: 540px) {
+    .modal {
+        left: 15%;
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .modal {
+        left: 22%;
+        width: 56%;
+
+        .modalButtons {
+            .btn {
+                width: 120px;
+                height: 40px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .modal {
+        left: 27%;
+        width: 46%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .modal {
+        left: 33%;
+        width: 33%;
+    }
+}

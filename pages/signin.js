@@ -34,11 +34,11 @@ function SignIn({updateUser,user}) {
 
             <SocialLogins />
 
-            <div className="or">
+            {/* <div className="or">
                 <hr />
                 <span>or</span>
                 <hr />
-            </div>
+            </div> */}
 
             <SignInForm updateUser={updateUser} />
 

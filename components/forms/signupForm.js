@@ -23,7 +23,7 @@ const SignUpForm = ({updateUser}) => {
         }).then((res) => {
             console.log(res.data)
             updateUser()
-            router.push('/',undefined,{shallow=true})
+            router.push('/')
         }).catch((e) => {
             if (e.response && e.response.data) {
                 console.log(e.response.data.message)
@@ -49,7 +49,7 @@ const SignUpForm = ({updateUser}) => {
         >
             <Form className="form-input" id='signup-form'>
                 <div className="error-text top-error">{errorMessage}</div>
-               <div className="label-error">
+                <div className="label-error">
                     <label htmlFor="name">Name</label>
                     <ErrorMessage name="name">
                         {

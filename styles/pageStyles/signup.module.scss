@@ -3,42 +3,6 @@
 .container{
     flex-direction: row-reverse;
 
-    :global(.social-login){
-        display: flex;
-        justify-content: center;
-        width: 100%;
-
-        li{
-            width: 80px;
-            height: 40px;
-            background: #EAF0F3;
-            @include display-flex();
-            margin: 0px 10px;
-            border-radius: 8px;
-            cursor: pointer;
-
-            *{
-                width: 30px;
-                height: 30px;
-            }
-        }
-    }
-
-    :global(.or){
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 10px;
-        color:#A4A4A4;
-        width: 100%;
-        font-size: 15px;
-
-        hr{
-            width: 170px;
-            margin: 10px;
-        }
-    }
-
     :global(.t-and-c){
         width: 100%;
         max-width: 370px;
@@ -78,17 +42,6 @@
 @media screen and (min-width: 768px) {
 
     .container{
-        :global(.social-login){   
-            li{
-                height: 40px;
-
-                *{
-                    width: 30px;
-                    height: 30px;
-                }
-            }
-        }
-
         :global(.t-and-c){
             padding: 0px 10px;
             font-size: 14px;
@@ -109,12 +62,6 @@
 /* desktop */
 @media screen and (min-width: 1200px) {
     .container{
-        :global(.or){
-            hr{
-                width: 200px;
-            }
-        }
-
         :global(.form-input),:global(.submit), :global(.t-and-c), :global(.signup-link){
             max-width: 450px;
         }

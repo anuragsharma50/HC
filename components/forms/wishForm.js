@@ -25,15 +25,24 @@ function WishForm() {
             validationSchema={validationSchema}
         >
             <Form className="form-input" id='wish-form'>
-                <div className="label-error">
-                <label htmlFor="name">Nick name/Pet Name/ What you call them.</label>
-                    {/* <ErrorMessage name="email">
-                        {
-                            (ErrorMessage) => <span className="error-text">{ErrorMessage}</span>
-                        }
-                    </ErrorMessage> */}
+
+                <div className="radio-container">
+                    <label>Select Catagory to write idea</label>
+                    <div className="radio-buttons" role="group" aria-labelledby="my-radio-group">
+                        <div className="radio-item">
+                            <Field type="radio" id="wish" name="catagory" value="wish" />
+                            <label htmlFor="wish">Wish</label>
+                        </div>
+                        <div className="radio-item">
+                            <Field type="radio" id="celebrate" name="catagory" value="celebrate" />
+                            <label htmlFor="celebrate">Celebration</label>
+                        </div>
+                        <div className="radio-item">
+                            <Field type="radio" id="gift" name="catagory" value="gift" />
+                            <label htmlFor="gift">Gift</label>
+                        </div>
+                    </div>
                 </div>
-                <Field type="text" id="name" name="name" placeholder="Enter name of celebrant" />
 
                 <div className="relation-age">
                     <div className="relation-container">

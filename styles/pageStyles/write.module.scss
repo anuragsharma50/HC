@@ -15,38 +15,211 @@
             max-width: 100%;
             height: 100%;
 
-            textarea {
-                height: 80%;
-                resize: none;
-            }
+            :global(.radio-container) {
+                align-items: center;
 
-            :global(.slider-container){
-                @include display-flex();
-
-                div{
-                    margin: 0px 10px 0px 0px;
+                :global(.disable) {
+                    color: $disable;
                 }
             }
 
-            :global(.radio-buttons){
-                @include display-flex();
+            :global(.relation-ocassion) {
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
 
-                input[type='radio']{
-                    width: 20px;
+                :global(.select-container)  {
+                    width: 100%;
+                }
+            }
+
+            :global(.multi-inputs) {
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                margin-bottom: 10px;
+
+                :global(.age-gender) {
+                    display: flex;
+                    justify-content: space-between;
+                    flex-direction: column;
+                    width: 100%;
+    
+                    :global(.ages) {
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+        
+                        :global(.age-container) {
+                            width: 48%;
+                        }
+                    }
+    
+                    :global(.radio-container) {
+                        align-items: unset;
+                        justify-content: unset;
+    
+                        :global(.radio-buttons) {
+                            width: 100%;
+                        }
+                    }
+                }
+
+                :global(.checkbox) {
+                    width: 15px;
+                    height: 15px;
+                    margin: 3px;
+                }
+
+                :global(.slider-container) {
+                    width: 100%;
                     margin: 0px;
+                    align-items: baseline;
+
+                    :global(.disable) {
+                        color: $disable;
+                    }
+
+                    :global(.slider) {
+                        @include display-flex();
+                        margin: 20px 0px 0px 0px;
+                        flex-direction: column;
+                        width: 100%;
+        
+                        div{
+                            margin: 0px 10px 0px 0px;
+                        }
+        
+                        ul{
+                            display: flex;
+                            justify-content: space-between;
+                            width: 100%;
+                            background-color: white;
+                        }
+
+                        :global(.disable) {
+                            color: $disable;
+                        }
+        
+                        :global(.budget-slider){
+                            cursor: pointer;
+                            margin: 0px;
+                            -webkit-appearance: none;
+                            height: 0.5px;
+                            border-radius: 5px;
+                            background: #d3d3d3;
+                            outline: none;
+                            opacity: 0.7;
+                            -webkit-transition: .2s;
+                            transition: opacity .2s;
+                            padding: 0.5px;
+                            background: black;
+                            width: 100%;
+                        }
+
+                        :global(.slider-disable) {
+                            background-color: $disable;
+                        }
+        
+                        :global(.budget-slider::-webkit-slider-thumb) {
+                            width: 20px;
+                            height: 20px;
+                            background: rgb(8, 207, 8);
+                            appearance: none;
+                            border-radius: 50%; 
+                            opacity: 1;
+                        }
+        
+                        :global(.budget-slider::-webkit-slider-thumb):disabled {
+                            background: red;
+                        }
+        
+                        :global(.budget-slider::-moz-range-thumb),
+                        :global(.budget-slider::-ms-thumb) {
+                            width: 20px;
+                            height: 20px;
+                            background: rgb(8, 207, 8);
+                            appearance: none;
+                            border-radius: 50%; 
+                            opacity: 1;
+                        }
+                    }
                 }
+                
             }
 
-            :global(.budget-slider){
-                cursor: pointer;
-                margin: 0px;
+            textarea {
+                height: 300px;
+                resize: none;
             }
         }
     }
 }
 
+@media screen and (min-width: 540px) {  
+    .container{
+        :global(.form){
+            :global(.form-input) {
+                :global(.multi-inputs){
+                    :global(.age-gender) {
+                        width: 100%;
+                        flex-direction: row;
+            
+                        :global(.ages) {
+                            width: 45%;
+                        }
+            
+                        :global(.radio-container) {
+                            width: 52%;
+                        }
+                    }  
+                }
+            }
+        } 
+    }
+}
+
 /* small tablet styles */
 @media screen and (min-width: 768px) {
+    .container :global(.form) :global(.form-input) {
+        :global(.relation-ocassion) {
+            flex-direction: row;
+    
+            :global(.select-container) {
+                width: 49%;
+            }
+        }
+
+        :global(.multi-inputs) {
+            flex-direction: row;
+
+            :global(.age-gender) {
+                width: 50%;
+                flex-direction: row;
+    
+                :global(.ages) {
+                    width: 42%;
+                }
+    
+                :global(.radio-container) {
+                    width: 50%;
+    
+                    :global(.radio-buttons) {
+                        height: 45px;
+                        margin: 5px 0px 12px 0px;
+    
+                        input {
+                            margin-left: 10px;
+                        }
+                    }
+                }
+            }
+
+            :global(.slider-container) {
+                width: 45%;
+            }
+        }
+    }
 }
 
 /* large tablet and desktop styles */
