@@ -27,11 +27,10 @@ function Wish() {
 
                     <h3 className="form-title">Enter details of celebrant</h3>
                     
-                    {/* <WishForm/> */}
-                    <IdeaForm />
+                    <IdeaForm from={"wish"} />
 
                     <div className="submit">
-                        <button form="wish-form" type="submit" className="submit-btn">Submit</button>
+                        <button form="idea-form" type="submit" className="submit-btn">Submit</button>
                     </div>
 
                 </div>

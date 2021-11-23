@@ -11,7 +11,7 @@ function WriteForm() {
     const [modelState, setModelState] = useState(false)
 
     const initialValues = {
-        budget: 1,
+        budget: 0,
         relation: ['friend'],
         minAge: '',
         maxAge: '',
@@ -34,24 +34,24 @@ function WriteForm() {
         delete values.gendercheckbox
         delete values.budgetcheckbox
         console.log('Form values',values)
-        // resetForm(initialValues)
-        // axios.post('http://localhost:5500/wishes/',{ ...values },{withCredentials:true}).then((res) => {
-        //     console.log(res.data)
-        //     // router.push('/')
-        // }).catch((e) => {
-        //     console.log(e.response)
-        //     // if (e.response && e.response.data) {
-        //     //     console.log(e.response)
-        //     //     // setErrorMessage(e.response.data.message)
-        //     // }
-        // })
+        resetForm(initialValues)
+        axios.post(`http://localhost:5500/${values.catagory}/`,{ ...values },{withCredentials:true}).then((res) => {
+            console.log(res.data)
+            // router.push('/')
+        }).catch((e) => {
+            console.log(e.response)
+            // if (e.response && e.response.data) {
+            //     console.log(e.response)
+            //     // setErrorMessage(e.response.data.message)
+            // }
+        })
         setModelState(true)
     }
     
     const validationSchema = Yup.object({
         minAge: Yup.number().required('Please enter min age').min(0,'Age can not be negative').max(120,'Age must me maximum of 120 years'),
         maxAge: Yup.number().required('Please enter max age').min(0,'Age can not be negative').max(120,'Age must me maximum of 120 years'),
-        title: Yup.string().required('Please enter a title'),
+        title: Yup.string().required('Please enter a title').max(80,'You have exceeded the maximum character limit'),
         description: Yup.string().required('Please enter a description'),
         relation: Yup.array().min(1, 'Choose atleast one relation'),
         ocassion: Yup.array().min(1, 'Choose atleast one ocassion'),
@@ -77,8 +77,8 @@ function WriteForm() {
                                         <label htmlFor="wish">Wish</label>
                                     </div>
                                     <div className="radio-item">
-                                        <Field type="radio" id="celebrate" name="catagory" value="celebrate" />
-                                        <label htmlFor="celebrate">Celebration</label>
+                                        <Field type="radio" id="celebration" name="catagory" value="celebration" />
+                                        <label htmlFor="celebration">Celebration</label>
                                     </div>
                                     <div className="radio-item">
                                         <Field type="radio" id="gift" name="catagory" value="gift" />

@@ -2,11 +2,18 @@
 
 /* base styles */
 .container{
+    font-variant: lining-nums;
+
     :global(.sub-container){
         padding: 10px;
 
         :global(.heading){
             background-color: transparent;
+            height: 50px;
+
+            h2{
+                font-size: 20px;
+            }
         }
 
         :global(.idea-description){
@@ -15,6 +22,14 @@
             min-height: 55vh;
             text-align: justify;
             font-size: 14px;
+            width: 100%;
+        }
+
+        :global(.more-ideas) {
+            @include display-flex();
+            height: 76%;
+            flex-direction: column;
+            text-align: center;
         }
     }
     
@@ -49,6 +64,10 @@
         :global(.sec-btn){
             @include sec-button();
             width: 15%;
+        }
+
+        :global(.btn:disabled) {
+            opacity: 0.3;
         }
     }
 }

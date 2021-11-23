@@ -13,8 +13,8 @@ function Footer() {
                 <ul>
                     <li className="links-heading">Ideas</li>
                     <li>Wish</li>
-                    <li>Celebrate</li>
-                    <li>Surprise</li>
+                    <li>Celebration</li>
+                    <li>Gift</li>
                 </ul>
                 <ul>
                     <li className="links-heading">About</li>

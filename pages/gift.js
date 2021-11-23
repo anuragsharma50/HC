@@ -26,10 +26,10 @@ function Gift() {
 
                     <h3 className="form-title">Enter details</h3>
                     
-                    <IdeaForm />
+                    <IdeaForm from={"gift"} />
 
                     <div className="submit">
-                        <button form="celebrate-form" type="submit" className="submit-btn">Submit</button>
+                        <button form="idea-form" type="submit" className="submit-btn">Submit</button>
                     </div>
 
                 </div>

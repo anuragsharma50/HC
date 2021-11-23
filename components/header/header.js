@@ -32,8 +32,8 @@ function Header({user,updateUser}) {
                             <li>Wish</li>
                         </Link>
 
-                        <Link href="/celebrate">
-                            <li>Celebrate</li>
+                        <Link href="/celebration">
+                            <li>Celebration</li>
                         </Link>
                         <Link href="/gift">
                             <li>Gift</li>

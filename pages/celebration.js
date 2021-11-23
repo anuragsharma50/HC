@@ -6,7 +6,7 @@ import LoginImage from '../assets/images/login.png'
 import IdeaForm from '../components/forms/ideaForm'
 import CelebrateBudgetExplainer from '../components/modals/celebrateBudgetExplainer'
 
-function celebrate() {
+function celebration() {
 
     const [modelState, setModelState] = useState(false)
 
@@ -26,10 +26,10 @@ function celebrate() {
 
                     <h3 className="form-title">Enter celebrant and celebration details</h3>
                     
-                    <IdeaForm />
+                    <IdeaForm from={"celebration"} />
 
                     <div className="submit">
-                        <button form="celebrate-form" type="submit" className="submit-btn">Submit</button>
+                        <button form="idea-form" type="submit" className="submit-btn">Submit</button>
                     </div>
 
                 </div>
@@ -38,4 +38,4 @@ function celebrate() {
     )
 }
 
-export default celebrate
+export default celebration

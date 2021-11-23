@@ -12,6 +12,10 @@ li{
     text-decoration: none;
 }
 
+a{
+    cursor: pointer;
+}
+
 /* base styles */
 body{
     overflow-x: hidden;
@@ -65,6 +69,7 @@ body{
         }
 
         .error-text{
+            font-size: 14px;
             color: red;
             font-weight: bold;
             @include display-flex();
@@ -200,6 +205,10 @@ body{
                 .error-text{
                     font-size: 14px;
                 }
+            }
+
+            .error-text{
+                font-size: 16px;
             }
 
             label{

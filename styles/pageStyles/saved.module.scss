@@ -1,0 +1,46 @@
+@import '../commons.scss';
+
+.container {
+    flex-direction: column;
+    justify-content: unset;
+    padding: 0px;
+    font-variant: lining-nums;
+
+    .bottomHeader {
+        text-align: center;
+        padding: 10px;
+        background-color: $red;
+        color: white;
+    }
+
+    .subContainer {
+        padding: 10px;
+
+        .headingContainer {
+            width: 100%;
+            display: flex;
+
+            .delete{
+                @include display-flex();
+                width: 30px;
+                margin-right: 5px;
+                cursor: pointer;
+            }
+        }
+
+        :global(.heading) {
+            flex: 1;
+            background: transparent;
+            max-width: none;
+        }
+    }
+
+    .ideaDescription{
+        border: 2px solid;
+        padding: 10px;
+        min-height: 55vh;
+        text-align: justify;
+        font-size: 14px;
+        width: 100%;
+    }
+}

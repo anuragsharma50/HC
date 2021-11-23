@@ -9,7 +9,7 @@ function IdeaSubmitted({modelState,setModelState}) {
     const router = useRouter()
 
     return (
-        <Modal isOpen={modelState} className={Styles.modal}>
+        <Modal isOpen={modelState} className={Styles.modal} ariaHideApp={false}>
             <h2 className={Styles.modalTitle}>Submitted Successfully</h2>
             <div className={Styles.modalContent}> 
                 <p>Your idea is submitted successfully for manual checking,you will be notified when your 
