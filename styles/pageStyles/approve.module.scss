@@ -1,0 +1,205 @@
+@import '../commons.scss';
+
+.container {
+
+    .values {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        flex-wrap: wrap;
+
+        .value {
+            @include display-flex();
+            flex-direction: column;
+            padding: 5px 10px;
+            min-width: 100px;
+            flex: auto;
+
+            h5{
+                color: gray;
+                font-size: 13px;
+            }
+
+            p{
+                font-size: 16px;
+                width: 100%;
+                text-align: center;
+                padding: 0px 5px;
+            }
+
+            .multiple {
+                display: flex;
+                flex-wrap: wrap;
+
+                p{
+                    padding: 0px 2px;
+                }
+
+                p::after{
+                    content: ',';
+                }
+
+                p:last-child::after{
+                    content: '';
+                }
+            }
+        }
+    }
+
+    :global(.sub-container) {
+        padding: 10px;
+
+        .heading{
+            background-color: transparent;
+            height: 30px;
+            max-width: 100%;
+
+            h2{
+                font-size: 20px;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        :global(.idea-description){
+            border: 2px solid;
+            padding: 10px;
+            min-height: 60vh;
+            text-align: justify;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        .buttons{
+            @include display-flex();
+            justify-content: space-between;
+            width: 100%;
+            margin: 10px;
+
+            .btn {
+                @include button();
+                width: 120px;
+                height: 40px;
+                margin: 5px 10px;
+            }
+
+            .discard{
+                background-color: #d9534f;;
+            }
+
+            .accept{
+                width: 150px;
+                height: 50px;
+                background-color: #33b133;
+            }
+
+            .skip {
+                background-color: #f0ad4e;
+            } 
+        }
+
+        .reasons{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            padding: 10px 0px;
+
+            .reasonList {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+
+                h3{
+                    background-color: #ffc6c6;
+                    padding: 5px;
+                    margin: 5px;
+                    cursor: pointer;
+                    width: 270px;
+                }
+
+                .clicked{
+                    opacity: 0.5;
+                }
+            }
+
+            .reasonButtons {
+                display: flex;
+                width: 100%;
+                max-width: 400px;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0px;
+
+                .btn{
+                    @include button();
+                    width: 120px;
+                    height: 40px;
+                }
+    
+                .secBtn{
+                    @include sec-button();
+                }
+            }
+
+
+        }
+    }
+}
+
+// /* small tablet styles */
+// @media screen and (min-width: 540px) {
+//     .container {
+//         :global(.sub-container) {
+//             .reasons{
+//                 h3{
+//                     width: 48%;
+//                 }
+//             }
+//         } 
+//     }
+// }
+
+
+/* small tablet styles */
+@media screen and (min-width: 768px) {
+    .container {
+        :global(.sub-container) {
+            :global(.idea-description){
+                font-size: 16px;
+            }
+        }
+
+        .values .value {
+            h5{
+                font-size: 14px;
+            }
+    
+            p{
+                font-size: 18px;
+            }
+        }
+    }   
+}  
+
+/* large tablet and desktop styles */
+@media screen and (min-width: 1200px) {
+    .container {
+        :global(.sub-container) {
+            :global(.idea-description){
+                font-size: 18px;
+            }
+        }
+
+        .values .value {
+            h5{
+                font-size: 16px;
+            }
+    
+            p{
+                font-size: 20px;
+            }
+        }
+    }
+}

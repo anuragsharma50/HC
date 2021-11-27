@@ -12,7 +12,7 @@
             height: 50px;
 
             h2{
-                font-size: 20px;
+                font-size: 18px;
             }
         }
 
@@ -23,13 +23,6 @@
             text-align: justify;
             font-size: 14px;
             width: 100%;
-        }
-
-        :global(.more-ideas) {
-            @include display-flex();
-            height: 76%;
-            flex-direction: column;
-            text-align: center;
         }
     }
     

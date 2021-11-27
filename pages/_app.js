@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }) {
 
       <PopupProvider>
         <Header user={user} updateUser={updateUser} />
-        <Component {...pageProps } user={user} updateUser={updateUser} />
+        <Component {...pageProps } user={user} updateUser={updateUser}  />
         {/* <MrModal /> */}
       </PopupProvider>
       <Footer />

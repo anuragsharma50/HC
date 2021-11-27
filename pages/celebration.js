@@ -6,7 +6,7 @@ import LoginImage from '../assets/images/login.png'
 import IdeaForm from '../components/forms/ideaForm'
 import CelebrateBudgetExplainer from '../components/modals/celebrateBudgetExplainer'
 
-function celebration() {
+function celebration({user}) {
 
     const [modelState, setModelState] = useState(false)
 
@@ -26,7 +26,7 @@ function celebration() {
 
                     <h3 className="form-title">Enter celebrant and celebration details</h3>
                     
-                    <IdeaForm from={"celebration"} />
+                    <IdeaForm from={"celebration"} user={user} />
 
                     <div className="submit">
                         <button form="idea-form" type="submit" className="submit-btn">Submit</button>

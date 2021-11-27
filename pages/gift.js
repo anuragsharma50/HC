@@ -6,7 +6,7 @@ import LoginImage from '../assets/images/login.png'
 import IdeaForm from '../components/forms/ideaForm'
 import GiftBudgetExplainer from '../components/modals/giftBudgetExplainer'
 
-function Gift() {
+function Gift({user}) {
 
     const [modelState, setModelState] = useState(false)
 
@@ -26,7 +26,7 @@ function Gift() {
 
                     <h3 className="form-title">Enter details</h3>
                     
-                    <IdeaForm from={"gift"} />
+                    <IdeaForm from={"gift"} user={user} />
 
                     <div className="submit">
                         <button form="idea-form" type="submit" className="submit-btn">Submit</button>

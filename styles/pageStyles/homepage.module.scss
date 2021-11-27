@@ -1,11 +1,11 @@
-@import './commons.scss';
+@import '../commons.scss';
 
 /* base styles */
 .container{
     flex-direction: column;
     justify-content: center;
 
-    .btn{
+    :global(.btn){
         @include button();
         margin: 10px;
         width: 100%;
@@ -13,40 +13,7 @@
         height: 40px;
     }
 
-    .first-look{
-        @include display-flex();
-        overflow: hidden;
-        flex-direction: column;
-        min-height: 80vh;
-        justify-content: space-evenly;
-
-        .content{
-            min-width: 200px;
-            @include display-flex();
-            flex-direction: column;
-            padding: 10px;
-
-            h3{
-                text-align: center;
-                padding: 10px;
-                font-weight: 400;
-            }
-
-            .m-btn{
-                min-width: 150px;
-                height: 50px;
-                font-size: 18px;
-            }
-        }
-
-        img{
-            width: 100%;
-            padding: 10px;
-            max-width: 400px;
-        }
-    }
-
-    .home-links{
+    .homeLinks{
         padding: 10px;
         
         .item{
@@ -54,7 +21,7 @@
             padding: 5px 0px;
             justify-content: space-around;
 
-            img{
+            .img{
                 margin: 10px;
                 max-width: 100px;
                 display: none;
@@ -88,7 +55,7 @@
                 }
             }
 
-            .faq-img{
+            .faqImg{
                 display: none;
             }
 
@@ -124,7 +91,7 @@
                             font-size: 14px;
                         }
 
-                        img{
+                        .img{
                             min-width: auto;
                             display: block;
                         }
@@ -147,7 +114,7 @@
             flex-direction: row-reverse;
         }
 
-        .write-item{
+        .writeItem{
             @include display-flex();
             flex-direction: column;
             padding: 20px 0px;
@@ -163,7 +130,7 @@
                 flex-direction: row-reverse;
                 align-items: flex-start;
 
-                img{
+                .img{
                     display: none;
                 }
 
@@ -178,7 +145,7 @@
                     padding: 10px;
                 }
 
-                .btn{
+                :global(.btn){
                     max-width: 100px;
                 }
             }
@@ -194,22 +161,9 @@
             font-size: 16px;
         }
     
-        .first-look{
-            justify-content: space-around;
-            .content{
-                h2{
-                    font-size: 32px;
-                }
-
-                h4{
-                    font-size: 16px;
-                }
-            }
-        }
-    
-        .home-links{
+        .homeLinks{
             .item{
-                img{
+                .img{
                     width: 30%;
                     min-width: auto;
                     max-width: none;
@@ -230,13 +184,17 @@
                     }
                 }
 
-                .faq-img{
+                .faqImg{
                     display: block;
                 }
     
                 .faq{
                     max-width: fit-content;
                     height: auto;
+
+                    img{
+                        width: 100%;
+                    }
     
                     h3{
                         font-size: 24px;
@@ -248,7 +206,7 @@
                                 font-size: 16px;
                             }
     
-                            img{
+                            .img{
                                 width: 10px;
                             }
                         }
@@ -260,15 +218,15 @@
                 }
             }
     
-            .write-item{    
+            .writeItem{    
                 h3{
                     font-size: 20px;
                     padding-left: 10px;
                 }
     
                 .content{    
-                    img{
-                        width: 110px;
+                    .img{
+                        width: 250px;
                         display: block;
                     }    
     
@@ -280,7 +238,7 @@
                         margin-right: 30px;
                     }
     
-                    .btn{
+                    :global(.btn){
                         max-width: 120px;
                     }
                 }
@@ -295,31 +253,13 @@
         display: flex;
         align-items: center;
 
-        .btn{
+        :global(.btn){
             max-width: 180px;
             font-size: 18px;
             height: 50px;
         }
     
-        .first-look{
-            flex-direction: row-reverse;
-
-            .content{
-                h2{
-                    font-size: 40px;
-                }
-
-                h4{
-                    font-size: 20px;
-                }
-            }
-
-            img{
-                max-width: 600px;
-            }
-        }
-    
-        .home-links{
+        .homeLinks{
             .item{
                 .text{
                     padding: 20px;
@@ -334,12 +274,12 @@
                     }
                 }
 
-                .faq-img{
+                .faqImg{
                     max-width: 240px;
                 }
             }
     
-            .write-item{
+            .writeItem{
                 width: 80%;
                 margin: auto;
     
@@ -356,9 +296,9 @@
 /* large tablet and desktop styles */
 @media screen and (min-width: 992px) {
     .container{
-        .home-links{
+        .homeLinks{
             .item{
-                img{
+                .img{
                     width: 27%;
                 }
     
@@ -378,15 +318,13 @@
                 }
     
                 .faq{
-                    margin-left: 50px;
-
                     h3{
                         font-size: 26px;
                     }
                 }
             }
     
-            .write-item{
+            .writeItem{
                 padding: 50px 0px 20px;
     
                 .content{
@@ -405,7 +343,7 @@
         display: flex;
         align-items: center;
 
-        .first-look,.home-links{
+        .firstLook,.homeLinks{
             width: 80%;
         }
     }

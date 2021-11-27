@@ -8,7 +8,7 @@ import Styles from './idea.module.scss'
 import { useState } from 'react';
 import LimitedIdeas from '../modals/limitedIdeas';
 
-function IdeaForm({from}) {
+function IdeaForm({from,user}) {
 
     const router = useRouter()
     const [modelState, setModelState] = useState(false)
@@ -26,6 +26,9 @@ function IdeaForm({from}) {
     }
     
     const onSubmit = values => {
+        if(!user){
+            router.push('/signin')
+        }
         console.log('Form values',values)
         axios.get(`http://localhost:5500/${from}/count?ocassion=${values.ocassion}&relation=${values.relation}&age=${values.age}&gender=${values.gender}&budget=${values.budget+10}`,
         {withCredentials:true}).then((res) => {
@@ -118,7 +121,7 @@ function IdeaForm({from}) {
 
                             <div className="age-container">
                                 <label htmlFor="age">Age</label><br />
-                                <Field type="number" min="3" id="age" name="age" />
+                                <Field type="number" min="1" id="age" name="age" />
                             </div>
                         </div>
 

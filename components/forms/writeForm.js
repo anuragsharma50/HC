@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState } from 'react';
 import { Formik,Form,Field,ErrorMessage } from 'formik'
 import * as Yup from 'yup'
@@ -6,8 +7,9 @@ import SelectSearch from 'react-select-search';
 import axios from 'axios'
 import IdeaSubmitted from '../modals/ideaSubmitted';
 
-function WriteForm() {
+function WriteForm({user}) {
 
+    const router = useRouter()
     const [modelState, setModelState] = useState(false)
 
     const initialValues = {
@@ -25,6 +27,9 @@ function WriteForm() {
     }
     
     const onSubmit = (values,{resetForm}) => {
+        if(!user){
+            router.push('/signin')
+        }
         if(!values.gendercheckbox) {
             delete values.gender
         }

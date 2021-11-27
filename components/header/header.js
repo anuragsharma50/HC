@@ -1,21 +1,43 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import axios from 'axios'
+import { useRouter } from "next/router"
+import nameInitials from 'name-initials'
 
 import Logo from '../../assets/images/Logo.png'
 import Menu from '../../assets/images/menu-icon.png'
+import { useState } from 'react'
+import LogoutModal from '../modals/logout'
 
 function Header({user,updateUser}) {
-    
-    const signOut = () => {
-        axios.get('http://localhost:5500/auth/signout',{withCredentials:true}).then((res) => {
-            console.log(res.data)
-            updateUser()
-        }).catch((e) => {
-            if (e.response && e.response.data) {
-                console.log(e.response)
-            }
-        })
+
+    const router = useRouter()
+
+    const [showTippy, setShowTippy] = useState(false)
+    const [modelState, setModelState] = useState(false)
+    let initials = ''
+
+    if(user && user.username){
+        initials = nameInitials(user.username);
+    }
+
+    const logoutButton = () => {
+        setModelState(true)
+        setShowTippy(false)
+    }
+
+    const goToReferral = () => {
+        router.push('/referral')
+        setShowTippy(false)
+    }
+
+    const goToMyIdeas = () => {
+        router.push('/myideas')
+        setShowTippy(false)
+    }
+
+    const goToSaved = () => {
+        router.push('/saved')
+        setShowTippy(false)
     }
 
     return (
@@ -44,6 +66,9 @@ function Header({user,updateUser}) {
                         <Link href="/pricing">
                             <li>Pricing</li>
                         </Link>
+                        <Link href="/details/approve">
+                            <li>Approve</li>
+                        </Link>
                     </ul>
                 </div>
             </div>
@@ -59,11 +84,26 @@ function Header({user,updateUser}) {
             }
 
             { user && 
-                <button className="btn"  onClick={signOut} >SignOut</button>
+                <div className="logged-in">
+                    <button className="user-avatar" onClick={() => setShowTippy(!showTippy)}>{initials}</button>
+                    {
+                        showTippy &&
+                        <div className="tippy">
+                            <ul>
+                            <li onClick={goToSaved}>Saved Ideas</li>
+                            <li onClick={goToMyIdeas}>My Ideas</li>
+                            <li onClick={goToReferral}>Referral</li>
+                            <li onClick={logoutButton}>Logout</li>
+                            </ul>
+                        </div>
+                    }
+                </div>
             }
             <div className="menu">
                 <Image src={Menu} alt="menu" />
             </div>
+
+            <LogoutModal modelState={modelState} setModelState={setModelState} updateUser={updateUser} />
     </div>
     )
 }

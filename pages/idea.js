@@ -2,6 +2,8 @@ import Image from 'next/image'
 import { withRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import styles from '../styles/pageStyles/idea.module.scss'
 import Arrow from "../assets/images/arrow.png"
@@ -108,11 +110,11 @@ function Idea(props) {
                 { data[index] && 
                     <>
                         <div className="heading">
-                            <h2>{data[index].title}</h2>
+                            <h2>{data[index].title || <Skeleton height={30} />}</h2>
                         </div>
 
                         <div className="idea-description">
-                            {data[index].description}
+                            {data[index].description || <Skeleton count={5} />}
                         </div>
                     </>
                 }

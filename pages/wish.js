@@ -7,7 +7,7 @@ import LoginImage from '../assets/images/login.png'
 import IdeaForm from '../components/forms/ideaForm'
 import WishBudgetExplainer from '../components/modals/wishBudgetExplainer'
 
-function Wish() {
+function Wish({user}) {
 
     const [modelState, setModelState] = useState(false)
 
@@ -27,7 +27,7 @@ function Wish() {
 
                     <h3 className="form-title">Enter details of celebrant</h3>
                     
-                    <IdeaForm from={"wish"} />
+                    <IdeaForm from={"wish"} user={user} />
 
                     <div className="submit">
                         <button form="idea-form" type="submit" className="submit-btn">Submit</button>

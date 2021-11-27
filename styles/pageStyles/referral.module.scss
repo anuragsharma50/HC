@@ -1,0 +1,43 @@
+@import '../commons.scss';
+
+.referralForm{
+    @include display-flex();
+    flex-direction: column;
+    width: 100%;
+    margin: 20px 10px;
+
+    .inputs {
+        @include display-flex();
+
+        .input{
+            width: calc( 20vw + 120px );
+            margin-right: 10px;
+            font-size: 20px;
+            padding: 5px;
+        }
+    
+        .btn {
+            @include button();
+            width: 120px;
+            height: 40px;
+        }
+    }
+
+    .errorText {
+        color: red;
+        padding: 10px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+
+.details {
+    margin: 20px 10px;
+}
+
+/* small tablet styles */
+@media screen and (min-width: 768px) {
+    .details {
+        font-size: 18px;
+    }
+}

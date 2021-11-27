@@ -6,6 +6,11 @@
     padding: 0px;
     font-variant: lining-nums;
 
+    .noSave {
+        @include display-flex();
+        height: 85vh;
+    }
+
     .bottomHeader {
         text-align: center;
         padding: 10px;
@@ -32,6 +37,16 @@
             flex: 1;
             background: transparent;
             max-width: none;
+        }
+
+        .headingSkeleton {
+            flex: 1;
+            max-width: none;
+            margin: 10px 0px;
+        }
+
+        .skeleton {
+            margin: 1px 0px;
         }
     }
 

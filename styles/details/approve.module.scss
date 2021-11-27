@@ -1,0 +1,110 @@
+@import '../commons.scss';
+
+.firstLook{
+    @include display-flex();
+    overflow: hidden;
+    flex-direction: column;
+    min-height: 80vh;
+    justify-content: space-evenly;
+
+    .content{
+        min-width: 200px;
+        @include display-flex();
+        flex-direction: column;
+        padding: 10px;
+
+        h3{
+            text-align: center;
+            padding: 10px;
+            font-weight: 400;
+        }
+
+        .mBtn{
+            min-width: 150px;
+            height: 50px;
+            font-size: 18px;
+        }
+    }
+
+    .img{
+        width: 100%;
+        padding: 10px;
+        max-width: 400px;
+    }
+}
+
+.referralForm{
+    @include display-flex();
+    flex-direction: column;
+    width: 100%;
+    margin: 20px 10px;
+
+    .inputs {
+        @include display-flex();
+
+        .input{
+            width: calc( 20vw + 120px );
+            margin-right: 10px;
+            font-size: 20px;
+            padding: 5px;
+        }
+    
+        .btn {
+            @include button();
+            width: 120px;
+            height: 40px;
+        }
+    }
+
+    .errorText {
+        color: red;
+        padding: 10px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+
+.details {
+    margin: 20px 10px;
+}
+
+/* mobile styles */
+@media screen and (min-width: 540px) {
+    .firstLook{
+        justify-content: space-around;
+        .content{
+            h2{
+                font-size: 32px;
+            }
+
+            h4{
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+/* small tablet styles */
+@media screen and (min-width: 768px) {
+    .firstLook{
+        flex-direction: row-reverse;
+
+        .content{
+            h2{
+                font-size: 40px;
+            }
+
+            h4{
+                font-size: 20px;
+            }
+        }
+
+        .img{
+            max-width: 600px;
+        }
+    }
+
+    .details {
+        font-size: 18px;
+    }
+}

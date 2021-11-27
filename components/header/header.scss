@@ -36,13 +36,58 @@
     .menu {
         width: 30px;
     }
+
+    .nav-buttons{
+        display: none;
+    }
+    
+    .logged-in {
+        justify-content: end;
+        width: 120px;
+        display: none;
+    
+        .user-avatar {
+            border-radius: 50%;
+            font-family: cursive;
+            border: none;
+            color: white;
+            background-color: #458bcb;
+            font-size: 18px;
+            text-align: center;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+        }
+        
+        .tippy {
+            @include display-flex();
+            border: 2px solid #707070;
+            border-radius: 8px;
+            width: 150px;
+            padding: 10px;
+            position: absolute;
+            transform: translate(0px, 54px);
+            z-index: 2;
+            text-align: center;
+            background-color: white;
+        
+            ul {
+                li{
+                    padding: 5px;
+                    cursor: pointer;
+                    border-top: 2px solid #707070;
+                }
+        
+                li:nth-child(1){
+                    width: 120px;
+                    border-top: none;
+                }
+            }
+        }
+    }
 }
 
 .nav-links{
-    display: none;
-}
-
-.nav-buttons{
     display: none;
 }
 
@@ -56,6 +101,20 @@
             width: 120px;
         }
 
+        .nav-links{
+            display: block;
+            ul{
+                @include display-flex();
+                margin-left: 5px;
+                font-size: 14px;
+        
+                li{
+                    padding: 0 8px;
+                    cursor: pointer
+                }
+            }
+        }
+
         .nav-buttons{
             display: flex;
             width: 190px;
@@ -65,24 +124,14 @@
                 font-size: 14px;
             }
         }
-    }
 
-    .nav-links{
-        display: block;
-        ul{
-            @include display-flex();
-            margin-left: 5px;
-            font-size: 14px;
-    
-            li{
-                padding: 0 8px;
-                cursor: pointer
-            }
+        .logged-in {
+            display: flex;
         }
-    }
 
-    .menu{
-        display: none;
+        .menu{
+            display: none;
+        }
     }
 }
 /* large tablet and desktop styles */
@@ -94,6 +143,17 @@
             width: 150px;
         }
 
+        .nav-links{
+            ul{
+                margin-left: 25px;
+                font-size: 15px;
+        
+                li{
+                    padding: 0 15px;
+                }
+            }
+        }
+
         .nav-buttons{
             .btn{
                 font-size: 15px;
@@ -101,16 +161,6 @@
         }
     }
 
-    .nav-links{
-        ul{
-            margin-left: 25px;
-            font-size: 15px;
-    
-            li{
-                padding: 0 15px;
-            }
-        }
-    }
 }
 
 /* desktop */

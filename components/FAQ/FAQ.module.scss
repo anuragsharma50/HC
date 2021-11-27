@@ -1,0 +1,110 @@
+@import '../../styles/commons.scss';
+
+/* base styles */
+.item{
+    @include display-flex();
+    padding: 5px 0px;
+    justify-content: space-around;
+
+    .faqImg{
+        display: none;
+    }
+
+    :global(.faq){
+        max-width: fit-content;
+
+        :global(.faq-row-wrapper) {
+            :global(.faq-title) {
+                border: none;
+
+                h2{
+                    border-bottom: 2px solid $yellow;
+                    font-size: 20px;
+                }
+            }
+        }
+
+        :global(.faq-body) {
+            :global(.faq-row) {
+                border-bottom: 2px solid gray;
+
+                :global(.row-title) {
+                    font-weight: bold;
+                    font-size: 14px;
+                    
+                    :global(.row-title-text) {
+                        padding-right: 2em;
+                    }
+                }
+
+                :global(.row-content-text) {
+                    font-size: 12px !important;
+                    padding-right: 3em !important;
+                }
+            }
+
+            // :global(.faq-row:nth-last-child(1)){
+            //     border: none;
+            // }
+        }
+    }
+}
+
+/* mobile styles */
+@media screen and (min-width: 540px) {
+    .item{
+        :global(.faq){
+            :global(.faq-row-wrapper) {
+                :global(.faq-title) {
+                    h2{
+                        font-size: 24px;
+                    }
+                }
+            }
+    
+            :global(.faq-body) {
+                :global(.faq-row) {
+                    :global(.row-title) {
+                        font-size: 16px;
+                    }
+
+                    :global(.row-content-text) {
+                        font-size: 14px !important;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+/* small tablet styles */
+@media screen and (min-width: 768px) {
+    .item{
+        .faqImg{
+            display: block;
+        }
+
+        :global(.faq){
+            :global(.faq-body) {
+                :global(.faq-row) {
+                    :global(.row-title) {
+                        font-size: 18px;
+                    }
+                    
+                    :global(.row-content-text) {
+                        font-size: 16px !important;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+/* large tablet and desktop styles */
+@media screen and (min-width: 992px) {
+    // .item{
+    // }
+}
+
