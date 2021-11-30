@@ -1,8 +1,26 @@
+import { useRouter } from "next/router";
+import { useEffect, useState } from 'react'
+import CurrencyModal from '../components/modals/currency'
 import styles from '../styles/pageStyles/pricing.module.scss'
 
-function Pricing() {
+function Pricing({user,updateUser}) {
+
+    const router = useRouter()
+    const [modelState, setModelState] = useState(true)
+    const [currency, setCurrency] = useState( user ? user.currency : "INR")
+
+    useEffect(() => {
+        if(user && user.currency){
+            setModelState(false)
+        }
+    }, [user])
+
     return (
         <div className={`${styles.container} container`}>
+        <CurrencyModal modelState={modelState} setModelState={setModelState} 
+        user={user} updateUser={updateUser} 
+        currency={currency} setCurrency={setCurrency}
+        />
         <div className="sub-container">
             <div className="heading">
                 <h2>Pricing</h2>
@@ -22,47 +40,38 @@ function Pricing() {
                     </ul>
     
                     <div className="btn">
-                        <button className="submit-btn">Watch Now</button>
+                        <button className="submit-btn" disabled>Watch Now</button>
                     </div>
                 </div>
     
                 <div className="details">
                     <div className="detail-title">
-                        <h2>One Time</h2>
+                        <h2>Per ideas set</h2>
                         <div className="amount">
-                            <span>₹</span><h1>9</h1>
+                            {
+                                currency === 'INR' ?
+                                    <>
+                                        <span>₹</span><h1>19</h1>
+                                    </>
+                                :
+                                    <>
+                                        <span>$</span><h1>1</h1>
+                                    </>
+                            }
                         </div>
                     </div>
     
                     <ul>
-                        <li>Get idea in any one catatory.</li>
-                        <li>30 Ideas without intruption</li>
+                        <li>Get ideas in any one catatory.</li>
+                        <li>25 Ideas without intruption</li>
                         <li>Save up to 3 ideas</li>
                     </ul>
     
                     <div className="btn">
-                        <button className="submit-btn">Choose Plan</button>
+                        <button className="submit-btn" onClick={() => router.push('/payment')}>Choose Plan</button>
                     </div>
                 </div>
     
-                <div className="details">
-                    <div className="detail-title">
-                        <h2>12 Ideas</h2>
-                        <div className="amount">
-                            <span>₹</span><h1>99</h1>
-                        </div>
-                    </div>
-    
-                    <ul>
-                        <li>Save Yourself by Paying everytime</li>
-                        <li>save ₹9</li>
-                        <li>Includes all feature from one time pay</li>
-                    </ul>
-    
-                    <div className="btn">
-                        <button className="submit-btn" disabled>Not Avaliable</button>
-                    </div>
-                </div>
             </div>
 
         </div>

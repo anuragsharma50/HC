@@ -1,0 +1,49 @@
+@import '../commons.scss';
+
+.container {
+
+    .paypal{
+        width: 50%;
+        min-width: 300px;
+        max-width: 450px;
+        margin: 20px 0px;
+    }
+
+    .set{
+        display: flex;
+        width: 50%;
+        min-width: 300px;
+        max-width: 400px;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px;
+
+        .input {
+            font-variant: lining-nums;
+
+            input {
+                margin: 5px;
+            }
+        }
+    }
+
+    .total {
+        width: 50%;
+        min-width: 300px;
+        max-width: 400px;
+        margin: 10px 0px;
+        border: 1px solid #e6ebf3;
+        padding: 10px;
+
+        .subTotal {
+            display: flex;
+            justify-content: space-between;
+            font-variant: lining-nums;
+            padding: 5px;
+        }
+
+        .subTotal:nth-child(2) {
+            border-bottom: 1px solid #e6ebf3;
+        }
+    }
+}
