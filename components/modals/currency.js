@@ -8,9 +8,7 @@ function CurrencyModal({modelState,setModelState,user,updateUser,currency,setCur
 
     const updateCurrency = () => {
         if(user){
-            console.log("running")
             axios.post('http://localhost:5500/users/currency',{currency},{withCredentials:true}).then((res) => {
-                console.log("here")
                 console.log(res.data)
                 updateUser()
                 setModelState(false)

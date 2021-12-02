@@ -1,0 +1,10 @@
+@import '../../styles/commons.scss';
+
+.razorpay {
+    .button {
+        @include button();
+        margin: 10px;
+        width: 120px;
+        height: 45px;
+    }
+}

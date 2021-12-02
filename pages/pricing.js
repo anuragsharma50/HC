@@ -7,7 +7,7 @@ function Pricing({user,updateUser}) {
 
     const router = useRouter()
     const [modelState, setModelState] = useState(true)
-    const [currency, setCurrency] = useState( user ? user.currency : "INR")
+    const [currency, setCurrency] = useState( user && user.currency ? user.currency : "INR")
 
     useEffect(() => {
         if(user && user.currency){

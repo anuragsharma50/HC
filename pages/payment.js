@@ -1,16 +1,24 @@
-import { useState } from "react"
+import { useRouter } from "next/router";
+import { useState,useEffect } from "react"
 import Paypal from "../components/payment/paypal"
+import Razorpay from "../components/payment/Razorpay"
 import Styles from '../styles/pageStyles/payment.module.scss'
 
 function Payment({user}) {
 
+    const router = useRouter()
     const [set, setSet] = useState(3)
-    // const [total, setTotal] = useState(3.65)
 
     const handleChange = (e) => {
         setSet(e.target.value)
-        // setTotal(e.target.value*1 + e.target.value*0.05 + 0.5)
     }
+
+    useEffect(() => {
+        if(!user) {
+            router.push('/signup')
+        }
+
+    }, [user])
 
     return (
         <div className={`${Styles.container} container`}>
@@ -35,28 +43,41 @@ function Payment({user}) {
                     </div>
                 </div>
 
-                <div className={Styles.total}>
-                    <div className={Styles.subTotal}>
-                        <p>{set} set price ($1 per set)</p> <h3>${set}</h3>
-                    </div>
-                    <div className={Styles.subTotal}>
-                        <p>paypal fees</p> <h3>${set*0.05 + 0.5}</h3>
-                    </div>
-                    <div className={Styles.subTotal}>
-                        <p>Total</p> <h3>${set*1 + set*0.05 + 0.5}</h3>
-                    </div>
-                </div>
-
-                <div className={Styles.paypal}>
-                    <Paypal set={set} />
-                </div>
-                {/* {
+                {
                     user && user.currency === 'INR' ?
-                    // component for paytm
+
+                    <>
+                        <div className={Styles.total}>
+                            <div className={Styles.subTotal}>
+                                <p>Total</p> <h3>₹{set*19}</h3>
+                            </div>
+                        </div>
+
+                        <Razorpay set={set} />
+                    </>
+
                     :
-                    //component for paypal
-                    //component for stripe
-                } */}
+
+                    <>
+                        <div className={Styles.total}>
+                            <div className={Styles.subTotal}>
+                                <p>Price</p> <h3>${set}</h3>
+                            </div>
+                            <div className={Styles.subTotal}>
+                                <p>paypal fees</p> <h3>${set*0.05 + 0.5}</h3>
+                            </div>
+                            <div className={Styles.subTotal}>
+                                <p>Total</p> <h3>${set*1 + set*0.05 + 0.5}</h3>
+                            </div>
+                        </div>
+
+                        <div className={Styles.paypal}>
+                            <Paypal set={set} />
+                        </div>
+
+                        {/* component for stripe */}
+                    </>
+                }
             </div>
         </div>
     )
