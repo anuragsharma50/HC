@@ -21,7 +21,7 @@ function LogoutModal({modelState,setModelState,updateUser}) {
     }
 
     return (
-        <Modal isOpen={modelState} className={Styles.modal} ariaHideApp={false}>
+        <Modal isOpen={modelState} overlayClassName={`${Styles.overlay} ReactModal__Overlay`} className={Styles.modal} ariaHideApp={false}>
             <h2 className={Styles.modalTitle}>Logout</h2>
             <div className={Styles.modalContent}>
                 <p>Are you sure you want to logout?</p>

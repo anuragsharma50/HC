@@ -1,0 +1,100 @@
+@import '../commons.scss';
+
+.container {
+
+    .otpcontent{
+        text-align: center;
+        margin: 20px 10px;
+        box-shadow: 1px 1px 10px #80808040;
+        border-radius: 8px;
+        padding: 20px;
+
+        .OtpContainer {
+            height: 60px;
+            width: 100%;
+            justify-content: center;
+        }
+    
+        .inputStyle {
+            width: 1.9rem !important;
+            height: 1.9rem;
+            margin: 0 0.1rem;
+            font-size: 1.2rem;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 0, 0, 0.3);   
+        }
+
+        .btn {
+            @include button();
+            width: 120px;
+            height: 40px;
+            margin: 10px;
+        }
+
+        .error{
+            color: red;
+            font-weight: bold;
+        }
+
+    }
+    
+    span {
+        font-size: 14px;
+        font-variant: lining-nums;
+    }
+
+    .resendText {
+        padding: 0px 10px;
+
+        .resend {
+            color: #cb0000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+}
+
+/* mobile styles */
+@media screen and (min-width: 540px) {
+    .container{
+        .otpcontent{
+
+            .OtpContainer {
+                height: 100px;
+            }
+
+            .inputStyle {
+                width: 2.5rem !important;  
+                height: 2.5rem; 
+                font-size: 1.5rem;
+            }
+
+        }
+    }
+}
+
+/* mobile styles */
+@media screen and (min-width: 768px) {
+    .container{
+        .otpcontent{
+
+            .inputStyle {
+                width: 3rem !important;  
+                height: 3rem; 
+                margin: 0 1rem;
+                font-size: 2rem;
+            }
+
+            .btn {
+                width: 150px;
+                height: 45px;
+                margin: 15px;
+            }
+
+        }
+        
+        span {
+            font-size: 15px;
+        }
+    }
+}

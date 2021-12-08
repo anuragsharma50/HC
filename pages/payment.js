@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useState,useEffect } from "react"
 import Paypal from "../components/payment/paypal"
 import Razorpay from "../components/payment/Razorpay"
+import Stripe from "../components/payment/stripe";
 import Styles from '../styles/pageStyles/payment.module.scss'
 
 function Payment({user}) {
@@ -61,6 +62,20 @@ function Payment({user}) {
                     <>
                         <div className={Styles.total}>
                             <div className={Styles.subTotal}>
+                                <p>Total</p> <h3>${set}</h3>
+                            </div>
+                        </div>
+
+                        <Stripe set={set} />
+
+                        <div className={Styles.or}>
+                            <hr />
+                            <span>or</span>
+                            <hr />
+                        </div>
+
+                        <div className={Styles.total}>
+                            <div className={Styles.subTotal}>
                                 <p>Price</p> <h3>${set}</h3>
                             </div>
                             <div className={Styles.subTotal}>
@@ -74,8 +89,6 @@ function Payment({user}) {
                         <div className={Styles.paypal}>
                             <Paypal set={set} />
                         </div>
-
-                        {/* component for stripe */}
                     </>
                 }
             </div>

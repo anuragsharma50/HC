@@ -96,7 +96,7 @@ function IdeaForm({from,user}) {
 
                         <div className="relation-age">
                             <div className="select-container">
-                                <label htmlFor="relation">Your are their</label>
+                                <label htmlFor="relation">He/She is your</label>
                                 <SelectSearch  
                                     className='select-search'
                                     name="relation"

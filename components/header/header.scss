@@ -6,6 +6,10 @@
     border-bottom: 2px solid;
     @include display-flex();
     justify-content: space-between;
+    position: fixed;
+    z-index: 1;
+    background-color: white;
+    width: 100%;
 
     .nav-start{
         @include display-flex();
@@ -15,10 +19,21 @@
         .btn{
             @include button(); 
         }
-
+        
         .secondry{
             @include sec-button();
         }
+
+        .wide-btn{
+            @include button(); 
+            width: 150px;
+        }
+    }
+
+    .nav-loggedin {
+        display: flex;
+        width: 200px;
+        justify-content: flex-end;
     }
 }
 
@@ -160,12 +175,9 @@
             }
         }
     }
-
 }
 
 /* desktop */
 @media screen and (min-width: 1200px) {
     
-    
-
 }

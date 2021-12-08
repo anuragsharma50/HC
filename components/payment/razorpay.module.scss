@@ -1,10 +1,15 @@
 @import '../../styles/commons.scss';
 
-.razorpay {
+.razorpay,.stripe {
+
     .button {
         @include button();
         margin: 10px;
-        width: 120px;
         height: 45px;
+        width: 100%;
+        justify-content: space-around;
+        display: flex;
+        align-items: center;
+        padding: 10px;
     }
 }

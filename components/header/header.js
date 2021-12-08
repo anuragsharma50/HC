@@ -72,6 +72,7 @@ function Header({user,updateUser}) {
                     </ul>
                 </div>
             </div>
+
             { !user && 
                 <div className="nav-buttons">
                     <Link href='/signin'>
@@ -83,20 +84,31 @@ function Header({user,updateUser}) {
                 </div> 
             }
 
-            { user && 
-                <div className="logged-in">
-                    <button className="user-avatar" onClick={() => setShowTippy(!showTippy)}>{initials}</button>
-                    {
-                        showTippy &&
-                        <div className="tippy">
-                            <ul>
-                            <li onClick={goToSaved}>Saved Ideas</li>
-                            <li onClick={goToMyIdeas}>My Ideas</li>
-                            <li onClick={goToReferral}>Referral</li>
-                            <li onClick={logoutButton}>Logout</li>
-                            </ul>
-                        </div>
-                    }
+            { user &&
+                <div className="nav-loggedin">
+
+                    { user.unverified &&
+                        <div className="nav-buttons">
+                            <div></div>
+                            <Link href='/verify-account'>
+                                <button className="wide-btn">Verify Account</button>
+                            </Link>
+                        </div> 
+                    } 
+                    <div className="logged-in">
+                        <button className="user-avatar" onClick={() => setShowTippy(!showTippy)}>{initials}</button>
+                        {
+                            showTippy &&
+                            <div className="tippy">
+                                <ul>
+                                <li onClick={goToSaved}>Saved Ideas</li>
+                                <li onClick={goToMyIdeas}>My Ideas</li>
+                                <li onClick={goToReferral}>Referral</li>
+                                <li onClick={logoutButton}>Logout</li>
+                                </ul>
+                            </div>
+                        }
+                    </div>
                 </div>
             }
             <div className="menu">

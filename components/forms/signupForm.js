@@ -23,7 +23,7 @@ const SignUpForm = ({updateUser}) => {
         }).then((res) => {
             console.log(res.data)
             updateUser()
-            router.push('/')
+            router.push('/verify-account')
         }).catch((e) => {
             if (e.response && e.response.data) {
                 console.log(e.response.data.message)

@@ -1,4 +1,4 @@
-import { useEffect,useState } from 'react'
+import { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from "next/router";
@@ -15,8 +15,11 @@ function SignIn({updateUser,user}) {
 
     useEffect(() => {
         if(user){
-            console.log('nahi karenge redirect')
-            router.push('/')
+            if(user.unverified){
+                router.push('/verify-account')
+            }else{
+                router.push('/')
+            }
         }
         
     }, [user])
@@ -40,10 +43,10 @@ function SignIn({updateUser,user}) {
                 <hr />
             </div> */}
 
-            <SignInForm updateUser={updateUser} />
+            <SignInForm user={user} updateUser={updateUser} />
 
             <div className="reset-password">
-                <a href="">Forgot Password?</a>
+                <Link href="/forgot-password">Forgot Password?</Link>
             </div>
 
             <div className="submit">

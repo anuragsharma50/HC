@@ -1,13 +1,13 @@
+import { useRouter } from "next/router"
 import { useState } from 'react'
 import { Formik,Form,Field,ErrorMessage} from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
-import { useRouter } from "next/router";
 
-const SignInForm = ({updateUser}) => {
+const SignInForm = ({user,updateUser}) => {
     
-    const [errorMessage, setErrorMessage] = useState('')
     const router = useRouter()
+    const [errorMessage, setErrorMessage] = useState('')
 
     const initialValues = {
         email: '',
@@ -26,7 +26,11 @@ const SignInForm = ({updateUser}) => {
         }).then((res) => {
             console.log(res)
             updateUser()
-            router.push('/')
+            if(user.unverified){
+                router.push('/verify-account')
+            }else{
+                router.push('/')
+            }
         }).catch((e) => {
             if (e.response && e.response.data) {
                 console.log(e.response.data.message)

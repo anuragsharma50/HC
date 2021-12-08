@@ -45,4 +45,19 @@
             border-bottom: 1px solid #e6ebf3;
         }
     }
+
+    .or{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+        color:#A4A4A4;
+        width: 100%;
+        font-size: 15px;
+    
+        hr{
+            width: 170px;
+            margin: 10px;
+        }
+    }
 }
