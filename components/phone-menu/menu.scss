@@ -1,0 +1,131 @@
+@import '../../styles/commons.scss';
+
+/* base styles */
+.menu-container{
+    height: 100vh;
+    background: #DDF5FB;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    min-height: -webkit-fill-available;
+    overflow: hidden;
+
+    .top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        .logo{
+            // width: 150px;
+            cursor: pointer;
+            width: 120px;
+            height: 34px;
+        }
+
+        .cancel{
+            min-width: 22px;
+            width: 7vw;
+            max-width: 30px;
+            cursor: pointer;
+        }
+    }
+
+    .mob-nav{
+        height: 100%;
+
+        .item{
+            @include display-flex();
+            margin: 20px;
+            cursor: pointer;
+
+            img{
+                width: 50px;
+                height: 50px;
+            }
+    
+            span{
+                font-size: 24px;
+                margin: 10px;
+            }
+        }
+
+    }
+
+    hr{
+        width: 100%;
+        max-width: 400px;
+        margin: 10px;
+        // height: 1px;
+    }
+
+    .menu-buttons{
+        width: 100%;
+        margin-bottom: 50px;
+        @include display-flex();
+        flex-direction: column;
+        height: 100%;
+
+        .btn{
+            @include button();
+            font-size: 16px;
+            width: 100%;
+            max-width: 200px;
+            margin: 5px;
+            height: 50px;
+        }
+
+        .sec-btn{
+            @include sec-button();
+        }
+
+        .menu-user {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            max-width: 350px;
+            
+            .user-avatar {
+                border-radius: 50%;
+                font-family: cursive;
+                border: none;
+                color: white;
+                background-color: #458bcb;
+                font-size: 20px;
+                text-align: center;
+                cursor: pointer;
+                padding: 10px;
+                margin: 0px 10px;
+            }
+
+            .user-text{
+                width: 80%;
+
+                h3,p{
+                    white-space: nowrap;
+                    // width: 220px;
+                    width: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+        }
+
+    }
+
+}
+
+/* small tablet styles */
+@media screen and (min-width: 768px) {
+    .menu-container{
+        display: none;
+    }
+}

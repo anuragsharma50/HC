@@ -2,6 +2,7 @@ import { useState,useEffect } from 'react'
 import axios from 'axios'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import CustomRejectReason from '../components/forms/customRejectReason'
 import Styles from '../styles/pageStyles/approve.module.scss'
 
 const reasonList = [
@@ -22,6 +23,8 @@ function Approve() {
     const [reasonId, setReasonId] = useState(0)
     const [data, setData] = useState([])
     const [serverError, setServerError] = useState('')
+    const [disableState, setDisableState] = useState(true)
+    const [disableState2, setDisableState2] = useState(true)
 
     const approveIdea = () => {
         axios.patch('http://localhost:5500/approver/approveIdea',{_id:data._id,catagory: data.catagory},
@@ -38,19 +41,26 @@ function Approve() {
     }
 
     const rejectIdea = () => {
-        console.log(reasonList[reasonId-1].reason)
+        setDisableState(true)
         axios.patch('http://localhost:5500/approver/rejectIdea',
         {_id:data._id,catagory: data.catagory,reason:reasonList[reasonId-1].reason},
         {withCredentials:true}).then((res) => {
             console.log(res.data)
             setData([])
             fetchUnApprovedIdeas()
+            setDisableState(false)
         }).catch((e) => {
             if (e.response && e.response.data) {
                 console.log(e.response.data.error)
                 setServerError(e.response.data.error)
             }
         })
+    }
+
+    const chooseReason = (id) => {
+        setReasonId(id)
+        setDisableState(false)
+        setDisableState2(true)
     }
 
     const fetchUnApprovedIdeas = () => {
@@ -73,11 +83,23 @@ function Approve() {
         fetchUnApprovedIdeas()
     }, [])
 
+    if(serverError) {
+        return (
+            <div className={`${Styles.container} container`}>
+                <div className="sub-container">
+                    {serverError}
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div className={`${Styles.container} container`}>
             {
                 serverError ? 
-                <div>{serverError}</div> 
+                <div className="sub-container">
+                    {serverError}
+                </div>
 
                 :
 
@@ -146,7 +168,7 @@ function Approve() {
                             <div className={Styles.reasonList}>
                                 {
                                     reasonList.map((item) => 
-                                        <h3 onClick={() => setReasonId(item.id)} key={item.id} className={`${reasonId == item.id && Styles.clicked}`}>
+                                        <h3 onClick={() => chooseReason(item.id)} key={item.id} className={`${reasonId == item.id && Styles.clicked}`}>
                                             {item.reason}
                                         </h3>
                                     )
@@ -155,8 +177,12 @@ function Approve() {
 
                             <div className={Styles.reasonButtons}>
                                 <button onClick={() => setShowReason(false)} className={`${Styles.btn} ${Styles.secBtn}`}>Cancel</button>
-                                <button onClick={rejectIdea} className={Styles.btn}>Submit</button>
+                                <button onClick={rejectIdea} className={Styles.btn} disabled={disableState}>Send</button>
                             </div>
+
+                            <br />
+                            <h3>Send Other Reason</h3>
+                            <CustomRejectReason fetchUnApprovedIdeas={fetchUnApprovedIdeas} data={data} setData={setData} disableState2={disableState2} setDisableState2={setDisableState2} setDisableState={setDisableState} />
                         </div>
                     }
                 </div>

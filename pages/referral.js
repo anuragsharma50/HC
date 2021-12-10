@@ -7,6 +7,7 @@ import axios from 'axios'
 function referral() {
 
     const [serverError, setServerError] = useState('')
+    const [disableState, setDisableState] = useState(false)
 
     const initialValues = {
         code: '',
@@ -18,10 +19,12 @@ function referral() {
     })
     
     const onSubmit = values => {
+        setDisableState(true)
         console.log(values)
         axios.post('http://localhost:5500/users/referral',{ referralcode : values.code },
             {withCredentials:true}).then((res) => {
             console.log(res)
+            setDisableState(false)
         }).catch((e) => {
             console.log(e)
             if (e.response && e.response.data) {
@@ -34,6 +37,7 @@ function referral() {
     const removeServerError = (props,e) => {
         setServerError('')
         props.setFieldValue('code', e.target.value)
+        setDisableState(false)
     }
 
     return (
@@ -51,7 +55,7 @@ function referral() {
                             <Form className={Styles.referralForm}>
                                 <div className={Styles.inputs}>
                                     <Field type="text" id="code" name="code" className={Styles.input} onChange={(e) => removeServerError(props,e)} />
-                                    <button type="submit" className={Styles.btn}>Submit</button>
+                                    <button type="submit" className={Styles.btn} disabled={disableState}>Submit</button>
                                 </div>
                                 <ErrorMessage name="code">
                                     {

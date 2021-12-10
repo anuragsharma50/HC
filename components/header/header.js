@@ -1,12 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from "next/router"
+import { useState } from 'react'
 import nameInitials from 'name-initials'
+import LogoutModal from '../modals/logout'
+import Menu from '../phone-menu/Menu'
 
 import Logo from '../../assets/images/Logo.png'
-import Menu from '../../assets/images/menu-icon.png'
-import { useState } from 'react'
-import LogoutModal from '../modals/logout'
+import MenuImg from '../../assets/images/menu-icon.png'
 
 function Header({user,updateUser}) {
 
@@ -14,6 +15,7 @@ function Header({user,updateUser}) {
 
     const [showTippy, setShowTippy] = useState(false)
     const [modelState, setModelState] = useState(false)
+    const [menuState, setMenuState] = useState(false)
     let initials = ''
 
     if(user && user.username){
@@ -66,13 +68,17 @@ function Header({user,updateUser}) {
                         <Link href="/pricing">
                             <li>Pricing</li>
                         </Link>
-                        <Link href="/details/approve">
-                            <li>Approve</li>
-                        </Link>
+                        {
+                            user && user.isApprover &&
+                            <Link href="/details/approve">
+                                <li>Approve</li>
+                            </Link>
+                        }
                     </ul>
                 </div>
             </div>
 
+            {/* Logged out state */}
             { !user && 
                 <div className="nav-buttons">
                     <Link href='/signin'>
@@ -84,6 +90,7 @@ function Header({user,updateUser}) {
                 </div> 
             }
 
+            {/* Logged in state */}
             { user &&
                 <div className="nav-loggedin">
 
@@ -112,9 +119,15 @@ function Header({user,updateUser}) {
                 </div>
             }
             <div className="menu">
-                <Image src={Menu} alt="menu" />
+                <Image onClick={() => setMenuState(true)} src={MenuImg} alt="menu" />
             </div>
 
+            {/* Mobile Menu */}
+            {
+                menuState && <Menu setMenuState={setMenuState} user={user} setModelState={setModelState} />
+            }
+
+            {/* Logout Modal */}
             <LogoutModal modelState={modelState} setModelState={setModelState} updateUser={updateUser} />
     </div>
     )

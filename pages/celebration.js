@@ -1,21 +1,18 @@
 import Image from 'next/image'
 import { useState } from 'react'
-
-import Styles from '../styles/pageStyles/form-page.module.scss'
-import LoginImage from '../assets/images/login.png'
 import IdeaForm from '../components/forms/ideaForm'
-import CelebrateBudgetExplainer from '../components/modals/celebrateBudgetExplainer'
+import Styles from '../styles/pageStyles/form-page.module.scss'
+
+import CelebrationImage from '../assets/images/Celebration.png'
 
 function celebration({user}) {
-
-    const [modelState, setModelState] = useState(false)
+    const [disableState, setDisableState] = useState(false)
 
     return (
         <>
-            <CelebrateBudgetExplainer modelState={modelState} setModelState={setModelState} />
             <div className={`${Styles.container} container`}>
                 <div className="image">
-                    <Image src={LoginImage} alt="girl showing laptop" />
+                    <Image src={CelebrationImage} alt="girl celebrating" />
                 </div>
 
                 <div className="form">
@@ -24,12 +21,12 @@ function celebration({user}) {
                         <h2>Celebrate</h2>
                     </div>
 
-                    <h3 className="form-title">Enter celebrant and celebration details</h3>
+                    <h3 className="form-title">Enter details</h3>
                     
-                    <IdeaForm from={"celebration"} user={user} />
+                    <IdeaForm from={"celebration"} user={user} setDisableState={setDisableState} />
 
                     <div className="submit">
-                        <button form="idea-form" type="submit" className="submit-btn">Submit</button>
+                        <button form="idea-form" type="submit" className="submit-btn" disabled={disableState}>Submit</button>
                     </div>
 
                 </div>

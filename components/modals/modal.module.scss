@@ -45,7 +45,9 @@
         .btn {
             @include button();
             padding: 5px;
-            width: 100px;
+            min-width: 90px;
+            max-width: 100px;
+            width: auto;
             height: 35px;
         }
     

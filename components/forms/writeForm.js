@@ -7,7 +7,7 @@ import SelectSearch from 'react-select-search';
 import axios from 'axios'
 import IdeaSubmitted from '../modals/ideaSubmitted';
 
-function WriteForm({user}) {
+function WriteForm({user,setDisableState}) {
 
     const router = useRouter()
     const [modelState, setModelState] = useState(false)
@@ -27,6 +27,7 @@ function WriteForm({user}) {
     }
     
     const onSubmit = (values,{resetForm}) => {
+        setDisableState(true)
         if(!user){
             router.push('/signin')
         }
@@ -43,6 +44,8 @@ function WriteForm({user}) {
         axios.post(`http://localhost:5500/${values.catagory}/`,{ ...values },{withCredentials:true}).then((res) => {
             console.log(res.data)
             // router.push('/')
+            setModelState(true)
+            setDisableState(false)
         }).catch((e) => {
             console.log(e.response)
             // if (e.response && e.response.data) {
@@ -50,7 +53,6 @@ function WriteForm({user}) {
             //     // setErrorMessage(e.response.data.message)
             // }
         })
-        setModelState(true)
     }
     
     const validationSchema = Yup.object({

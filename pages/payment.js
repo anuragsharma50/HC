@@ -1,14 +1,16 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/router"
 import { useState,useEffect } from "react"
 import Paypal from "../components/payment/paypal"
 import Razorpay from "../components/payment/Razorpay"
-import Stripe from "../components/payment/stripe";
+import Stripe from "../components/payment/stripe"
+import PacmanLoader from "react-spinners/PacmanLoader"
 import Styles from '../styles/pageStyles/payment.module.scss'
 
 function Payment({user}) {
 
     const router = useRouter()
     const [set, setSet] = useState(3)
+    const [loading, setLoading] = useState(true)
 
     const handleChange = (e) => {
         setSet(e.target.value)
@@ -18,8 +20,18 @@ function Payment({user}) {
         if(!user) {
             router.push('/signup')
         }
-
+        setLoading(false)
     }, [user])
+
+    if(loading) {
+        return (
+            <div className={`${Styles.container} container`}>
+                <div className="sub-container">
+                    <PacmanLoader color="#F8E71C" loading={loading} size={40} />
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className={`${Styles.container} container`}>

@@ -10,6 +10,7 @@ import Footer from '../components/footer/footer'
 import '../styles/globals.scss'
 import '../components/header/header.scss'
 import '../components/footer/footer.scss'
+import '../components/phone-menu/menu.scss'
 import '../styles/select-search/select-search.scss'
 
 function MyApp({ Component, pageProps }) {
@@ -39,9 +40,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Happie Celebration</title>
+        <title>Happie Celebrations</title>
         <meta name="description" content="Find Wish,Celebration and Gift Ideas for all ocassions" />
-        <link rel="icon" href="/C.png" />
+        <link rel="icon" href="/mini-logo.png" />
       </Head>
 
       <PopupProvider>

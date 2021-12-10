@@ -29,7 +29,7 @@ function CurrencyModal({modelState,setModelState,user,updateUser,currency,setCur
     }
 
     return (
-        <Modal isOpen={modelState} className={Styles.modal} ariaHideApp={false}>
+        <Modal isOpen={modelState} overlayClassName={`${Styles.overlay} ReactModal__Overlay`} className={Styles.modal} ariaHideApp={false}>
             <h2 className={Styles.modalTitle}>Choose Currency to view price</h2>
             <div className={Styles.modalContent}>
                 <SelectSearch  

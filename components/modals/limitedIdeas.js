@@ -1,5 +1,6 @@
-import Modal from 'react-modal';
 import { useRouter } from "next/router";
+import Modal from 'react-modal';
+import axios from 'axios'
 
 import Styles from './modal.module.scss'
 
@@ -12,13 +13,24 @@ function LimitedIdeas({modelState,setModelState,output}) {
             output.setSet(output.set + 1)
             setModelState(false)
         }else{
-            router.push({pathname: '/idea',
-            query: { ...output.values, from: output.from }})
+            axios.get("http://localhost:5500/users/payment",{withCredentials:true}).then((res) => {
+                console.log(res.data)
+                router.push({pathname: '/idea',
+                query: { ...output.values, from: output.from }})
+            }).catch((e) => {
+                router.push('/pricing')
+                console.log(e.response)
+                console.log(e)
+                // if (e.response && e.response.data) {
+                //     console.log(e.response)
+                //     // setErrorMessage(e.response.data.message)
+                // }
+            })
         }
     }
 
     return (
-        <Modal isOpen={modelState} className={Styles.modal} ariaHideApp={false} >
+        <Modal isOpen={modelState} overlayClassName={`${Styles.overlay} ReactModal__Overlay`} className={Styles.modal} ariaHideApp={false} >
             {  output.count > 0 &&
                 <>
                     <h2 className={Styles.modalTitle}>Limited ideas avaliable</h2>

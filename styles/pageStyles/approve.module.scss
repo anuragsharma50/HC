@@ -137,6 +137,11 @@
                     width: 120px;
                     height: 40px;
                 }
+
+                .btn:disabled{
+                    background: gray;
+                    cursor: initial;
+                }
     
                 .secBtn{
                     @include sec-button();

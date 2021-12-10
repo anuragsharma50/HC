@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/router"
 import { useEffect, useState } from 'react'
 import CurrencyModal from '../components/modals/currency'
 import styles from '../styles/pageStyles/pricing.module.scss'
@@ -29,23 +29,6 @@ function Pricing({user,updateUser}) {
             <div className="lists">
                 <div className="details">
                     <div className="detail-title">
-                        <h2>Watch AD</h2>
-                        <h1>Free</h1>
-                    </div>
-    
-                    <ul>
-                        <li>Watch an AD and get one idea for free.</li>
-                        <li>No choice of idea, Again watch AD to get idea.</li>
-                        <li>Ideas can't be saved</li>
-                    </ul>
-    
-                    <div className="btn">
-                        <button className="submit-btn" disabled>Watch Now</button>
-                    </div>
-                </div>
-    
-                <div className="details">
-                    <div className="detail-title">
                         <h2>Per ideas set</h2>
                         <div className="amount">
                             {
@@ -69,6 +52,23 @@ function Pricing({user,updateUser}) {
     
                     <div className="btn">
                         <button className="submit-btn" onClick={() => router.push('/payment')}>Choose Plan</button>
+                    </div>
+                </div>
+
+                <div className="details">
+                    <div className="detail-title">
+                        <h2>Watch AD</h2>
+                        <h1>Free</h1>
+                    </div>
+    
+                    <ul>
+                        <li>Watch an AD and get one idea for free.</li>
+                        <li>No choice of idea, Again watch AD to get idea.</li>
+                        <li>Ideas can't be saved</li>
+                    </ul>
+    
+                    <div className="btn">
+                        <button title="Unavaliable" className="submit-btn" disabled>Watch Now</button>
                     </div>
                 </div>
     

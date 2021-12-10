@@ -50,6 +50,7 @@
 
     .menu {
         width: 30px;
+        cursor: pointer;
     }
 
     .nav-buttons{
@@ -108,13 +109,8 @@
 
 /* small tablet styles */
 @media screen and (min-width: 768px) {
-
     .nav{
         padding: 5px 10px;
-
-        .logo{
-            width: 120px;
-        }
 
         .nav-links{
             display: block;
@@ -153,10 +149,6 @@
 @media screen and (min-width: 992px) {
     .nav{
         padding: 5px 25px 5px 15px;
-
-        .logo{
-            width: 150px;
-        }
 
         .nav-links{
             ul{

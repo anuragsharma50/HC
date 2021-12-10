@@ -19,8 +19,8 @@ function Saved() {
             setData(res.data)
         }).catch((e) => {
             if (e.response && e.response.data) {
-                console.log(e.response.data.error)
-                setServerError(e.response.data.error)
+                console.log(e.response.data.message)
+                setServerError(e.response.data.message)
             }
         })
     }, [])
@@ -37,6 +37,17 @@ function Saved() {
         })
     }
 
+    if(serverError) {
+        return (
+            <div className={`${Styles.container} container`}>
+                <div className={Styles.bottomHeader}>
+                    <h2>Saved Ideas</h2>
+                </div>
+                <div className={Styles.noSave}>{serverError}</div>
+            </div>
+        )
+    }
+
     return (
         <div className={`${Styles.container} container`}>
 
@@ -44,15 +55,7 @@ function Saved() {
                 <h2>Saved Ideas</h2>
             </div>
 
-            {
-                serverError ?
-
-                <div className={Styles.noSave}>{serverError}</div>
-
-                :
-
-                data.length ?
-
+            {   data.length ?
                     data.map(item => (
                         <div key={item._id} className={`${Styles.subContainer} sub-container`}>
                             <div className={Styles.headingContainer}>
@@ -70,9 +73,6 @@ function Saved() {
                         <div className={`${Styles.subContainer} sub-container`}>
                             <div className={Styles.headingContainer}>
                                 <div className={Styles.headingSkeleton}><Skeleton height={40} /></div>
-                                <div className={Styles.delete} onClick={() => deleteIdea(item)}>
-                                    <Image src={TrashIcon} alt="delete" />
-                                </div>
                             </div>
                             <div className={Styles.ideaDescription}><Skeleton count={5} height={25} className={Styles.skeleton} /></div>
                         </div>

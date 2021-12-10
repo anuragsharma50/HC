@@ -69,6 +69,8 @@ function Approve({user}) {
     useEffect(() => {
         if(!user){
             router.push('/signin')
+        }else if(user && !user.isApprover){
+            router.push('/404')
         }
         checkStatus()
     }, [])

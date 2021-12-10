@@ -2,11 +2,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
-import styles from '../styles/pageStyles/signup.module.scss'
-
-import LoginImage from '../assets/images/login.png'
 import SignUpForm from '../components/forms/signUpForm'
 import SocialLogins from '../components/social-login/SocialLogins'
+import styles from '../styles/pageStyles/signup.module.scss'
+
+import DancingImage from '../assets/images/Dancing.png'
 
 const SignUp = ({updateUser}) => {
 
@@ -20,7 +20,7 @@ const SignUp = ({updateUser}) => {
     return (
         <div className={`${styles.container} container`}>
             <div className="image">
-                <Image src={LoginImage} alt="girl showing laptop" />
+                <Image src={DancingImage} alt="dancing" />
             </div>
 
         <div className="form">
@@ -29,12 +29,6 @@ const SignUp = ({updateUser}) => {
             </div>
 
             <SocialLogins />
-
-            {/* <div className="or">
-                <hr />
-                <span>or</span>
-                <hr />
-            </div> */}
 
             <SignUpForm updateUser={updateUser} />
 

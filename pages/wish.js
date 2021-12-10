@@ -3,20 +3,17 @@ import { useState } from 'react'
 
 import styles from '../styles/pageStyles/form-page.module.scss'
 
-import LoginImage from '../assets/images/login.png'
+import WishImage from '../assets/images/Wish.png'
 import IdeaForm from '../components/forms/ideaForm'
-import WishBudgetExplainer from '../components/modals/wishBudgetExplainer'
 
 function Wish({user}) {
-
-    const [modelState, setModelState] = useState(false)
+    const [disableState, setDisableState] = useState(false)
 
     return (
         <>
-            <WishBudgetExplainer modelState={modelState} setModelState={setModelState} />
             <div className={`${styles.container} container`}>
                 <div className="image">
-                    <Image src={LoginImage} alt="girl showing laptop" />
+                    <Image src={WishImage} alt="girl showing laptop" />
                 </div>
 
                 <div className="form">
@@ -27,10 +24,10 @@ function Wish({user}) {
 
                     <h3 className="form-title">Enter details of celebrant</h3>
                     
-                    <IdeaForm from={"wish"} user={user} />
+                    <IdeaForm from={"wish"} user={user} setDisableState={setDisableState} />
 
                     <div className="submit">
-                        <button form="idea-form" type="submit" className="submit-btn">Submit</button>
+                        <button form="idea-form" type="submit" className="submit-btn" disabled={disableState}>Submit</button>
                     </div>
 
                 </div>

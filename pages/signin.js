@@ -37,12 +37,6 @@ function SignIn({updateUser,user}) {
 
             <SocialLogins />
 
-            {/* <div className="or">
-                <hr />
-                <span>or</span>
-                <hr />
-            </div> */}
-
             <SignInForm user={user} updateUser={updateUser} />
 
             <div className="reset-password">

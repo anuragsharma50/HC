@@ -4,14 +4,15 @@
     @include display-flex();
     flex-direction: column;
     width: 100%;
-    margin: 20px 10px;
+    margin: 15px 0px;
 
     .inputs {
         @include display-flex();
+        flex-wrap: wrap;
+        padding: 5px;
 
         .input{
-            width: calc( 20vw + 120px );
-            margin-right: 10px;
+            width: 100%;
             font-size: 20px;
             padding: 5px;
         }
@@ -20,6 +21,12 @@
             @include button();
             width: 120px;
             height: 40px;
+            margin: 10px;
+        }
+
+        .btn:disabled{
+            background: gray;
+            cursor: initial;
         }
     }
 
@@ -37,6 +44,14 @@
 
 /* small tablet styles */
 @media screen and (min-width: 768px) {
+    .referralForm{
+        .inputs{
+            .input{
+                width: calc( 20vw + 120px );
+            }
+        }
+    }
+
     .details {
         font-size: 18px;
     }

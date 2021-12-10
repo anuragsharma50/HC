@@ -8,7 +8,7 @@ import Styles from './idea.module.scss'
 import { useState } from 'react';
 import LimitedIdeas from '../modals/limitedIdeas';
 
-function IdeaForm({from,user}) {
+function IdeaForm({from,user,setDisableState}) {
 
     const router = useRouter()
     const [modelState, setModelState] = useState(false)
@@ -26,6 +26,7 @@ function IdeaForm({from,user}) {
     }
     
     const onSubmit = values => {
+        setDisableState(true)
         if(!user){
             router.push('/signin')
         }
@@ -37,9 +38,21 @@ function IdeaForm({from,user}) {
                 setOutput({ count: res.data.ideasCount,values,from })
                 setModelState(true)
             }else{
-                router.push({pathname: '/idea',
-                query: { ...values,from }})
+                axios.get("http://localhost:5500/users/payment",{withCredentials:true}).then((res) => {
+                    console.log(res.data)
+                    router.push({pathname: '/idea',
+                    query: { ...values,from }})
+                }).catch((e) => {
+                    router.push('/pricing')
+                    console.log(e.response)
+                    console.log(e)
+                    // if (e.response && e.response.data) {
+                    //     console.log(e.response)
+                    //     // setErrorMessage(e.response.data.message)
+                    // }
+                })
             }
+            setDisableState(false)
         }).catch((e) => {
             console.log(e.response)
             console.log(e)

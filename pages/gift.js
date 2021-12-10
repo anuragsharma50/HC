@@ -1,21 +1,21 @@
 import Image from 'next/image'
 import { useState } from 'react'
-
-import styles from '../styles/pageStyles/form-page.module.scss'
-import LoginImage from '../assets/images/login.png'
 import IdeaForm from '../components/forms/ideaForm'
-import GiftBudgetExplainer from '../components/modals/giftBudgetExplainer'
+import styles from '../styles/pageStyles/form-page.module.scss'
+
+import SurpriseImage from '../assets/images/Surprise.png'
 
 function Gift({user}) {
 
-    const [modelState, setModelState] = useState(false)
+    const [disableState, setDisableState] = useState(false)
 
     return (
         <>
-            <GiftBudgetExplainer modelState={modelState} setModelState={setModelState} />
             <div className={`${styles.container} container`}>
                 <div className="image">
-                    <Image src={LoginImage} alt="girl showing laptop" />
+                    <div className="img">
+                        <Image src={SurpriseImage} alt="gift" />
+                    </div>
                 </div>
 
                 <div className="form">
@@ -26,10 +26,10 @@ function Gift({user}) {
 
                     <h3 className="form-title">Enter details</h3>
                     
-                    <IdeaForm from={"gift"} user={user} />
+                    <IdeaForm from={"gift"} user={user} setDisableState={setDisableState} />
 
                     <div className="submit">
-                        <button form="idea-form" type="submit" className="submit-btn">Submit</button>
+                        <button form="idea-form" type="submit" className="submit-btn" disabled={disableState}>Submit</button>
                     </div>
 
                 </div>

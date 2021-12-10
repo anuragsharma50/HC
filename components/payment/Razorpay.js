@@ -1,13 +1,17 @@
 import Script from 'next/script'
-import { useRouter } from "next/router";
+import { useRouter } from "next/router"
+import { useState } from 'react'
 import axios from 'axios'
 import Styles from './razorpay.module.scss'
 
 function Razorpay({set}) {
 
     const router = useRouter()
+    const [disableState, setDisableState] = useState(false)
+
     const displayRazorpay = async () => {
 
+        setDisableState(true)
         axios.post('http://localhost:5500/razorpay',{ set },
         {withCredentials:true}).then(res => {
 
@@ -24,7 +28,8 @@ function Razorpay({set}) {
                     // alert(response.razorpay_order_id)
                     // alert(response.razorpay_signature)
                     console.log(response)
-                    router.push('/')
+                    // router.push('/')
+                    window.location = '/'
                 },
                 prefill: {
                     name: 'Aana K',
@@ -38,13 +43,13 @@ function Razorpay({set}) {
         }).catch((err) => {
             console.log(err)
         })
-		
+		setDisableState(false)
 	}
 
     return (
         <div className={Styles.razorpay}>
             <Script src="https://checkout.razorpay.com/v1/checkout.js" />
-            <button className={Styles.button} onClick={displayRazorpay} rel="noopener noreferrer" >Pay now</button>
+            <button className={Styles.button} onClick={displayRazorpay} rel="noopener noreferrer" disabled={disableState}>Pay now</button>
         </div>
     )
 }
