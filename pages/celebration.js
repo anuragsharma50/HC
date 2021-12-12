@@ -5,7 +5,7 @@ import Styles from '../styles/pageStyles/form-page.module.scss'
 
 import CelebrationImage from '../assets/images/Celebration.png'
 
-function celebration({user}) {
+function Celebration({user}) {
     const [disableState, setDisableState] = useState(false)
 
     return (
@@ -35,4 +35,4 @@ function celebration({user}) {
     )
 }
 
-export default celebration
+export default Celebration

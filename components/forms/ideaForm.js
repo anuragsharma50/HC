@@ -30,34 +30,34 @@ function IdeaForm({from,user,setDisableState}) {
         if(!user){
             router.push('/signin')
         }
-        console.log('Form values',values)
-        axios.get(`http://localhost:5500/${from}/count?ocassion=${values.ocassion}&relation=${values.relation}&age=${values.age}&gender=${values.gender}&budget=${values.budget+10}`,
+        // console.log('Form values',values)
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${from}/count?ocassion=${values.ocassion}&relation=${values.relation}&age=${values.age}&gender=${values.gender}&budget=${values.budget+10}`,
         {withCredentials:true}).then((res) => {
-            console.log(res.data)
+            // console.log(res.data)
             if(res.data.ideasCount < 25) {
                 setOutput({ count: res.data.ideasCount,values,from })
                 setModelState(true)
             }else{
-                axios.get("http://localhost:5500/users/payment",{withCredentials:true}).then((res) => {
-                    console.log(res.data)
+                axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/payment`,{withCredentials:true}).then((res) => {
+                    // console.log(res.data)
                     router.push({pathname: '/idea',
                     query: { ...values,from }})
                 }).catch((e) => {
                     router.push('/pricing')
-                    console.log(e.response)
-                    console.log(e)
+                    // console.log(e.response)
+                    // console.log(e)
                     // if (e.response && e.response.data) {
-                    //     console.log(e.response)
+                    //     // console.log(e.response)
                     //     // setErrorMessage(e.response.data.message)
                     // }
                 })
             }
             setDisableState(false)
         }).catch((e) => {
-            console.log(e.response)
-            console.log(e)
+            // console.log(e.response)
+            // console.log(e)
             // if (e.response && e.response.data) {
-            //     console.log(e.response)
+            //     // console.log(e.response)
             //     // setErrorMessage(e.response.data.message)
             // }
         })

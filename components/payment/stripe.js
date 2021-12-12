@@ -6,20 +6,20 @@ import Styles from './razorpay.module.scss'
 
 import CardIcon from '../../assets/images/card.png'
 
-function stripe({set}) {
+function Stripe({set}) {
 
     const router = useRouter()
     const [disableState, setDisableState] = useState(false)
 
     const goToStripePage = () => {
         setDisableState(true)
-        axios.post('http://localhost:5500/stripe',{ set },{withCredentials:true}).then(res => {
+        axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/stripe`,{ set },{withCredentials:true}).then(res => {
 
             window.open(res.data.url,'noopener,noreferrer')
             router.push('/')
 
         }).catch((err) => {
-            console.log(err)
+            // console.log(err)
         })
         setDisableState(false)
     }
@@ -33,4 +33,4 @@ function stripe({set}) {
     )
 }
 
-export default stripe
+export default Stripe

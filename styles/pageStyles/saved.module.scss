@@ -57,15 +57,10 @@
             margin: 1px 0px;
         }
 
-        .approvalStatus{
-            width: 100%;
-            padding: 2px;
-            font-size: 15px;
-        }
-
         .approved{
             border: 1px solid #4caf50;
-            background-color: #99f59c;
+            background-color: #e4ffe5;
+            color: green;
         }
 
         .unApproved{
@@ -74,8 +69,16 @@
         }
 
         .rejected{
+            background-color: #ffdfdf;
             border: 1px solid #c52f00;
-            background-color: #f1977b;
+            color: #e50000;
+        }
+
+        .approvalStatus{
+            width: 100%;
+            padding: 2px;
+            font-size: 15px;
+            border-bottom: none;
         }
     }
 

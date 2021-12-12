@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { withRouter } from 'next/router'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Skeleton from 'react-loading-skeleton'
@@ -26,24 +27,24 @@ function Idea(props) {
     const query = props.router.query
 
     const fetchIdeas = () => {
-        console.log(query)
-        axios.get(`http://localhost:5500/${query.from}?ocassion=${query.ocassion}&relation=${query.relation}&age=${query.age}&gender=${query.gender}&budget=${query.budget+10}&set=${set}`,
+        // console.log(query)
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}?ocassion=${query.ocassion}&relation=${query.relation}&age=${query.age}&gender=${query.gender}&budget=${query.budget+10}&set=${set}`,
         {withCredentials:true}).then((res) => {
-            // console.log(res.data)
+            // // console.log(res.data)
             if(!data[0]){
                 setData(res.data)
             }else{
                 setData([...data,...res.data])
             }
         }).catch((e) => {
-            console.log(e.response)
+            // console.log(e.response)
         })
     }
 
     const moreIdeas = () => {
-        axios.get(`http://localhost:5500/${query.from}/count?ocassion=${query.ocassion}&relation=${query.relation}&age=${query.age}&gender=${query.gender}&budget=${query.budget+10}&set=${set+1}`,
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}/count?ocassion=${query.ocassion}&relation=${query.relation}&age=${query.age}&gender=${query.gender}&budget=${query.budget+10}&set=${set+1}`,
         {withCredentials:true}).then((res) => {
-            console.log(res.data)
+            // console.log(res.data)
             if(res.data.ideasCount < 25) {
                 setOutput({ count: res.data.ideasCount,query,set,setSet })
                 setModelState(true)
@@ -51,10 +52,10 @@ function Idea(props) {
                 setSet(set + 1)
             }
         }).catch((e) => {
-            console.log(e.response)
-            console.log(e)
+            // console.log(e.response)
+            // console.log(e)
             // if (e.response && e.response.data) {
-            //     console.log(e.response)
+            //     // console.log(e.response)
             //     // setErrorMessage(e.response.data.message)
             // }
         })
@@ -65,19 +66,19 @@ function Idea(props) {
             setSaveError({title: "3 ideas already saved",message:"You can save only 3 ideas at a time."})
             setModelState2(true)
         }else{
-            console.log(saved)
-            console.log(saved.length)
-            console.log(set*3)
-            axios.get(`http://localhost:5500/${query.from}/save/${data[index]._id}`,
+            // console.log(saved)
+            // console.log(saved.length)
+            // console.log(set*3)
+            axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}/save/${data[index]._id}`,
             {withCredentials:true}).then((res) => {
-                console.log(res.data)
+                // console.log(res.data)
                 if(!saved.length == 0){
                     setSaved([...saved,index])
                 } else{
                     setSaved([index])
                 }
             }).catch((e) => {
-                console.log(e.response.data)
+                // console.log(e.response.data)
                 setSaveError({title: "Already saved",message:"This idea is already saved in your collection."})
                 setModelState2(true)
             })
@@ -93,20 +94,6 @@ function Idea(props) {
             <LimitedIdeas modelState={modelState} setModelState={setModelState} output={output} />
             <SaveError modelState={modelState2} setModelState={setModelState2} errorTitle={saveError.title} errorMessage={saveError.message} />
             <div className="sub-container">
-                {/* {
-                    !data[0] && 
-                    <>
-                        <div className="heading">
-                            <h2>Idea title</h2>
-                        </div>
-
-                        <div className="idea-description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Venenatis dui, rhoncus, duis quam sit in. 
-                            Etiam bibendum tellus aliquam mauris nulla accumsan orci. Lectus eu aliquam quisque mi gravida diam tellus. 
-                            Felis purus, sit proin suspendisse non.
-                        </div>
-                    </>
-                } */}
                 { data[index] && 
                     <>
                         <div className="heading">
@@ -125,7 +112,7 @@ function Idea(props) {
                             (index == 25*set  && index > 0) ?
                             <div className="more-ideas"><a onClick={moreIdeas}>Get more ideas</a></div>   :
                             <div className="more-ideas">More ideas are not avaliable in this catagory. you can again take a look at ideas or 
-                                <span><a href="/"> go to homepage.</a></span>
+                                <span><Link href="/"> go to homepage.</Link></span>
                             </div> 
                         )
                 }

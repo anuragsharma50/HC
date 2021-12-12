@@ -64,7 +64,7 @@ function Pricing({user,updateUser}) {
                     <ul>
                         <li>Watch an AD and get one idea for free.</li>
                         <li>No choice of idea, Again watch AD to get idea.</li>
-                        <li>Ideas can't be saved</li>
+                        <li>Ideas can&apos;t be saved</li>
                     </ul>
     
                     <div className="btn">

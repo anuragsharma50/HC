@@ -27,14 +27,14 @@ function Approve() {
     const [disableState2, setDisableState2] = useState(true)
 
     const approveIdea = () => {
-        axios.patch('http://localhost:5500/approver/approveIdea',{_id:data._id,catagory: data.catagory},
+        axios.patch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/approver/approveIdea`,{_id:data._id,catagory: data.catagory},
         {withCredentials:true}).then((res) => {
-            console.log(res.data)
+            // console.log(res.data)
             setData([])
             fetchUnApprovedIdeas()
         }).catch((e) => {
             if (e.response && e.response.data) {
-                console.log(e.response.data.error)
+                // console.log(e.response.data.error)
                 setServerError(e.response.data.error)
             }
         })
@@ -42,16 +42,16 @@ function Approve() {
 
     const rejectIdea = () => {
         setDisableState(true)
-        axios.patch('http://localhost:5500/approver/rejectIdea',
+        axios.patch(`${process.NEXT_PUBLIC_BACKEND_URL}/approver/rejectIdea`,
         {_id:data._id,catagory: data.catagory,reason:reasonList[reasonId-1].reason},
         {withCredentials:true}).then((res) => {
-            console.log(res.data)
+            // console.log(res.data)
             setData([])
             fetchUnApprovedIdeas()
             setDisableState(false)
         }).catch((e) => {
             if (e.response && e.response.data) {
-                console.log(e.response.data.error)
+                // console.log(e.response.data.error)
                 setServerError(e.response.data.error)
             }
         })
@@ -64,16 +64,16 @@ function Approve() {
     }
 
     const fetchUnApprovedIdeas = () => {
-        axios.get('http://localhost:5500/approver/unapprovedIdea',{withCredentials:true}).then((res) => {
-            console.log(res.data)
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/approver/unapprovedIdea`,{withCredentials:true}).then((res) => {
+            // console.log(res.data)
             if(!res.data.gender){
                 res.data.gender = 'All'
             }
             setData(res.data)
         }).catch((e) => {
-            console.log(e.response)
+            // console.log(e.response)
             if (e.response && e.response.data) {
-                console.log(e.response.data.error)
+                // console.log(e.response.data.error)
                 setServerError(e.response.data.error)
             }
         })

@@ -12,7 +12,7 @@ function Razorpay({set}) {
     const displayRazorpay = async () => {
 
         setDisableState(true)
-        axios.post('http://localhost:5500/razorpay',{ set },
+        axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/razorpay`,{ set },
         {withCredentials:true}).then(res => {
 
             const options = {
@@ -22,12 +22,12 @@ function Razorpay({set}) {
                 order_id: res.data.id,
                 name: 'Happie Celebrations Payment',
                 description: 'Thank you for using Happie celebrations, hope you get some good ideas',
-                image: 'http://localhost:5500/logo.png',
+                image: `${process.env.NEXT_PUBLIC_BACKEND_URL}/logo.png`,
                 handler: function (response) {
                     // alert(response.razorpay_payment_id)
                     // alert(response.razorpay_order_id)
                     // alert(response.razorpay_signature)
-                    console.log(response)
+                    // console.log(response)
                     // router.push('/')
                     window.location = '/'
                 },
@@ -41,7 +41,7 @@ function Razorpay({set}) {
             paymentObject.open()
 
         }).catch((err) => {
-            console.log(err)
+            // console.log(err)
         })
 		setDisableState(false)
 	}

@@ -28,7 +28,7 @@ const User = () => {
 
     const onSubmit = values => {
         console.log(values)
-        axios.post('http://localhost:5500/users/new-password',{ resetToken:id, password:values.password }).then((res) => {
+        axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/new-password`,{ resetToken:id, password:values.password }).then((res) => {
             console.log(res)
             // router.push('/check-email')
         }).catch((e) => {
@@ -48,7 +48,7 @@ const User = () => {
         <div className={`${Styles.container} container`}>
         <div className="sub-container">
             <div className={Styles.image}>
-                <Image src={Logo}  />
+                <Image src={Logo}  alt="Happie Celebrations" />
             </div>
             <div className={Styles.card}>
                 <div className={Styles.cardDetails}>

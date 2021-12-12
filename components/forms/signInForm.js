@@ -20,10 +20,10 @@ const SignInForm = ({user,updateUser}) => {
     })
 
     const onSubmit = values => {
-        axios.post('http://localhost:5500/auth/signin',{
+        axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/signin`,{
             email : values.email,
             password : values.password,
-        }).then((res) => {
+        },{withCredentials:true}).then((res) => {
             console.log(res)
             updateUser()
             if(user.unverified){
@@ -33,7 +33,7 @@ const SignInForm = ({user,updateUser}) => {
             }
         }).catch((e) => {
             if (e.response && e.response.data) {
-                console.log(e.response.data.message)
+                // console.log(e.response.data.message)
                 setErrorMessage(e.response.data.message)
             }
         })

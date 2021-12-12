@@ -28,7 +28,7 @@ function Approve({user}) {
     
     const onSubmit = values => {
         console.log(values)
-        axios.post('http://localhost:5500/approver/verify',{ uniqueCode : values.code },
+        axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/approver/verify`,{ uniqueCode : values.code },
             {withCredentials:true}).then((res) => {
             console.log(res)
             router.push('/details/approve-rules')
@@ -47,7 +47,7 @@ function Approve({user}) {
     }
 
     const becomeApprover = () => {
-        axios.get("http://localhost:5500/approver/" ,{withCredentials:true}).then((res) => {
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/approver/`,{withCredentials:true}).then((res) => {
             checkStatus()
         }).catch((e) => {
             console.log(e.response)
@@ -55,7 +55,7 @@ function Approve({user}) {
     }
 
     const checkStatus = () => {
-        axios.get("http://localhost:5500/approver/status" ,{withCredentials:true}).then((res) => {
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/approver/status`,{withCredentials:true}).then((res) => {
             console.log(res.data)
             router.push('/details/approve-rules')
         }).catch((e) => {

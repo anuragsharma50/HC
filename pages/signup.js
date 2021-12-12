@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
-import SignUpForm from '../components/forms/signUpForm'
+import SignUpForm from '../components/forms/signupForm'
 import SocialLogins from '../components/social-login/SocialLogins'
 import styles from '../styles/pageStyles/signup.module.scss'
 
@@ -13,7 +13,7 @@ const SignUp = ({updateUser}) => {
     const [checked, setChecked] = useState(true)
 
     const handleChecked = e => {
-        console.log(e.target.checked)
+        // console.log(e.target.checked)
         setChecked(e.target.checked)
     }
 

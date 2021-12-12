@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { useRouter } from "next/router"
 import Link from 'next/link'
 import { useState } from 'react'
 import { Formik,Form,Field,ErrorMessage} from 'formik'
@@ -24,7 +23,7 @@ function ForgotPassword() {
 
     const onSubmit = values => {
         console.log(values)
-        axios.post('http://localhost:5500/users/forgot-password',{ email : values.email }).then((res) => {
+        axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/forgot-password`,{ email : values.email }).then((res) => {
             console.log(res)
             // router.push('/check-email')
         }).catch((e) => {
@@ -44,7 +43,7 @@ function ForgotPassword() {
         <div className={`${Styles.container} container`}>
             <div className="sub-container">
                 <div className={Styles.image}>
-                    <Image src={Logo}  />
+                    <Image src={Logo} alt="happie celebrations" />
                 </div>
                 <div className={Styles.card}>
                     <div className={Styles.cardDetails}>
@@ -88,7 +87,7 @@ function ForgotPassword() {
                     </Formik>
                 </div>
                 <div>
-                    Don't have an account? <Link href="/signup">Sign up</Link>
+                    Don&apos;t have an account? <Link href="/signup">Sign up</Link>
                 </div>
             </div>
         </div>

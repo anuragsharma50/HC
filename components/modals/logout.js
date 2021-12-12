@@ -8,14 +8,14 @@ function LogoutModal({modelState,setModelState,updateUser}) {
     const router = useRouter()
 
     const signOut = () => {
-        axios.get('http://localhost:5500/auth/signout',{withCredentials:true}).then((res) => {
-            console.log(res.data)
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/signout`,{withCredentials:true}).then((res) => {
+            // console.log(res.data)
             updateUser()
             setModelState(false)
             router.push('/')
         }).catch((e) => {
             if (e.response && e.response.data) {
-                console.log(e.response)
+                // console.log(e.response)
             }
         })
     }

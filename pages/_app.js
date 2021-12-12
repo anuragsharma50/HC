@@ -16,21 +16,24 @@ import '../styles/select-search/select-search.scss'
 function MyApp({ Component, pageProps }) {
 
   const [user, setUser] = useState()
+  const [loading, setLoading] = useState(true)
 
   const updateUser = ( ) => {
-    axios.get('http://localhost:5500/auth/getuser',
+    setLoading(true)
+    axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/getuser`,
     {withCredentials:true},
     ).then((response) => {
-        console.log(response)
+        // console.log(response)
         if(response.data){
           if(!response.data.error){
             setUser(response.data)
           }
         }
     }).catch((err) => {
-      console.log("Error" ,err.response)
+      // console.log("Error" ,err.response)
       setUser()
-    })  
+    }) 
+    setLoading(false) 
   }
 
   useEffect(() => {
@@ -46,7 +49,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
 
       <PopupProvider>
-        <Header user={user} updateUser={updateUser} />
+        <Header user={user} updateUser={updateUser} loading={loading} />
         <Component {...pageProps } user={user} updateUser={updateUser}  />
         {/* <MrModal /> */}
       </PopupProvider>

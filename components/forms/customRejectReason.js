@@ -18,17 +18,17 @@ function CustomRejectReason({data,disableState2,setDisableState2,setDisableState
     })
     
     const onSubmit = values => {
-        console.log(values.customMessage)
-        axios.patch('http://localhost:5500/approver/rejectIdea',
+        // console.log(values.customMessage)
+        axios.patch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/approver/rejectIdea`,
         {_id:data._id,catagory: data.catagory,reason:values.customMessage},
         {withCredentials:true}).then((res) => {
-            console.log(res.data)
+            // console.log(res.data)
             setData([])
             fetchUnApprovedIdeas()
             setDisableState2(false)
         }).catch((e) => {
             if (e.response && e.response.data) {
-                console.log(e.response.data.error)
+                // console.log(e.response.data.error)
                 setServerError(e.response.data.error)
             }
         })

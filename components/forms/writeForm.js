@@ -39,17 +39,17 @@ function WriteForm({user,setDisableState}) {
         }
         delete values.gendercheckbox
         delete values.budgetcheckbox
-        console.log('Form values',values)
+        // console.log('Form values',values)
         resetForm(initialValues)
-        axios.post(`http://localhost:5500/${values.catagory}/`,{ ...values },{withCredentials:true}).then((res) => {
-            console.log(res.data)
+        axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${values.catagory}/`,{ ...values },{withCredentials:true}).then((res) => {
+            // console.log(res.data)
             // router.push('/')
             setModelState(true)
             setDisableState(false)
         }).catch((e) => {
-            console.log(e.response)
+            // console.log(e.response)
             // if (e.response && e.response.data) {
-            //     console.log(e.response)
+            //     // console.log(e.response)
             //     // setErrorMessage(e.response.data.message)
             // }
         })

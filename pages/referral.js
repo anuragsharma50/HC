@@ -4,7 +4,7 @@ import { Formik,Form,Field,ErrorMessage} from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
 
-function referral() {
+function Referral() {
 
     const [serverError, setServerError] = useState('')
     const [disableState, setDisableState] = useState(false)
@@ -20,15 +20,15 @@ function referral() {
     
     const onSubmit = values => {
         setDisableState(true)
-        console.log(values)
-        axios.post('http://localhost:5500/users/referral',{ referralcode : values.code },
+        // console.log(values)
+        axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/referral`,{ referralcode : values.code },
             {withCredentials:true}).then((res) => {
-            console.log(res)
+            // console.log(res)
             setDisableState(false)
         }).catch((e) => {
-            console.log(e)
+            // console.log(e)
             if (e.response && e.response.data) {
-                console.log(e.response.data.message)
+                // console.log(e.response.data.message)
                 setServerError(e.response.data.message)
             }
         })
@@ -70,11 +70,11 @@ function referral() {
                     </Formik>
 
                 <div className={Styles.details}>
-                    Enter your friend's referral code and you both will get one more free attempt.
+                    Enter your friend&apos;s referral code and you both will get one more free attempt.
                 </div>
             </div>
         </div>
     )
 }
 
-export default referral
+export default Referral

@@ -15,18 +15,18 @@ const SignUpForm = ({updateUser}) => {
         password: '',
     }
     
-    const onSubmit = values => {    
-        axios.post('http://localhost:5500/auth/signup',{
+    const onSubmit = values => {   
+        axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/signup`,{
             username : values.name,
             email : values.email,
             password : values.password,
-        }).then((res) => {
-            console.log(res.data)
+        },{withCredentials:true}).then((res) => {
+            // console.log(res.data)
             updateUser()
             router.push('/verify-account')
         }).catch((e) => {
             if (e.response && e.response.data) {
-                console.log(e.response.data.message)
+                // console.log(e.response.data.message)
                 setErrorMessage(e.response.data.message)
             }
         })
@@ -34,10 +34,10 @@ const SignUpForm = ({updateUser}) => {
     
     const validationSchema = Yup.object({
         name: Yup.string().required('Please your name'),
-        email: Yup.string().email('Please enter a valid email address').required('Email Required'),
-        password: Yup.string().required('Password Required')
-        .min(8, 'Password must be 8 characters or more.')
-        .max(20, 'Password must be 20 characters or less.')
+        email: Yup.string().email('Please enter a valid email address').required('Please provide a Email'),
+        password: Yup.string().required('please provide a Password')
+        .min(8, 'Password is too short')
+        .max(20, 'Password is too long')
         .matches(/[a-zA-Z]/, 'Password must include alphabets'),
     })
 

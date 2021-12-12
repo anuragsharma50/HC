@@ -1,0 +1,52 @@
+@import '../commons.scss';
+
+.container{
+    background-color: #F6F6F6;
+    color: #333;
+
+    .subContainer {
+        display: block;
+        padding: 0px 20px;
+
+        h1{
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        h2{
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+
+        p{
+            font-family: sans-serif;
+            line-height: 24px;
+            margin-bottom: 10px;
+        }
+
+        ul{
+            margin: revert;
+            padding: revert;
+
+            li{    
+                list-style-type: disc;
+                color: #333;
+                font-family: sans-serif;
+                line-height: 24px;
+            }
+        }
+
+
+        a{
+            text-decoration: none;
+            font-weight: unset;
+            color: #5d88b3;
+        }
+
+        a:hover{
+            text-decoration: underline;
+            color: #1f4870;
+        }
+    }
+}

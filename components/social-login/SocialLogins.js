@@ -9,15 +9,15 @@ import Styles from './social-logins.module.scss'
 const SocialLogins = () => {
 
     const googleLogin = () => {
-        window.open("http://localhost:5500/auth/google", "_self");
+        window.open(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google`, "_self");
     }
 
     const facebookLogin = () => {
-        window.open("http://localhost:5500/auth/facebook", "_self");
+        window.open(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/facebook`, "_self");
     }
 
     const amazonLogin = () => {
-        window.open("http://localhost:5500/auth/amazon", "_self");
+        window.open(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/amazon`, "_self");
     }
 
     return ( 

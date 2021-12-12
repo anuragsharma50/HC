@@ -6,21 +6,21 @@ import Styles from '../styles/pageStyles/success.module.scss'
 
 import SuccessImage from '../assets/images/success.jpg'
 
-function success() {
+function Success() {
 
     const router = useRouter()
     useEffect(() => {
-        axios.get('http://localhost:5500/stripe/savepayment',{withCredentials:true}).then(res => {
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/stripe/savepayment`,{withCredentials:true}).then(res => {
 
-            console.log(res)
+            // console.log(res)
 
         }).catch((err) => {
-            console.log(err)
+            // console.log(err)
         })
 
         setTimeout(() => {
-            // router.push('/')
-            // window.close();
+            router.push('/')
+            window.close()
         }, 3000);
     }, [])
 
@@ -38,4 +38,4 @@ function success() {
     )
 }
 
-export default success
+export default Success

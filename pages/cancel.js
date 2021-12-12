@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useEffect } from 'react'
 
-function success() {
+function Cancel() {
     useEffect(() => {
         window.close();
     }, [])
@@ -9,6 +9,7 @@ function success() {
     return (
         <div className="container" >
             <div className="sub-container">
+                Try again
                 {/* <div className={Styles.imageContainer}>
                     <Image width={200} height={200} src={SuccessImage} />
                 </div>
@@ -20,4 +21,4 @@ function success() {
     )
 }
 
-export default success
+export default Cancel

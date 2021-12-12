@@ -6,7 +6,7 @@ import axios from 'axios'
 
 import Styles from '../styles/pageStyles/otp.module.scss'
 
-function otp({user,updateUser}) {
+function OTP({user,updateUser}) {
 
     const router = useRouter()
     const [otp, setOtp] = useState('')
@@ -26,15 +26,15 @@ function otp({user,updateUser}) {
     }
 
     const submitOTP = () => {
-        console.log(otp)
-        axios.post('http://localhost:5500/auth/verifyotp',{otp},{withCredentials:true}).then(res => {
-            console.log(res)
+        // console.log(otp)
+        axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/verifyotp`,{otp},{withCredentials:true}).then(res => {
+            // console.log(res)
             router.push('/')
             updateUser()
         }).catch((e) => {
-            console.log(e)
+            // console.log(e)
             if (e.response && e.response.data) {
-                console.log(e.response.data.message)
+                // console.log(e.response.data.message)
                 setServerError(e.response.data.message)
                 setIsServerError(true)
             }
@@ -42,10 +42,10 @@ function otp({user,updateUser}) {
     }
 
     const resend = () => {
-        axios.get('http://localhost:5500/users/send-otp-again',{withCredentials:true}).then(res => {
-            console.log(res)
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/send-otp-again`,{withCredentials:true}).then(res => {
+            // console.log(res)
         }).catch((err) => {
-            console.log(err)
+            // console.log(err)
         })
         setDate(Date.now() + 59000)
         setTimeIndex(timeIndex + 1)
@@ -86,7 +86,7 @@ function otp({user,updateUser}) {
                     <button onClick={submitOTP} className={Styles.btn}>Submit</button>
                 </div>
                 <div className={Styles.resendText}>
-                    <span>Didn't recieve any code? </span>
+                    <span>Didn&apos;t recieve any code? </span>
                     <Countdown key={timeIndex} date={date} renderer={renderer} />
                 </div>
             </div>
@@ -94,4 +94,4 @@ function otp({user,updateUser}) {
     )
 }
 
-export default otp
+export default OTP

@@ -65,15 +65,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* <div className={Styles.item}>
-          <div className={Styles.faqImg}>
-            <Image src={FAQImage}  alt="FAQ" />
-          </div>
-          <div className={Styles.faq}>
-            <FAQ />
-          </div>
-        </div> */}
-
         <FAQ />
 
       </div>

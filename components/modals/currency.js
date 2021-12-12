@@ -8,13 +8,13 @@ function CurrencyModal({modelState,setModelState,user,updateUser,currency,setCur
 
     const updateCurrency = () => {
         if(user){
-            axios.post('http://localhost:5500/users/currency',{currency},{withCredentials:true}).then((res) => {
-                console.log(res.data)
+            axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/currency`,{currency},{withCredentials:true}).then((res) => {
+                // console.log(res.data)
                 updateUser()
                 setModelState(false)
             }).catch((e) => {
                 if (e.response && e.response.data) {
-                    console.log(e.response)
+                    // console.log(e.response)
                 }
             })
         }
@@ -24,7 +24,7 @@ function CurrencyModal({modelState,setModelState,user,updateUser,currency,setCur
     }
 
     const handleChange = (...args) => {
-        console.log(args[0])
+        // console.log(args[0])
         setCurrency(args[0])
     }
 

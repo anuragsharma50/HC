@@ -14,26 +14,26 @@ function Saved() {
     const [serverError, setServerError] = useState('')
 
     useEffect(() => {
-        axios.get(`http://localhost:5500/users/saved`,{withCredentials:true}).then((res) => {
-            console.log(res.data)
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/saved`,{withCredentials:true}).then((res) => {
+            // console.log(res.data)
             setData(res.data)
         }).catch((e) => {
             if (e.response && e.response.data) {
-                console.log(e.response.data.message)
+                // console.log(e.response.data.message)
                 setServerError(e.response.data.message)
             }
         })
     }, [])
 
     const deleteIdea = (item) => {
-        axios.get(`http://localhost:5500/users/unsave/${item._id}`,{withCredentials:true}).then((res) => {
-            console.log(res.data)
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/unsave/${item._id}`,{withCredentials:true}).then((res) => {
+            // console.log(res.data)
             let newData = data.filter(data => {
                 return data._id != item._id;
             });
             setData(newData)
         }).catch((e) => {
-            console.log(e.response)
+            // console.log(e.response)
         })
     }
 

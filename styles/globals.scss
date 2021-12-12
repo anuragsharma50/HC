@@ -83,6 +83,11 @@ body{
             @include display-flex();
             justify-content: space-between;
             font-size: 12px;
+
+            .error-text{
+                margin-top: 0px;
+                padding-bottom: 0px;
+            }
         }
 
         label{

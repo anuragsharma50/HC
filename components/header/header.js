@@ -6,10 +6,13 @@ import nameInitials from 'name-initials'
 import LogoutModal from '../modals/logout'
 import Menu from '../phone-menu/Menu'
 
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
 import Logo from '../../assets/images/Logo.png'
 import MenuImg from '../../assets/images/menu-icon.png'
 
-function Header({user,updateUser}) {
+function Header({user,updateUser,loading}) {
 
     const router = useRouter()
 
@@ -27,18 +30,18 @@ function Header({user,updateUser}) {
         setShowTippy(false)
     }
 
-    const goToReferral = () => {
-        router.push('/referral')
-        setShowTippy(false)
-    }
+    // const goToReferral = () => {
+    //     router.push('/referral')
+    //     setShowTippy(false)
+    // }
 
-    const goToMyIdeas = () => {
-        router.push('/myideas')
-        setShowTippy(false)
-    }
+    // const goToMyIdeas = () => {
+    //     router.push('/myideas')
+    //     setShowTippy(false)
+    // }
 
-    const goToSaved = () => {
-        router.push('/saved')
+    const goTo = (url) => {
+        router.push(`/${url}`)
         setShowTippy(false)
     }
 
@@ -78,8 +81,18 @@ function Header({user,updateUser}) {
                 </div>
             </div>
 
+            {/* check if loading is true */}
+            {
+                loading &&
+                <div className="nav-buttons">
+                    <div className="skeleton-container">
+                        <Skeleton height={30} />
+                    </div>
+                </div>
+            }
+
             {/* Logged out state */}
-            { !user && 
+            { !user && !loading && 
                 <div className="nav-buttons">
                     <Link href='/signin'>
                         <button className="secondry btn">Sign In</button>
@@ -91,7 +104,7 @@ function Header({user,updateUser}) {
             }
 
             {/* Logged in state */}
-            { user &&
+            { user && !loading &&
                 <div className="nav-loggedin">
 
                     { user.unverified &&
@@ -108,9 +121,9 @@ function Header({user,updateUser}) {
                             showTippy &&
                             <div className="tippy">
                                 <ul>
-                                <li onClick={goToSaved}>Saved Ideas</li>
-                                <li onClick={goToMyIdeas}>My Ideas</li>
-                                <li onClick={goToReferral}>Referral</li>
+                                <li onClick={goTo('saved')}>Saved Ideas</li>
+                                <li onClick={goTo('myideas')}>My Ideas</li>
+                                <li onClick={goTo('referral')}>Referral</li>
                                 <li onClick={logoutButton}>Logout</li>
                                 </ul>
                             </div>

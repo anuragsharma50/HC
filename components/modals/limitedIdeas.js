@@ -13,16 +13,16 @@ function LimitedIdeas({modelState,setModelState,output}) {
             output.setSet(output.set + 1)
             setModelState(false)
         }else{
-            axios.get("http://localhost:5500/users/payment",{withCredentials:true}).then((res) => {
-                console.log(res.data)
+            axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/payment`,{withCredentials:true}).then((res) => {
+                // console.log(res.data)
                 router.push({pathname: '/idea',
                 query: { ...output.values, from: output.from }})
             }).catch((e) => {
                 router.push('/pricing')
-                console.log(e.response)
-                console.log(e)
+                // console.log(e.response)
+                // console.log(e)
                 // if (e.response && e.response.data) {
-                //     console.log(e.response)
+                //     // console.log(e.response)
                 //     // setErrorMessage(e.response.data.message)
                 // }
             })

@@ -55,6 +55,10 @@
 
     .nav-buttons{
         display: none;
+
+        .skeleton-container{
+            width: 100%;
+        }
     }
     
     .logged-in {
