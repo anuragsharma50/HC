@@ -7,12 +7,12 @@ function TermsOfUse() {
             <div className={`${Styles.subContainer} sub-container`}>
                 <h1>Terms and Conditions</h1>
                 <p>Welcome to Happie Celebrations!</p>
-                <p>These terms and conditions outline the rules and regulations for the use of Happie Celebrations's Website, located at https://www.happiecelebrations.com/.</p>
+                <p>These terms and conditions outline the rules and regulations for the use of Happie Celebrations&apos;s Website, located at https://www.happiecelebrations.com/.</p>
                 <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use Happie Celebrations if you do not agree to take all of the terms and conditions stated on this page.</p>
                 <p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant to the Company’s terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.</p>
 
                 <h2>Cookies</h2>
-                <p>We employ the use of cookies. By accessing Happie Celebrations, you agreed to use cookies in agreement with the Happie Celebrations's Privacy Policy. </p>            <p>Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate partners may also use cookies.</p>
+                <p>We employ the use of cookies. By accessing Happie Celebrations, you agreed to use cookies in agreement with the Happie Celebrations&apos;s Privacy Policy. </p>            <p>Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate partners may also use cookies.</p>
 
                 <h2>License</h2>
                 <p>Unless otherwise stated, Happie Celebrations and/or its licensors own the intellectual property rights for all material on Happie Celebrations. All intellectual property rights are reserved. You may access this from Happie Celebrations for your own personal use subjected to restrictions set in these terms and conditions.</p>
@@ -63,7 +63,7 @@ function TermsOfUse() {
                     <li>By use of any other description of our Website being linked to that makes sense within the context and format of content on the linking party’s site.</li>
                 </ul>
 
-                <p>No use of Happie Celebrations's logo or other artwork will be allowed for linking absent a trademark license agreement.</p>
+                <p>No use of Happie Celebrations&apos;s logo or other artwork will be allowed for linking absent a trademark license agreement.</p>
 
                 <h2>iFrames</h2>
                 <p>Without prior approval and written permission, you may not create frames around our Webpages that alter in any way the visual presentation or appearance of our Website.</p>

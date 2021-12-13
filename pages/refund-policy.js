@@ -9,7 +9,7 @@ function RefundPolicy() {
                 <p>Amount once paid through the payment gateway shall not be refunded other than in the
                     following circumstances:
                 </p>
-                <p>Multiple times debiting of Customer’s Card/Bank Account/UPI/wallets due to technical error OR Customer's
+                <p>Multiple times debiting of Customer’s Card/Bank Account/UPI/wallets due to technical error OR Customer&apos;s
                     account being debited with excess amount in a single transaction due to technical error. In such
                     cases, excess amount excluding Payment Gateway charges would be refunded to the Customer.
                 </p>
@@ -51,7 +51,7 @@ function RefundPolicy() {
                     </li>
                 </ul>
                 <p>User agrees that Company, in its sole discretion, and without penalty, may
-                    suspend or terminate user's account for voilation of any privacy policy or terms and conditions of use. 
+                    suspend or terminate user&apos;s account for voilation of any privacy policy or terms and conditions of use. 
                 </p>
                 <p>
                     Company may elect to resolve any dispute, controversy or claim arising out of or relating to this

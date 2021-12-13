@@ -27,7 +27,7 @@ function Stripe({set}) {
     return (
         <div className={Styles.stripe}>
             <button className={Styles.button} onClick={goToStripePage} disabled={disableState}>
-                Pay with Card <Image src={CardIcon} width={30} height={25} />
+                Pay with Card <Image src={CardIcon} alt="card" width={30} height={25} />
             </button>
         </div>
     )

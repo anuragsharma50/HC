@@ -48,32 +48,32 @@ function Header({user,updateUser,loading}) {
     return (
         <div className="nav">
             <div className="nav-start">
-                <Link href='/'>
+                <Link passHref href='/'>
                     <div className="logo">
                         <Image src={Logo} alt="logo" layout="fill" />
                     </div>
                 </Link>
                 <div className="nav-links">
                     <ul>
-                        <Link href="/wish">
+                        <Link passHref href="/wish">
                             <li>Wish</li>
                         </Link>
 
-                        <Link href="/celebration">
+                        <Link passHref href="/celebration">
                             <li>Celebration</li>
                         </Link>
-                        <Link href="/gift">
+                        <Link passHref href="/gift">
                             <li>Gift</li>
                         </Link>
-                        <Link href="/write">
+                        <Link passHref href="/write">
                             <li>Write</li>
                         </Link>
-                        <Link href="/pricing">
+                        <Link passHref href="/pricing">
                             <li>Pricing</li>
                         </Link>
                         {
                             user && user.isApprover &&
-                            <Link href="/details/approve">
+                            <Link passHref href="/details/approve">
                                 <li>Approve</li>
                             </Link>
                         }
@@ -94,10 +94,10 @@ function Header({user,updateUser,loading}) {
             {/* Logged out state */}
             { !user && !loading && 
                 <div className="nav-buttons">
-                    <Link href='/signin'>
+                    <Link passHref href='/signin'>
                         <button className="secondry btn">Sign In</button>
                     </Link>
-                    <Link href='/signup'>
+                    <Link passHref href='/signup'>
                         <button className="btn">Sign Up</button>
                     </Link>
                 </div> 
@@ -110,7 +110,7 @@ function Header({user,updateUser,loading}) {
                     { user.unverified &&
                         <div className="nav-buttons">
                             <div></div>
-                            <Link href='/verify-account'>
+                            <Link passHref href='/verify-account'>
                                 <button className="wide-btn">Verify Account</button>
                             </Link>
                         </div> 
