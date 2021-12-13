@@ -27,16 +27,15 @@ function MyIdeas() {
     }, [])
 
     const deleteIdea = (item) => {
-        // axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/unsave/${item._id}`,{withCredentials:true}).then((res) => {
-        //     // console.log(res.data)
-        //     let newData = data.filter(data => {
-        //         return data._id != item._id;
-        //     });
-        //     setData(newData)
-        // }).catch((e) => {
-        //     // console.log(e.response)
-        // })
-        // console.log("Attempt to delete")
+        axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${item.catagory}/${item._id}`,{withCredentials:true}).then((res) => {
+            // console.log(res.data)
+            let newData = data.filter(data => {
+                return data._id != item._id;
+            });
+            setData(newData)
+        }).catch((e) => {
+            // console.log(e.response)
+        })
     }
 
     if(serverError === "You haven't write any idea") {
@@ -63,6 +62,7 @@ function MyIdeas() {
                 data.length ?
                 data.map(item => (
                     <div key={item._id} className={`${Styles.subContainer} sub-container`}>
+                        <div className={Styles.approvalStatusContainer}>
                         {
                             item.approvalStatus ?
                             <div className={`${item.approvalStatus === 'Approved' ? Styles.approved : Styles.rejected} ${Styles.approvalStatus}`}>
@@ -74,6 +74,8 @@ function MyIdeas() {
                             </div>
 
                         }
+                        <div className={Styles.catagory}>{item.catagory}</div>
+                        </div>
                         <div className={Styles.headingContainer}>
                             <h3 className="heading">{item.title}</h3>
                             <div className={Styles.delete} onClick={() => deleteIdea(item)}>

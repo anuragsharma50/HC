@@ -83,16 +83,16 @@ function Header({user,updateUser,loading}) {
 
             {/* check if loading is true */}
             {
-                loading &&
+                loading ?
                 <div className="nav-buttons">
                     <div className="skeleton-container">
                         <Skeleton height={30} />
                     </div>
                 </div>
-            }
 
-            {/* Logged out state */}
-            { !user && !loading && 
+                :
+
+                !user ?
                 <div className="nav-buttons">
                     <Link passHref href='/signin'>
                         <button className="secondry btn">Sign In</button>
@@ -101,10 +101,10 @@ function Header({user,updateUser,loading}) {
                         <button className="btn">Sign Up</button>
                     </Link>
                 </div> 
-            }
 
-            {/* Logged in state */}
-            { user && !loading &&
+                :
+
+                user &&
                 <div className="nav-loggedin">
 
                     { user.unverified &&
@@ -121,9 +121,9 @@ function Header({user,updateUser,loading}) {
                             showTippy &&
                             <div className="tippy">
                                 <ul>
-                                <li onClick={goTo('saved')}>Saved Ideas</li>
-                                <li onClick={goTo('myideas')}>My Ideas</li>
-                                <li onClick={goTo('referral')}>Referral</li>
+                                <li onClick={() => goTo('saved')}>Saved Ideas</li>
+                                <li onClick={() => goTo('myideas')}>My Ideas</li>
+                                <li onClick={() => goTo('referral')}>Referral</li>
                                 <li onClick={logoutButton}>Logout</li>
                                 </ul>
                             </div>
@@ -131,6 +131,47 @@ function Header({user,updateUser,loading}) {
                     </div>
                 </div>
             }
+
+            {/* Logged out state */}
+            {/* { !user && !loading && 
+                <div className="nav-buttons">
+                    <Link passHref href='/signin'>
+                        <button className="secondry btn">Sign In</button>
+                    </Link>
+                    <Link passHref href='/signup'>
+                        <button className="btn">Sign Up</button>
+                    </Link>
+                </div> 
+            } */}
+
+            {/* Logged in state */}
+            {/* { user && !loading &&
+                <div className="nav-loggedin">
+
+                    { user.unverified &&
+                        <div className="nav-buttons">
+                            <div></div>
+                            <Link passHref href='/verify-account'>
+                                <button className="wide-btn">Verify Account</button>
+                            </Link>
+                        </div> 
+                    } 
+                    <div className="logged-in">
+                        <button className="user-avatar" onClick={() => setShowTippy(!showTippy)}>{initials}</button>
+                        {
+                            showTippy &&
+                            <div className="tippy">
+                                <ul>
+                                <li onClick={() => goTo('saved')}>Saved Ideas</li>
+                                <li onClick={() => goTo('myideas')}>My Ideas</li>
+                                <li onClick={() => goTo('referral')}>Referral</li>
+                                <li onClick={logoutButton}>Logout</li>
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                </div>
+            } */}
             <div className="menu">
                 <Image onClick={() => setMenuState(true)} src={MenuImg} alt="menu" />
             </div>

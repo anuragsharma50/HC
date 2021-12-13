@@ -57,28 +57,41 @@
             margin: 1px 0px;
         }
 
-        .approved{
-            border: 1px solid #4caf50;
-            background-color: #e4ffe5;
-            color: green;
-        }
-
-        .unApproved{
-            border: 1px solid #a7a9af;
-            background-color: #dfdfdf;
-        }
-
-        .rejected{
-            background-color: #ffdfdf;
-            border: 1px solid #c52f00;
-            color: #e50000;
-        }
-
-        .approvalStatus{
+        .approvalStatusContainer{
             width: 100%;
-            padding: 2px;
-            font-size: 15px;
-            border-bottom: none;
+            display: flex;
+
+            .approved{
+                border: 1px solid #4caf50;
+                background-color: #e4ffe5;
+                color: green;
+            }
+    
+            .unApproved{
+                border: 1px solid #a7a9af;
+                background-color: #dfdfdf;
+            }
+    
+            .rejected{
+                background-color: #ffdfdf;
+                border: 1px solid #c52f00;
+                color: #e50000;
+            }
+    
+            .approvalStatus{
+                width: 100%;
+                padding: 2px;
+                font-size: 15px;
+                border-bottom: none;
+            }
+
+            .catagory{
+                padding: 2px 10px;
+                font-weight: bold;
+                color: #333;
+                border-top: 1px solid #9ca0ab;
+                border-right: 1px solid #9ca0ab;
+            }
         }
     }
 
