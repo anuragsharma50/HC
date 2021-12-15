@@ -7,6 +7,13 @@
     :global(.sub-container){
         padding: 10px;
 
+        :global(.more-ideas){
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+        }
+
         :global(.heading){
             background-color: transparent;
             height: 50px;

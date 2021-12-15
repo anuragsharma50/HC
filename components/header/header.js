@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { useRouter } from "next/router"
 import { useState } from 'react'
 import nameInitials from 'name-initials'
+import { motion } from "framer-motion"
+import { navButtons,navLinks } from '../animations/nav'
 import LogoutModal from '../modals/logout'
 import Menu from '../phone-menu/Menu'
 
@@ -30,16 +32,6 @@ function Header({user,updateUser,loading}) {
         setShowTippy(false)
     }
 
-    // const goToReferral = () => {
-    //     router.push('/referral')
-    //     setShowTippy(false)
-    // }
-
-    // const goToMyIdeas = () => {
-    //     router.push('/myideas')
-    //     setShowTippy(false)
-    // }
-
     const goTo = (url) => {
         router.push(`/${url}`)
         setShowTippy(false)
@@ -53,7 +45,12 @@ function Header({user,updateUser,loading}) {
                         <Image src={Logo} alt="logo" layout="fill" />
                     </div>
                 </Link>
-                <div className="nav-links">
+                <motion.div 
+                    className="nav-links"
+                    variants={navLinks}
+                    initial="hidden"
+                    animate="visible"    
+                >
                     <ul>
                         <Link passHref href="/wish">
                             <li>Wish</li>
@@ -78,7 +75,7 @@ function Header({user,updateUser,loading}) {
                             </Link>
                         }
                     </ul>
-                </div>
+                </motion.div>
             </div>
 
             {/* check if loading is true */}
@@ -93,19 +90,29 @@ function Header({user,updateUser,loading}) {
                 :
 
                 !user ?
-                <div className="nav-buttons">
+                <motion.div 
+                    className="nav-buttons"
+                    variants={navButtons}
+                    initial="hidden"
+                    animate="visible"
+                >
                     <Link passHref href='/signin'>
                         <button className="secondry btn">Sign In</button>
                     </Link>
                     <Link passHref href='/signup'>
                         <button className="btn">Sign Up</button>
                     </Link>
-                </div> 
+                </motion.div> 
 
                 :
 
                 user &&
-                <div className="nav-loggedin">
+                <motion.div 
+                    className="nav-loggedin"
+                    variants={navButtons}
+                    initial="hidden"
+                    animate="visible"
+                >
 
                     { user.unverified &&
                         <div className="nav-buttons">
@@ -129,49 +136,9 @@ function Header({user,updateUser,loading}) {
                             </div>
                         }
                     </div>
-                </div>
+                </motion.div>
             }
-
-            {/* Logged out state */}
-            {/* { !user && !loading && 
-                <div className="nav-buttons">
-                    <Link passHref href='/signin'>
-                        <button className="secondry btn">Sign In</button>
-                    </Link>
-                    <Link passHref href='/signup'>
-                        <button className="btn">Sign Up</button>
-                    </Link>
-                </div> 
-            } */}
-
-            {/* Logged in state */}
-            {/* { user && !loading &&
-                <div className="nav-loggedin">
-
-                    { user.unverified &&
-                        <div className="nav-buttons">
-                            <div></div>
-                            <Link passHref href='/verify-account'>
-                                <button className="wide-btn">Verify Account</button>
-                            </Link>
-                        </div> 
-                    } 
-                    <div className="logged-in">
-                        <button className="user-avatar" onClick={() => setShowTippy(!showTippy)}>{initials}</button>
-                        {
-                            showTippy &&
-                            <div className="tippy">
-                                <ul>
-                                <li onClick={() => goTo('saved')}>Saved Ideas</li>
-                                <li onClick={() => goTo('myideas')}>My Ideas</li>
-                                <li onClick={() => goTo('referral')}>Referral</li>
-                                <li onClick={logoutButton}>Logout</li>
-                                </ul>
-                            </div>
-                        }
-                    </div>
-                </div>
-            } */}
+            
             <div className="menu">
                 <Image onClick={() => setMenuState(true)} src={MenuImg} alt="menu" />
             </div>

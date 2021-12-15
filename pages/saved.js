@@ -1,19 +1,26 @@
 import Image from 'next/image'
+import { useRouter } from "next/router"
 import { useEffect,useState } from 'react'
 import axios from 'axios'
 
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import ClipLoader from "react-spinners/ClipLoader"
 
 import Styles from '../styles/pageStyles/saved.module.scss'
 import TrashIcon from '../assets/images/trash.png'
 
-function Saved() {
+function Saved({loading,user}) {
 
+    const router = useRouter()
     const [data, setData] = useState([])
     const [serverError, setServerError] = useState('')
 
     useEffect(() => {
+        if(!user && !loading) {
+            router.push('/signin')
+        }
+
         axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/saved`,{withCredentials:true}).then((res) => {
             // console.log(res.data)
             setData(res.data)
@@ -23,7 +30,7 @@ function Saved() {
                 setServerError(e.response.data.message)
             }
         })
-    }, [])
+    }, [user,loading])
 
     const deleteIdea = (item) => {
         axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/unsave/${item._id}`,{withCredentials:true}).then((res) => {
@@ -35,6 +42,16 @@ function Saved() {
         }).catch((e) => {
             // console.log(e.response)
         })
+    }
+
+    if(loading) {
+        return (
+            <div className={`${Styles.container} container`}>
+                <div className="loading">
+                    <ClipLoader color="#0677c1" loading={loading} size={50} />
+                </div>
+            </div>
+        )
     }
 
     if(serverError) {

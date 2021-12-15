@@ -3,6 +3,8 @@ import { useRouter } from "next/router"
 
 import FAQ from '../components/FAQ/FAQ'
 import Carousel from '../components/carousel/carousel'
+import { motion } from "framer-motion"
+import menuItems from '../components/animations/raising'
 import Styles from '../styles/pageStyles/homepage.module.scss'
 
 import WishImage from '../assets/images/Wish.png'
@@ -22,11 +24,17 @@ export default function Home() {
       <div className={`${Styles.homeLinks} home-links`}>
         <div className={Styles.item}>
         <div className={Styles.img}> <Image src={WishImage} alt="idea" /> </div>
-          <div className={Styles.text}>
+          <motion.div 
+            className={Styles.text}
+            variants={menuItems}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
             <h3>Wish</h3>
             <p>Wish your Friends, Family, Acquintance in a way they never expect.</p>
             <button className="btn" onClick={() => router.push('/wish')}>Wish Now</button>
-          </div>
+          </motion.div>
         </div>
         <div className={Styles.item}>
         <div className={Styles.img}> <Image src={CelebrationImage} alt="Celebration" /> </div>

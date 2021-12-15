@@ -15,6 +15,14 @@ function Pricing({user,updateUser}) {
         }
     }, [user])
 
+    const goToPayment = () => {
+        if(user){
+            router.push('/payment')
+        }else{
+            router.push('/signin')
+        }
+    }
+
     return (
         <div className={`${styles.container} container`}>
         <CurrencyModal modelState={modelState} setModelState={setModelState} 
@@ -51,7 +59,7 @@ function Pricing({user,updateUser}) {
                     </ul>
     
                     <div className="btn">
-                        <button className="submit-btn" onClick={() => router.push('/payment')}>Choose Plan</button>
+                        <button className="submit-btn" onClick={goToPayment}>Choose Plan</button>
                     </div>
                 </div>
 

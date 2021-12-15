@@ -66,9 +66,6 @@ function Idea(props) {
             setSaveError({title: "3 ideas already saved",message:"You can save only 3 ideas at a time."})
             setModelState2(true)
         }else{
-            // console.log(saved)
-            // console.log(saved.length)
-            // console.log(set*3)
             axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}/save/${data[index]._id}`,
             {withCredentials:true}).then((res) => {
                 // console.log(res.data)

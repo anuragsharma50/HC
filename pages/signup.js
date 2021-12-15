@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useRouter } from "next/router"
+import { useState,useEffect } from 'react'
+import ClipLoader from "react-spinners/ClipLoader"
 
 import SignUpForm from '../components/forms/signupForm'
 import SocialLogins from '../components/social-login/SocialLogins'
@@ -8,13 +10,38 @@ import styles from '../styles/pageStyles/signup.module.scss'
 
 import DancingImage from '../assets/images/Dancing.png'
 
-const SignUp = ({updateUser}) => {
+const SignUp = ({user,updateUser,loading}) => {
 
+    const router = useRouter()
     const [checked, setChecked] = useState(true)
+    const [pageloading, setPageLoading] = useState(true)
 
     const handleChecked = e => {
         // console.log(e.target.checked)
         setChecked(e.target.checked)
+    }
+
+    useEffect(() => {
+        if(user){
+            if(user.unverified){
+                router.push('/verify-account')
+            }else{
+                router.push('/')
+            }
+        }else{
+            setPageLoading(false)
+        }
+        
+    }, [user])
+
+    if(loading || pageloading){
+        return (
+            <div className="container">
+                <div className="loading">
+                    <ClipLoader color="#0677c1" loading={loading || pageloading} size={50} />
+                </div>
+            </div>
+        )
     }
 
     return (

@@ -1,6 +1,8 @@
 import Image from "next/image"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
+import menuItems from '../animations/raising'
 
 import Logo from '../../assets/images/Logo.png'
 import Cancel from '../../assets/images/cancel.png'
@@ -15,11 +17,6 @@ function Menu({user,setMenuState,setModelState}) {
     const router = useRouter()
     const [showTippy, setShowTippy] = useState(false)
 
-    const navigate = (route) => {
-        router.push(`/${route}`)
-        setMenuState(false)
-    }
-
     useEffect(() => {
         if(!user){
             setShowTippy(false)
@@ -27,8 +24,13 @@ function Menu({user,setMenuState,setModelState}) {
         
     }, [user])
 
+    const navigate = (route) => {
+        router.push(`/${route}`)
+        setMenuState(false)
+    }
+
     return (
-        <div className="menu-container">
+        <div className="menu-container" >
             <div className="top">
                 <div onClick={() => navigate('')} className="logo">
                     <Image src={Logo} alt="logo" />
@@ -38,7 +40,13 @@ function Menu({user,setMenuState,setModelState}) {
                 </div>
             </div>
 
-            <div className="mob-nav">
+            <motion.div 
+                className="mob-nav"
+                variants={menuItems}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+            >
                 {
                     !showTippy &&
                     <>
@@ -59,11 +67,17 @@ function Menu({user,setMenuState,setModelState}) {
                         <div onClick={() => setModelState(true)} className="item"><span>Logout</span></div>
                     </>
                 }
-            </div>
+            </motion.div>
 
             <hr/>
 
-            <div className="menu-buttons">
+            <motion.div 
+                className="menu-buttons"
+                variants={menuItems}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+            >
                 {
                     !user ?
                     <>
@@ -79,7 +93,7 @@ function Menu({user,setMenuState,setModelState}) {
                         </div>
                     </div>
                 }
-            </div>
+            </motion.div>
         </div>
     )
 }

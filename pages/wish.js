@@ -1,5 +1,8 @@
 import Image from 'next/image'
 import { useState } from 'react'
+import { motion } from "framer-motion"
+import menuItems from '../components/animations/raising'
+import LimitedIdeas from '../components/modals/limitedIdeas'
 
 import styles from '../styles/pageStyles/form-page.module.scss'
 
@@ -7,12 +10,27 @@ import WishImage from '../assets/images/Wish.png'
 import IdeaForm from '../components/forms/ideaForm'
 
 function Wish({user}) {
+
     const [disableState, setDisableState] = useState(false)
+    const [modelState, setModelState] = useState(false)
+    const [output, setOutput] = useState({
+        count: 0,
+        values: {}
+    })
 
     return (
         <>
-            <div className={`${styles.container} container`}>
-                <div className="image">
+            <LimitedIdeas modelState={modelState} setModelState={setModelState} output={output} />
+            <motion.div 
+                className={`${styles.container} container`}
+                variants={menuItems}
+                initial="hidden"
+                animate="visible"
+                exit="exit" 
+            >
+                <div 
+                    className="image"   
+                >
                     <Image src={WishImage} alt="girl showing laptop" />
                 </div>
 
@@ -24,14 +42,14 @@ function Wish({user}) {
 
                     <h3 className="form-title">Enter details of celebrant</h3>
                     
-                    <IdeaForm from={"wish"} user={user} setDisableState={setDisableState} />
+                    <IdeaForm from={"wish"} user={user} setDisableState={setDisableState} setModelState={setModelState} setOutput={setOutput} />
 
                     <div className="submit">
                         <button form="idea-form" type="submit" className="submit-btn" disabled={disableState}>Submit</button>
                     </div>
 
                 </div>
-            </div>
+            </motion.div>
         </>
     )
 }

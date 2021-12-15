@@ -1,20 +1,27 @@
 import Image from 'next/image'
 import Link from 'next/link' 
+import { useRouter } from "next/router"
 import { useEffect,useState } from 'react'
 import axios from 'axios'
 
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import ClipLoader from "react-spinners/ClipLoader"
 
 import Styles from '../styles/pageStyles/saved.module.scss'
 import TrashIcon from '../assets/images/trash.png'
 
-function MyIdeas() {
+function MyIdeas({user,loading}) {
 
+    const router = useRouter()
     const [data, setData] = useState([])
     const [serverError, setServerError] = useState('')
 
     useEffect(() => {
+        if(!user && !loading) {
+            router.push('/signin')
+        }
+
         axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/myideas`,{withCredentials:true}).then((res) => {
             // console.log(res.data)
             setData(res.data)
@@ -24,7 +31,7 @@ function MyIdeas() {
                 setServerError(e.response.data.message)
             }
         })
-    }, [])
+    }, [user,loading])
 
     const deleteIdea = (item) => {
         axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${item.catagory}/${item._id}`,{withCredentials:true}).then((res) => {
@@ -36,6 +43,16 @@ function MyIdeas() {
         }).catch((e) => {
             // console.log(e.response)
         })
+    }
+
+    if(loading) {
+        return (
+            <div className={`${Styles.container} container`}>
+                <div className="loading">
+                    <ClipLoader color="#0677c1" loading={loading} size={50} />
+                </div>
+            </div>
+        )
     }
 
     if(serverError === "You haven't write any idea") {
@@ -87,6 +104,11 @@ function MyIdeas() {
                 ))
                 :
                 <div className={`${Styles.subContainer} sub-container`}>
+                    <div className={Styles.approvalStatusContainer}>
+                        <div className={`${Styles.unApproved} ${Styles.approvalStatus}`}>
+                            <Skeleton height={20} />
+                        </div>
+                    </div>
                     <div className={`${Styles.unApproved} ${Styles.approvalStatus}`}><Skeleton height={20} /></div>
                     <div className={Styles.headingContainer}>
                     <div className={Styles.headingSkeleton}><Skeleton height={40} /></div>

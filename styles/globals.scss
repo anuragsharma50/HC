@@ -25,14 +25,26 @@ body{
 .container{
     display: flex;
     justify-content: space-between;
-    padding: 10px;
     min-height: 93vh;
-
+    background-image: url(../assets/images/background.png);
+    background-size: contain;
+    background-blend-mode: darken;
+    background-color: #00000005;
+    
     a{
         color: #0055D6;
         font-weight: bold;
         text-decoration: underline;
     }
+
+    .loading{
+        @include display-flex();
+        z-index: 0;
+        margin-top: 50px;
+        min-height: 90vh;
+        width: 100%;
+    }
+
 
     .form, .sub-container{
         flex: 1;
@@ -41,8 +53,10 @@ body{
         flex-direction: column;
         width: 100%;
         z-index: 0;
-        margin-top: 50px;
-        min-height: 90vh;
+        margin-top: 45px;
+        min-height: 93vh;
+        background-color: #ffffffd4;
+        padding: 10px;
 
         .heading{
             width: 100%;
@@ -169,6 +183,16 @@ body{
             height: 50px;
         }
 
+        .submit-btn:hover:not([disabled]) {
+            box-shadow: 0px 5px 25px -5px gray;
+            transform: scale(1.02);
+        }
+
+        .submit-btn:active:not([disabled]) {
+            box-shadow: 0px 4px 8px gray;
+            transform: scale(1);
+        }
+
         .submit-btn:disabled{
             background: gray;
             cursor: initial;
@@ -177,7 +201,7 @@ body{
 
     .swiper {
         width: 100%;
-        height: 89vh;
+        height: 90vh;
         z-index: 0;
         margin-top: 35px;
         cursor: grab;
@@ -209,7 +233,31 @@ body{
         height: 100%;
         object-fit: cover;
       }
+
 }
+
+/* modal */
+.backdrop{
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.72);
+    z-index: 1;
+    
+    .modal{
+        max-width: 400px;
+        margin: 0px auto;
+        padding: 40px 20px;
+        background: white;
+        border-radius: 10px;
+        text-align: center;
+        width: 50%;
+        min-width: 270px;
+    }
+}
+
 
 /* fonts */
 @font-face {
@@ -226,6 +274,7 @@ body{
 .container{
     .image{
         display: none;
+        background-color: #ffffffd4;
 
         .img{
             width: 500px
@@ -274,6 +323,10 @@ body{
                 height: 50px;
                 margin: 10px 0px;
             }
+        }
+
+        .swiper{
+            height: 94vh;
         }
     }
 }

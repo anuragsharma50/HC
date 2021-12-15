@@ -9,7 +9,8 @@
     }
 
     :global(.info) {
-        font-size: 14px;
+        font-size: 13px;
+        margin-top: 10px;
 
         a{
             cursor: pointer;
@@ -24,6 +25,10 @@
             :global(.form-title){
                 font-size: 22px;
             }
+        }
+
+        :global(.info) {
+            font-size: 14px;
         }
     }
 }

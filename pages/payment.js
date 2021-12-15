@@ -3,31 +3,29 @@ import { useState,useEffect } from "react"
 import Paypal from "../components/payment/paypal"
 import Razorpay from "../components/payment/Razorpay"
 import Stripe from "../components/payment/stripe"
-import PacmanLoader from "react-spinners/PacmanLoader"
+import ClipLoader from "react-spinners/ClipLoader"
 import Styles from '../styles/pageStyles/payment.module.scss'
 
-function Payment({user}) {
+function Payment({user,loading}) {
 
     const router = useRouter()
     const [set, setSet] = useState(3)
-    const [loading, setLoading] = useState(true)
 
     const handleChange = (e) => {
         setSet(e.target.value)
     }
 
     useEffect(() => {
-        if(!user) {
-            router.push('/signup')
+        if(!user && !loading) {
+            router.push('/signin')
         }
-        setLoading(false)
-    }, [user])
+    }, [user,loading])
 
     if(loading) {
         return (
             <div className={`${Styles.container} container`}>
-                <div className="sub-container">
-                    <PacmanLoader color="#F8E71C" loading={loading} size={40} />
+                <div className="loading">
+                    <ClipLoader color="#0677c1" loading={loading} size={50} />
                 </div>
             </div>
         )

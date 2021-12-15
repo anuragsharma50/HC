@@ -4,7 +4,7 @@ import { Formik,Form,Field,ErrorMessage} from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
 
-const SignInForm = ({user,updateUser}) => {
+const SignInForm = ({user,updateUser,setDisableState}) => {
     
     const router = useRouter()
     const [errorMessage, setErrorMessage] = useState('')
@@ -20,6 +20,7 @@ const SignInForm = ({user,updateUser}) => {
     })
 
     const onSubmit = values => {
+        setDisableState(true)
         axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/signin`,{
             email : values.email,
             password : values.password,
@@ -37,6 +38,7 @@ const SignInForm = ({user,updateUser}) => {
                 setErrorMessage(e.response.data.message)
             }
         })
+        setDisableState(false)
     }
 
     return (

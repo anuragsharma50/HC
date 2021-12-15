@@ -1,18 +1,21 @@
-import { useState } from 'react'
+import { useRouter } from "next/router"
+import { useState,useEffect } from 'react'
 import Styles from '../styles/pageStyles/referral.module.scss'
 import { Formik,Form,Field,ErrorMessage} from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
+import ClipLoader from "react-spinners/ClipLoader"
 
-function Referral() {
+function Referral({user,loading}) {
 
+    const router = useRouter()
     const [serverError, setServerError] = useState('')
     const [disableState, setDisableState] = useState(false)
 
     const initialValues = {
         code: '',
     }
-    
+
     const validationSchema = Yup.object({
         code: Yup.string().required('Please enter your referral code').length(6,'Invalid code')
         .matches(/^[a-zA-Z0-9]+$/, 'Invalid code'),
@@ -38,6 +41,22 @@ function Referral() {
         setServerError('')
         props.setFieldValue('code', e.target.value)
         setDisableState(false)
+    }
+
+    useEffect(() => {
+        if(!user && !loading) {
+            router.push('/signin')
+        }
+    }, [user,loading])
+
+    if(loading) {
+        return (
+            <div className={`${Styles.container} container`}>
+                <div className="loading">
+                    <ClipLoader color="#0677c1" loading={loading} size={50} />
+                </div>
+            </div>
+        )
     }
 
     return (

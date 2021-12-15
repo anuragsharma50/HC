@@ -1,7 +1,8 @@
-import { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from "next/router";
+import { useRouter } from "next/router"
+import { useEffect,useState } from 'react'
+import ClipLoader from "react-spinners/ClipLoader"
 
 import styles from '../styles/pageStyles/signin.module.scss'
 
@@ -9,20 +10,34 @@ import LoginImage from '../assets/images/login.png'
 import SignInForm from '../components/forms/signInForm'
 import SocialLogins from '../components/social-login/SocialLogins'
 
-function SignIn({updateUser,user}) {
+function SignIn({updateUser,user,loading}) {
 
     const router = useRouter()
+    const [disableState, setDisableState] = useState(false)
+    const [pageloading, setPageLoading] = useState(true)
 
     useEffect(() => {
-        if(user){
+        if(user && loading){
             if(user.unverified){
                 router.push('/verify-account')
             }else{
                 router.push('/')
             }
+        }else{
+            setPageLoading(false)
         }
         
     }, [user])
+
+    if(loading || pageloading){
+        return (
+            <div className="container">
+                <div className="loading">
+                    <ClipLoader color="#0677c1" loading={loading || pageloading} size={50} />
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div className={`${styles.container} container`}>
@@ -37,14 +52,14 @@ function SignIn({updateUser,user}) {
 
             <SocialLogins />
 
-            <SignInForm user={user} updateUser={updateUser} />
+            <SignInForm user={user} updateUser={updateUser} setDisableState={setDisableState} />
 
             <div className="reset-password">
                 <Link href="/forgot-password">Forgot Password?</Link>
             </div>
 
             <div className="submit">
-                <button form="signin-form" type="submit" className="submit-btn">Submit</button>
+                <button form="signin-form" type="submit" className="submit-btn" disabled={disableState}>Submit</button>
             </div>
 
             <div className="signup-link">

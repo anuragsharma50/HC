@@ -1,6 +1,7 @@
-import { useRouter } from "next/router";
-import Modal from 'react-modal';
+import { useRouter } from "next/router"
 import axios from 'axios'
+import { motion,AnimatePresence } from "framer-motion"
+import { modal2,backdrop } from '../animations/modals'
 
 import Styles from './modal.module.scss'
 
@@ -30,36 +31,50 @@ function LimitedIdeas({modelState,setModelState,output}) {
     }
 
     return (
-        <Modal isOpen={modelState} overlayClassName={`${Styles.overlay} ReactModal__Overlay`} className={Styles.modal} ariaHideApp={false} >
-            {  output.count > 0 &&
-                <>
-                    <h2 className={Styles.modalTitle}>Limited ideas avaliable</h2>
-                    <div className={Styles.modalContent}> 
-                        <p>Only {output.count} ideas are avaliable in this catagory.
-                        if you proceed your money will not be refunded.</p> 
-                        <br/ >
-                        <p> Do you wish to continue ?</p>
-                    </div>
-                    <div className={Styles.modalButtons}>
-                        <button className={`${Styles.secondry} ${Styles.btn}`} onClick={() => setModelState(false)}>No</button>
-                        <button className={Styles.btn} onClick={goToIdeaPage}>Yes</button>
-                    </div>
-                </>
-            }
+        <AnimatePresence exitBeforeEnter>
+            {modelState && 
+                (<motion.div className="backdrop"
+                    variants={backdrop}
+                    initial='hidden'
+                    animate='visible'
+                    exit='hidden'
+                >
+                    <motion.div
+                        className={`${Styles.modal} modal`}
+                        variants={modal2}    
+                    >
+                        {  output.count > 0 &&
+                            <>
+                                <h2 className={Styles.modalTitle}>Limited ideas avaliable</h2>
+                                <div className={Styles.modalContent}> 
+                                    <p>Only {output.count} ideas are avaliable in this catagory.
+                                    if you proceed your money will not be refunded.</p> 
+                                    <br/ >
+                                    <p> Do you wish to continue ?</p>
+                                </div>
+                                <div className={Styles.modalButtons}>
+                                    <button className={`${Styles.secondry} ${Styles.btn}`} onClick={() => setModelState(false)}>No</button>
+                                    <button className={Styles.btn} onClick={goToIdeaPage}>Yes</button>
+                                </div>
+                            </>
+                        }
 
-            {  output.count == 0 &&
-                <>
-                    <h2 className={Styles.modalTitle}>Ideas not avaliable</h2>
-                    <div className={Styles.modalContent}> 
-                        <p>No ideas avaliable in this catagory.
-                            please try to change some details if possible</p>
-                    </div>
-                    <div className={Styles.modalButtons}>
-                        <button className={Styles.btn} onClick={() => setModelState(false)}>Okay</button>
-                    </div>
-                </>
-            }
-        </Modal>
+                        {  output.count == 0 &&
+                            <>
+                                <h2 className={Styles.modalTitle}>Ideas not avaliable</h2>
+                                <div className={Styles.modalContent}> 
+                                    <p>No ideas avaliable in this catagory.
+                                        please try to change some details if possible</p>
+                                </div>
+                                <div className={Styles.modalButtons}>
+                                    <button className={Styles.btn} onClick={() => setModelState(false)}>Okay</button>
+                                </div>
+                            </>
+                        }
+                    </motion.div>
+                </motion.div>
+                )}
+            </AnimatePresence>
     )
 }
 
