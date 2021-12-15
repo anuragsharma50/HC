@@ -11,18 +11,19 @@ function ContactForm({user,setDisableState,setModelState}) {
     }
     
     const onSubmit = (values) => {
-        axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/contactus/`,{ ...values },{withCredentials:true}).then((res) => {
-            // console.log(res.data)
-            // router.push('/')
-            setModelState(true)
-            setDisableState(false)
-        }).catch((e) => {
-            // console.log(e.response)
-            // if (e.response && e.response.data) {
-            //     // console.log(e.response)
-            //     // setErrorMessage(e.response.data.message)
-            // }
-        })
+        setDisableState(true)
+        // axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/contactus/`,{ ...values },{withCredentials:true}).then((res) => {
+        //     // console.log(res.data)
+        //     // router.push('/')
+        //     setModelState(true)
+        //     setDisableState(false)
+        // }).catch((e) => {
+        //     // console.log(e.response)
+        //     // if (e.response && e.response.data) {
+        //     //     // console.log(e.response)
+        //     //     // setErrorMessage(e.response.data.message)
+        //     // }
+        // })
     }
     
     const validationSchema = Yup.object({
@@ -37,7 +38,7 @@ function ContactForm({user,setDisableState,setModelState}) {
             onSubmit={onSubmit}
             validationSchema={validationSchema}
         >
-            <Form className="form-input" id='write-form'>
+            <Form className="form-input" id='contact-form'>
                 <Field type="text" id="name" name="name" placeholder="Full Name" />
                 <ErrorMessage name="name">
                     {

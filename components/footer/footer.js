@@ -19,8 +19,7 @@ function Footer() {
                 </ul>
                 <ul>
                     <li className="links-heading">About</li>
-                    <li>About us</li>
-                    {/* <li>Our Team</li> */}
+                    <li><Link href="/about-us">About Us</Link></li>
                     <li><Link href="/contact-us">Contact Us</Link></li>
                 </ul>
                 <ul className="social">

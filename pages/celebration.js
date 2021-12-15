@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { useRouter } from "next/router"
 import { useState } from 'react'
 import IdeaForm from '../components/forms/ideaForm'
 import { motion } from "framer-motion"
@@ -10,6 +11,7 @@ import CelebrationImage from '../assets/images/Celebration.png'
 
 function Celebration({user}) {
 
+    const router = useRouter()
     const [disableState, setDisableState] = useState(false)
     const [modelState, setModelState] = useState(false)
     const [output, setOutput] = useState({
@@ -32,7 +34,7 @@ function Celebration({user}) {
                 </div>
 
                 <div className="form">
-                    <div className="info"><a onClick={() => setModelState(true)}>Click here</a> to understand how to choose budget</div>
+                    <div className="info"><a onClick={() => router.push('/explain/celebrations')}>Click here</a> to understand how to choose budget</div>
                     <div className="heading">
                         <h2>Celebrate</h2>
                     </div>
