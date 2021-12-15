@@ -44,7 +44,9 @@ function WriteForm({user,setDisableState,setModelState}) {
             // router.push('/')
             setModelState(true)
             setDisableState(false)
+            window.scrollTo({top:0,left:0,behaviour: 'smooth'})
         }).catch((e) => {
+            window.scrollTo({top:0,left:0,behaviour: 'smooth'})
             // console.log(e.response)
             // if (e.response && e.response.data) {
             //     // console.log(e.response)

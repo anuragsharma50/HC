@@ -30,5 +30,5 @@ const modal2 = {
 }
 
 module.exports = {
-    backdrop,modal
+    backdrop,modal,modal2
 }

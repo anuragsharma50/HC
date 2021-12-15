@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/router"
 import { motion,AnimatePresence } from "framer-motion"
 import { modal2,backdrop } from '../animations/modals'
 

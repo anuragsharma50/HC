@@ -24,11 +24,11 @@ function ForgotPassword() {
     const onSubmit = values => {
         console.log(values)
         axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/forgot-password`,{ email : values.email }).then((res) => {
-            console.log(res)
+            // console.log(res)
             // router.push('/check-email')
         }).catch((e) => {
             if (e.response && e.response.data) {
-                console.log(e.response.data.message)
+                // console.log(e.response.data.message)
                 setErrorMessage(e.response.data.message)
             }
         })

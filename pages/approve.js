@@ -38,6 +38,7 @@ function Approve() {
                 setServerError(e.response.data.error)
             }
         })
+        window.scrollTo({top:0,left:0,behaviour: 'smooth'})
     }
 
     const rejectIdea = () => {
@@ -55,6 +56,7 @@ function Approve() {
                 setServerError(e.response.data.error)
             }
         })
+        window.scrollTo({top:0,left:0,behaviour: 'smooth'})
     }
 
     const chooseReason = (id) => {

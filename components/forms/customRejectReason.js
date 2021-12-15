@@ -32,6 +32,7 @@ function CustomRejectReason({data,disableState2,setDisableState2,setDisableState
                 setServerError(e.response.data.error)
             }
         })
+        window.scrollTo({top:0,left:0,behaviour: 'smooth'})
     }
 
     const removeServerError = (props,e) => {

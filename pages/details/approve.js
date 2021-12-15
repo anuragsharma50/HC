@@ -30,12 +30,12 @@ function Approve({user}) {
         console.log(values)
         axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/approver/verify`,{ uniqueCode : values.code },
             {withCredentials:true}).then((res) => {
-            console.log(res)
+            // console.log(res)
             router.push('/details/approve-rules')
         }).catch((e) => {
-            console.log(e)
+            // console.log(e)
             if (e.response && e.response.data) {
-                console.log(e.response.data.message)
+                // console.log(e.response.data.message)
                 setServerError(e.response.data.message)
             }
         })
