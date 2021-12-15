@@ -5,7 +5,6 @@ import * as Yup from 'yup'
 
 import SelectSearch from 'react-select-search';
 import axios from 'axios'
-import IdeaSubmitted from '../modals/ideaSubmitted';
 
 function WriteForm({user,setDisableState,setModelState}) {
 
@@ -202,7 +201,6 @@ function WriteForm({user,setDisableState,setModelState}) {
                                 </div>
                             </div>
                         </div>        
-
                         <ErrorMessage name="minAge">
                             {
                                 (ErrorMessage) => <span className="error-text">{ErrorMessage}</span>
@@ -215,7 +213,6 @@ function WriteForm({user,setDisableState,setModelState}) {
                         </ErrorMessage>
 
                         <Field type="text" id="idea-title" name="title" placeholder="Idea Title" />
-
                         <ErrorMessage name="title">
                             {
                                 (ErrorMessage) => <span className="error-text">{ErrorMessage}</span>
@@ -223,7 +220,6 @@ function WriteForm({user,setDisableState,setModelState}) {
                         </ErrorMessage>
 
                         <Field as="textarea" id="description" name="description" placeholder="Description" /> 
-
                         <ErrorMessage name="description">
                             {
                                 (ErrorMessage) => <span className="error-text">{ErrorMessage}</span>
