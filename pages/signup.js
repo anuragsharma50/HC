@@ -73,7 +73,7 @@ const SignUp = ({user,updateUser,loading}) => {
             </div>
 
             <div className="submit">
-                <button disabled={!checked} form="signup-form" type="submit" className="submit-btn" disabled={disableState}>Submit</button>
+                <button disabled={!checked || disableState} form="signup-form" type="submit" className="submit-btn">Submit</button>
             </div>
 
             <div className="signup-link">
