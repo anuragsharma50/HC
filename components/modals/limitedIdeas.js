@@ -5,29 +5,57 @@ import { modal2,backdrop } from '../animations/modals'
 
 import Styles from './modal.module.scss'
 
-function LimitedIdeas({modelState,setModelState,output}) {
+function LimitedIdeas({modelState,setModelState,output,user}) {
 
     const router = useRouter()
 
     const goToIdeaPage = () => {
-        if(output.set){
-            output.setSet(output.set + 1)
-            setModelState(false)
-        }else{
-            axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/payment`,{withCredentials:true}).then((res) => {
-                // console.log(res.data)
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/payment`,{withCredentials:true}).then((res) => {
+            // console.log(res.data)
+            if(output.set){
+                output.setSet(output.set + 1)
+                setModelState(false)
+            }else {
                 router.push({pathname: '/idea',
                 query: { ...output.values, from: output.from }})
-            }).catch((e) => {
-                router.push('/pricing')
-                // console.log(e.response)
-                // console.log(e)
-                // if (e.response && e.response.data) {
-                //     // console.log(e.response)
-                //     // setErrorMessage(e.response.data.message)
-                // }
-            })
-        }
+            }
+        }).catch((e) => {
+            if(user.currency){
+                window.open("/payment",'_blank')
+            }else{
+                window.open("/pricing",'_blank')
+            }
+            // router.push('/pricing')
+            // if (e.response && e.response.data) {
+            //     // console.log(e.response)
+            //     // setErrorMessage(e.response.data.message)
+            // }
+        })
+        // if(output.set){
+        //     axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/payment`,{withCredentials:true}).then((res) => {
+        //         // console.log(res.data)
+        //         output.setSet(output.set + 1)
+        //         setModelState(false)
+        //     }).catch((e) => {
+        //         router.push('/pricing')
+        //         // if (e.response && e.response.data) {
+        //         //     // console.log(e.response)
+        //         //     // setErrorMessage(e.response.data.message)
+        //         // }
+        //     })
+        // }else{
+        //     axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/payment`,{withCredentials:true}).then((res) => {
+        //         // console.log(res.data)
+        //         router.push({pathname: '/idea',
+        //         query: { ...output.values, from: output.from }})
+        //     }).catch((e) => {
+        //         router.push('/pricing')
+        //         // if (e.response && e.response.data) {
+        //         //     // console.log(e.response)
+        //         //     // setErrorMessage(e.response.data.message)
+        //         // }
+        //     })
+        // }
     }
 
     return (

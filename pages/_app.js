@@ -1,5 +1,8 @@
-import { useEffect,useState } from 'react'
+import Script from 'next/script'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
+import { useEffect,useState } from 'react'
+import * as gtag from '../lib/gtag'
 
 import { PopupProvider } from "react-popup-manager";
 import axios from 'axios'
@@ -15,6 +18,7 @@ import '../styles/select-search/select-search.scss'
 
 function MyApp({ Component, pageProps }) {
 
+  const router = useRouter()
   const [user, setUser] = useState()
   const [loading, setLoading] = useState(true)
 
@@ -38,11 +42,38 @@ function MyApp({ Component, pageProps }) {
   }
 
   useEffect(() => {
-      updateUser()
-}, [])
+    updateUser()
+    const handleRouteChange = (url) => {
+      gtag.pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+}, [router.events])
 
   return (
     <>
+      {/* Global Site Tag (gtag.js) - Google Analytics */}
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${gtag.GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
+
       <Head>
         <title>Happie Celebrations</title>
         <meta name="description" content="Find Wish,Celebration and Gift Ideas for all ocassions" />

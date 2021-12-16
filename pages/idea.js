@@ -3,10 +3,11 @@ import { withRouter } from 'next/router'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import ClipLoader from "react-spinners/ClipLoader"
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-import styles from '../styles/pageStyles/idea.module.scss'
+import Styles from '../styles/pageStyles/idea.module.scss'
 import Arrow from "../assets/images/arrow.png"
 import LimitedIdeas from '../components/modals/limitedIdeas'
 import SaveError from '../components/modals/saveError'
@@ -15,6 +16,7 @@ function Idea(props) {
 
     const [data, setData] = useState([])
     const [index, setIndex] = useState(0)
+    const [loading, setLoading] = useState(true)
     const [set, setSet] = useState(1)
     const [saved, setSaved] = useState([])
     const [modelState, setModelState] = useState(false)
@@ -39,17 +41,34 @@ function Idea(props) {
         }).catch((e) => {
             // console.log(e.response)
         })
+        setLoading(false)
     }
 
     const moreIdeas = () => {
+        setLoading(true)
         axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}/count?ocassion=${query.ocassion}&relation=${query.relation}&age=${query.age}&gender=${query.gender}&budget=${query.budget+10}&set=${set+1}`,
         {withCredentials:true}).then((res) => {
             // console.log(res.data)
             if(res.data.ideasCount < 25) {
-                setOutput({ count: res.data.ideasCount,query,set,setSet })
+                setOutput({ count: res.data.ideasCount,query,set,setSet,user:props.user })
                 setModelState(true)
             }else{
-                setSet(set + 1)
+                axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/payment`,{withCredentials:true}).then((res) => {
+                    // console.log(res.data)
+                    setSet(set + 1)
+                }).catch((e) => {
+                    if(props.user.currency){
+                        window.open("/payment",'_blank')
+                    }else{
+                        window.open("/pricing",'_blank')
+                    }
+                    // console.log(e.response)
+                    // console.log(e)
+                    // if (e.response && e.response.data) {
+                    //     // console.log(e.response)
+                    //     // setErrorMessage(e.response.data.message)
+                    // }
+                })
             }
         }).catch((e) => {
             // console.log(e.response)
@@ -59,6 +78,7 @@ function Idea(props) {
             //     // setErrorMessage(e.response.data.message)
             // }
         })
+        setLoading(false)
     }
 
     const save = () => {
@@ -94,8 +114,20 @@ function Idea(props) {
         fetchIdeas()
     }, [set])
 
+    if(loading) {
+        return (
+            <div className={`${Styles.container} container`}>
+                <div className="sub-container">
+                    <div className="loading">
+                        <ClipLoader color="#0677c1" loading={loading} size={50} />
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     return (
-        <div className={`${styles.container} container`}>
+        <div className={`${Styles.container} container`}>
             <LimitedIdeas modelState={modelState} setModelState={setModelState} output={output} />
             <SaveError modelState={modelState2} setModelState={setModelState2} errorTitle={saveError.title} errorMessage={saveError.message} />
             <div className="sub-container">
@@ -116,8 +148,8 @@ function Idea(props) {
                         (
                             (index == 25*set  && index > 0) ?
                             <div className="more-ideas"><a onClick={moreIdeas}>Get more ideas</a></div>   :
-                            <div className="more-ideas">More ideas are not avaliable in this catagory. you can again take a look at ideas or 
-                                <span><Link href="/"> go to homepage.</Link></span>
+                            <div className="more-ideas">More ideas are not avaliable in this catagory. you can again take a look at previous ideas or 
+                                <span style={{paddingLeft:'3px'}}><Link href="/"> go to homepage.</Link></span>
                             </div> 
                         )
                 }

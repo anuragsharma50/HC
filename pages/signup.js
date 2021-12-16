@@ -14,6 +14,7 @@ const SignUp = ({user,updateUser,loading}) => {
 
     const router = useRouter()
     const [checked, setChecked] = useState(true)
+    const [disableState, setDisableState] = useState(false)
     const [pageloading, setPageLoading] = useState(true)
 
     const handleChecked = e => {
@@ -57,7 +58,7 @@ const SignUp = ({user,updateUser,loading}) => {
 
             <SocialLogins />
 
-            <SignUpForm updateUser={updateUser} />
+            <SignUpForm updateUser={updateUser} setDisableState={setDisableState} />
 
             <div className="t-and-c">
                 <input 
@@ -72,7 +73,7 @@ const SignUp = ({user,updateUser,loading}) => {
             </div>
 
             <div className="submit">
-                <button disabled={!checked} form="signup-form" type="submit" className="submit-btn">Submit</button>
+                <button disabled={!checked} form="signup-form" type="submit" className="submit-btn" disabled={disableState}>Submit</button>
             </div>
 
             <div className="signup-link">

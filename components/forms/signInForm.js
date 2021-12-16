@@ -32,13 +32,14 @@ const SignInForm = ({user,updateUser,setDisableState}) => {
             }else{
                 router.push('/')
             }
+            setDisableState(false)
         }).catch((e) => {
             if (e.response && e.response.data) {
                 // console.log(e.response.data.message)
                 setErrorMessage(e.response.data.message)
             }
+            setDisableState(false)
         })
-        setDisableState(false)
     }
 
     return (

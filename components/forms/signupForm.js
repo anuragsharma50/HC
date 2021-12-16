@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import axios from 'axios'
 import { useRouter } from "next/router";
 
-const SignUpForm = ({updateUser}) => {
+const SignUpForm = ({updateUser,setDisableState}) => {
 
     const [errorMessage, setErrorMessage] = useState('')
     const router = useRouter()
@@ -16,6 +16,7 @@ const SignUpForm = ({updateUser}) => {
     }
     
     const onSubmit = values => {   
+        setDisableState(true)
         axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/signup`,{
             username : values.name,
             email : values.email,
@@ -29,6 +30,7 @@ const SignUpForm = ({updateUser}) => {
                 // console.log(e.response.data.message)
                 setErrorMessage(e.response.data.message)
             }
+            setDisableState(false)
         })
     }
     
