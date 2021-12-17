@@ -9,7 +9,8 @@ import Styles from './social-logins.module.scss'
 const SocialLogins = () => {
 
     const googleLogin = () => {
-        window.open(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google`, "_self");
+        window.open("/api/authGoogle", "_self");
+        // href="/api/authGoogle"
     }
 
     const facebookLogin = () => {
