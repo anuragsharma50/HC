@@ -153,11 +153,17 @@
             textarea {
                 height: 300px;
                 resize: none;
+                font-weight: normal;
             }
 
             textarea::placeholder {
                 color: #ababab;
                 font-weight: 100;
+            }
+
+            :global(.write-title){
+                font-size: 18px;
+                font-weight: 599;
             }
         }
     }
@@ -180,6 +186,14 @@
                             width: 52%;
                         }
                     }  
+                }
+
+                textarea {
+                    font-size: 16px;
+                }
+
+                :global(.write-title){
+                    font-size: 18px;
                 }
             }
         } 

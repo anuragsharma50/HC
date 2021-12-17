@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useState } from 'react'
 import SelectSearch from 'react-select-search'
 import { motion,AnimatePresence } from "framer-motion"
 import { modal,backdrop } from '../animations/modals'
@@ -7,16 +8,21 @@ import Styles from './modal.module.scss'
 
 function CurrencyModal({modelState,setModelState,user,updateUser,currency,setCurrency}) {
 
+    const [disableState, setDisableState] = useState(false)
+
     const updateCurrency = () => {
+        setDisableState(true)
         if(user){
             axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/currency`,{currency},{withCredentials:true}).then((res) => {
                 // console.log(res.data)
                 updateUser()
+                setDisableState(false)
                 setModelState(false)
             }).catch((e) => {
                 if (e.response && e.response.data) {
                     // console.log(e.response)
                 }
+                setDisableState(false)
             })
         }
         else{
@@ -56,7 +62,7 @@ function CurrencyModal({modelState,setModelState,user,updateUser,currency,setCur
                             />
                         </div>
                         <div className={Styles.modalButtons}>
-                            <button className={Styles.btn} onClick={updateCurrency}>Save</button>
+                            <button className={Styles.btn} onClick={updateCurrency} disabled={disableState}>Save</button>
                         </div>
                     </motion.div>
                 </motion.div>

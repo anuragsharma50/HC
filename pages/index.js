@@ -12,14 +12,14 @@ import CelebrationImage from '../assets/images/Celebration.png'
 import SurpriseImage from '../assets/images/Surprise.png'
 import IdeaImage from '../assets/images/idea.png'
 
-export default function Home() {
+export default function Home({user,loading}) {
 
   const router = useRouter()
 
   return (
     <div className={`${Styles.container} container`}>
 
-      <Carousel />
+      <Carousel user={user} loading={loading} />
 
       <div className={`${Styles.homeLinks} home-links`}>
         <div className={Styles.item}>

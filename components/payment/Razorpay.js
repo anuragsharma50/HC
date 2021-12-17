@@ -1,12 +1,9 @@
 import Script from 'next/script'
-import { useRouter } from "next/router"
 import { useState } from 'react'
 import axios from 'axios'
 import Styles from './razorpay.module.scss'
 
 function Razorpay({set}) {
-
-    const router = useRouter()
     const [disableState, setDisableState] = useState(false)
 
     const displayRazorpay = async () => {
@@ -21,7 +18,7 @@ function Razorpay({set}) {
                 amount: res.data.amount.toString(),
                 order_id: res.data.id,
                 name: 'Happie Celebrations Payment',
-                description: 'Thank you for using Happie celebrations, hope you get some good ideas',
+                description: "Let's make it special",
                 image: `${process.env.NEXT_PUBLIC_BACKEND_URL}/logo.png`,
                 handler: function (response) {
                     // alert(response.razorpay_payment_id)
@@ -30,20 +27,14 @@ function Razorpay({set}) {
                     // console.log(response)
                     // router.push('/')
                     window.location = '/'
-                },
-                prefill: {
-                    name: 'Aana K',
-                    email: 'sdfdsjfh2@ndsfdf.com',
-                    phone_number: '+919876543210'
                 }
             }
             const paymentObject = new window.Razorpay(options)
             paymentObject.open()
-
+            setDisableState(false)
         }).catch((err) => {
             // console.log(err)
         })
-		setDisableState(false)
 	}
 
     return (
