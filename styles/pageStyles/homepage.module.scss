@@ -4,6 +4,7 @@
 .container{
     flex-direction: column;
     justify-content: center;
+    background-size: contain;
 
     :global(.btn){
         @include button();

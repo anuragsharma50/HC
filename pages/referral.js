@@ -59,6 +59,21 @@ function Referral({user,loading}) {
         )
     }
 
+    if(user.referralcode) {
+        <div className={`${Styles.container} container`}>
+            <div className="sub-container">
+                <div className="heading">
+                    <h2>Referral</h2>
+                </div>
+
+                <h1>{user.referralCode}</h1>
+                <div className={Styles.details}>
+                    Enter your friend&apos;s referral code and you both will get one more free attempt.
+                </div>
+            </div>
+        </div>
+    }
+
     return (
         <div className={`${Styles.container} container`}>
             <div className="sub-container">

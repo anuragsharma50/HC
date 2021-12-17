@@ -30,7 +30,7 @@ function FAQ() {
   }
 
   return (
-    <div className={`${Styles.item} item`}>
+    <div className={`${Styles.item} item`} id="faq">
       <div className={Styles.faqImg}>
         <Image  src={FAQImage}  alt="FAQ" />
       </div>

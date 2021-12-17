@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from "next/router"
 import { Swiper, SwiperSlide } from "swiper/react"
 import Styles from './carousel.module.scss'
@@ -131,8 +132,8 @@ function Carousel({user,loading}) {
                     <div className={Styles.firstLook}>
                         <div style={{padding:20}} className={Styles.img}> <Image src={SocialMediaImage} alt="social media" /> </div>
                         <div className={Styles.content}>
-                        <h3>Follow us on social media to get <br /> <b> More Udpates </b></h3>
-                        <button className={`${Styles.mBtn} btn`} onClick={() => router.push('/referral')}>View All</button>
+                        <h3>Follow us on social media to get <br /> <b> More Updates </b></h3>
+                        <button className={`${Styles.mBtn} btn`} onClick={() => router.push('')}>View All</button>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -141,7 +142,9 @@ function Carousel({user,loading}) {
                         <div style={{padding:20}} className={`${Styles.img} ${Styles.squareImg}`}> <Image src={FAQImage} alt="faq" /> </div>
                         <div className={Styles.content}>
                         <h3>View FAQ to get answers to some of your <br /> <b> Questions</b></h3>
-                        <button className={`${Styles.mBtn} btn`} onClick={() => router.push('/referral')}>View FAQ</button>
+                        <Link href="#faq">
+                            <button className={`${Styles.mBtn} btn`}>View FAQ</button>
+                        </Link>
                         </div>
                     </div>
                 </SwiperSlide>

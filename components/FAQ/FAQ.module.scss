@@ -12,6 +12,7 @@
 
     :global(.faq){
         max-width: fit-content;
+        padding: 10px;
 
         :global(.faq-row-wrapper) {
             :global(.faq-title) {

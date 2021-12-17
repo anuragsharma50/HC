@@ -2,6 +2,8 @@
 
 /* base styles */
 .container{
+    background-size: contain;
+
     :global(.form-title){
         padding: 15px;
         font-size: 20px;

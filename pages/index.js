@@ -3,8 +3,8 @@ import { useRouter } from "next/router"
 
 import FAQ from '../components/FAQ/FAQ'
 import Carousel from '../components/carousel/carousel'
-import { motion } from "framer-motion"
-import menuItems from '../components/animations/raising'
+import { motion} from "framer-motion"
+// import menuItems from '../components/animations/raising'
 import Styles from '../styles/pageStyles/homepage.module.scss'
 
 import WishImage from '../assets/images/Wish.png'
@@ -24,17 +24,13 @@ export default function Home({user,loading}) {
       <div className={`${Styles.homeLinks} home-links`}>
         <div className={Styles.item}>
         <div className={Styles.img}> <Image src={WishImage} alt="idea" /> </div>
-          <motion.div 
+          <div 
             className={Styles.text}
-            variants={menuItems}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
           >
             <h3>Wish</h3>
             <p>Wish your Friends, Family, Acquintance in a way they never expect.</p>
             <button className="btn" onClick={() => router.push('/wish')}>Wish Now</button>
-          </motion.div>
+          </div>
         </div>
         <div className={Styles.item}>
         <div className={Styles.img}> <Image src={CelebrationImage} alt="Celebration" /> </div>
@@ -67,8 +63,8 @@ export default function Home({user,loading}) {
             <div className={Styles.img}> <Image src={IdeaImage} alt="surprise" /> </div>
             <div className={Styles.text}>
               <p>If you have a great idea for the celebration of any festival, wishing someone or
-                    planning a surprise gift. then you can share it with us and get Money rewards.</p>
-              <button className="btn" onClick={() => router.push('/write')}>Know more</button>
+                  planning a surprise gift. then you can share it with us and get Money rewards.</p>
+              <button className="btn" onClick={() => router.push('/details/write')}>Know more</button>
             </div>
           </div>
         </div>
