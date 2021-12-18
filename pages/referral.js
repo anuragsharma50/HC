@@ -1,4 +1,5 @@
 import { useRouter } from "next/router"
+import Head from 'next/head'
 import { useState,useEffect } from 'react'
 import Styles from '../styles/pageStyles/referral.module.scss'
 import { Formik,Form,Field,ErrorMessage} from 'formik'
@@ -75,39 +76,46 @@ function Referral({user,loading}) {
     }
 
     return (
-        <div className={`${Styles.container} container`}>
-            <div className="sub-container">
-                <div className="heading">
-                    <h2>Referral</h2>
-                </div>
-                    <Formik 
-                        initialValues={initialValues}
-                        onSubmit={onSubmit}
-                        validationSchema={validationSchema}
-                    >
-                        {props => (
-                            <Form className={Styles.referralForm}>
-                                <div className={Styles.inputs}>
-                                    <Field type="text" id="code" name="code" className={Styles.input} onChange={(e) => removeServerError(props,e)} />
-                                    <button type="submit" className={Styles.btn} disabled={disableState}>Submit</button>
-                                </div>
-                                <ErrorMessage name="code">
-                                    {
-                                        (ErrorMessage) => <span className={Styles.errorText}>{ErrorMessage}</span>
-                                    }
-                                </ErrorMessage>
-                                {
-                                    serverError && <span className={Styles.errorText}>{serverError}</span>
-                                }
-                            </Form>
-                        )}
-                    </Formik>
+        <>
+            <Head>
+                <title>Referral | Happie Celebrations</title>
+                <meta name="description" content="refer to user friend and you both will get a free idea set" />
+            </Head>
 
-                <div className={Styles.details}>
-                    Enter your friend&apos;s referral code and you both will get one more free attempt.
+            <div className={`${Styles.container} container`}>
+                <div className="sub-container">
+                    <div className="heading">
+                        <h2>Referral</h2>
+                    </div>
+                        <Formik 
+                            initialValues={initialValues}
+                            onSubmit={onSubmit}
+                            validationSchema={validationSchema}
+                        >
+                            {props => (
+                                <Form className={Styles.referralForm}>
+                                    <div className={Styles.inputs}>
+                                        <Field type="text" id="code" name="code" className={Styles.input} onChange={(e) => removeServerError(props,e)} />
+                                        <button type="submit" className={Styles.btn} disabled={disableState}>Submit</button>
+                                    </div>
+                                    <ErrorMessage name="code">
+                                        {
+                                            (ErrorMessage) => <span className={Styles.errorText}>{ErrorMessage}</span>
+                                        }
+                                    </ErrorMessage>
+                                    {
+                                        serverError && <span className={Styles.errorText}>{serverError}</span>
+                                    }
+                                </Form>
+                            )}
+                        </Formik>
+
+                    <div className={Styles.details}>
+                        Enter your friend&apos;s referral code and you both will get one more free attempt.
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

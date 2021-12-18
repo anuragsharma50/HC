@@ -1,10 +1,9 @@
 import Image from 'next/image'
 import { useRouter } from "next/router"
+import Head from 'next/head'
 
 import FAQ from '../components/FAQ/FAQ'
 import Carousel from '../components/carousel/carousel'
-import { motion} from "framer-motion"
-// import menuItems from '../components/animations/raising'
 import Styles from '../styles/pageStyles/homepage.module.scss'
 
 import WishImage from '../assets/images/Wish.png'
@@ -17,13 +16,19 @@ export default function Home({user,loading}) {
   const router = useRouter()
 
   return (
+    <>
+    <Head>
+      <title>Happie Celebrations | Find Wish,Celebration and Gift Ideas</title>
+      <meta name="description" content="Find Wish, Celebration and Gift Ideas for all occasions" />
+    </Head>
+
     <div className={`${Styles.container} container`}>
 
       <Carousel user={user} loading={loading} />
 
       <div className={`${Styles.homeLinks} home-links`}>
         <div className={Styles.item}>
-        <div className={Styles.img}> <Image src={WishImage} alt="idea" /> </div>
+        <div className={Styles.img}> <Image src={WishImage} alt="wish" width="285" height="400" /> </div>
           <div 
             className={Styles.text}
           >
@@ -73,5 +78,6 @@ export default function Home({user,loading}) {
 
       </div>
     </div>
+    </>
   )
 }

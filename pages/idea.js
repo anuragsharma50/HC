@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { withRouter } from 'next/router'
+import Head from 'next/head'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -127,55 +128,62 @@ function Idea(props) {
     }
 
     return (
-        <div className={`${Styles.container} container`}>
-            <LimitedIdeas modelState={modelState} setModelState={setModelState} output={output} />
-            <SaveError modelState={modelState2} setModelState={setModelState2} errorTitle={saveError.title} errorMessage={saveError.message} />
-            <div className="sub-container">
-                { data[index] && 
-                    <>
-                        <div className="heading">
-                            <h2>{data[index].title || <Skeleton height={30} />}</h2>
-                        </div>
+        <>
+            <Head>
+                <title>Idea Page | Happie Celebrations</title>
+                <meta name="description" content="View and save ideas" />
+            </Head>
 
-                        <div className="idea-description">
-                            {data[index].description || <Skeleton count={5} />}
-                        </div>
-                    </>
-                }
-
-                {
-                    !data[index] && 
-                        (
-                            (index == 25*set  && index > 0) ?
-                            <div className="more-ideas"><a onClick={moreIdeas}>Get more ideas</a></div>   :
-                            <div className="more-ideas">More ideas are not avaliable in this catagory. you can again take a look at previous ideas or 
-                                <span style={{paddingLeft:'3px'}}><Link href="/"> go to homepage.</Link></span>
-                            </div> 
-                        )
-                }
-
-                <div className="idea-buttons">
-                    <button className="sec-btn btn" onClick={() => setIndex(index - 1)} disabled={index == 0}>
-                        <div className="img reverse">
-                            <Image src={Arrow} alt="arrow" /> 
-                        </div>
-                        <span>Previous</span>
-                    </button>
-                    {
-                        data[index] && 
+            <div className={`${Styles.container} container`}>
+                <LimitedIdeas modelState={modelState} setModelState={setModelState} output={output} />
+                <SaveError modelState={modelState2} setModelState={setModelState2} errorTitle={saveError.title} errorMessage={saveError.message} />
+                <div className="sub-container">
+                    { data[index] && 
                         <>
-                            <button disabled={saved.includes(index)} className="btn" onClick={save}>Save</button>
-                            <button className="sec-btn btn" onClick={() => setIndex(index + 1)}>
-                                <span>Next</span>
-                                <div className="img">
-                                    <Image src={Arrow} alt="arrow" />
-                                </div>
-                            </button>
+                            <div className="heading">
+                                <h2>{data[index].title || <Skeleton height={30} />}</h2>
+                            </div>
+
+                            <span className="idea-description">
+                                {data[index].description || <Skeleton count={5} />}
+                            </span>
                         </>
                     }
+
+                    {
+                        !data[index] && 
+                            (
+                                (index == 25*set  && index > 0) ?
+                                <div className="more-ideas"><a onClick={moreIdeas}>Get more ideas</a></div>   :
+                                <div className="more-ideas"><div>More ideas are not avaliable in this catagory. you can again take a look at previous ideas or 
+                                    <span style={{paddingLeft:'3px'}}><Link href="/"> go to homepage.</Link></span></div>
+                                </div> 
+                            )
+                    }
+
+                    <div className="idea-buttons">
+                        <button className="sec-btn btn" onClick={() => setIndex(index - 1)} disabled={index == 0}>
+                            <div className="img reverse">
+                                <Image src={Arrow} alt="arrow" /> 
+                            </div>
+                            <span>Previous</span>
+                        </button>
+                        {
+                            data[index] && 
+                            <>
+                                <button disabled={saved.includes(index)} className="btn" onClick={save}>Save</button>
+                                <button className="sec-btn btn" onClick={() => setIndex(index + 1)}>
+                                    <span>Next</span>
+                                    <div className="img">
+                                        <Image src={Arrow} alt="arrow" />
+                                    </div>
+                                </button>
+                            </>
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useState } from 'react'
 import WriteForm from '../components/forms/writeForm'
 import IdeaSubmitted from '../components/modals/ideaSubmitted'
@@ -11,6 +12,11 @@ function Idea({user}) {
 
     return (
         <>
+            <Head>
+                <title>Write Ideas | Happie Celebrations</title>
+                <meta name="description" content="write ideas and earn money" />
+            </Head>
+
             <IdeaSubmitted modelState={modelState} setModelState={setModelState} />
             <div className={`${styles.container} ${styles2.container} container`}>
                 <div className="form">

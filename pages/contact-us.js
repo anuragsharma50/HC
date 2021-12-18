@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import Head from 'next/head'
 import { useState } from 'react'
 import { motion } from "framer-motion"
 import menuItems from '../components/animations/raising'
@@ -19,6 +20,11 @@ function ContactUs({user}) {
 
     return (
         <>
+            <Head>
+                <title>Contact Us | Happie Celebrations</title>
+                <meta name="description" content="Contact us to get your issue fixed" />
+            </Head>
+        
             {/* <LimitedIdeas modelState={modelState} setModelState={setModelState} output={output} /> */}
             <motion.div 
                 className={`${styles.container} container`}

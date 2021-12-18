@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Head from 'next/head'
 import { useRouter } from "next/router"
 import { useState } from 'react'
 import { motion } from "framer-motion"
@@ -22,6 +23,11 @@ function Wish({user}) {
 
     return (
         <>
+            <Head>
+                <title>Find Wishes | Happie Celebrations</title>
+                <meta name="description" content="Find birthday, new year wishes" />
+            </Head>
+
             <LimitedIdeas modelState={modelState} setModelState={setModelState} output={output} />
             <motion.div 
                 className={`${styles.container} container`}

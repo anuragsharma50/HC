@@ -1,4 +1,5 @@
 import { useRouter } from "next/router"
+import Head from 'next/head'
 import Image from 'next/image'
 import axios from 'axios'
 import { useEffect } from 'react'
@@ -25,16 +26,23 @@ function Success() {
     }, [])
 
     return (
-        <div className={`${Styles.container} container`}>
-            <div className="sub-container">
-                <div className={Styles.imageContainer}>
-                    <Image width={200} height={200} src={SuccessImage} />
+        <>
+            <Head>
+                <title>Payment Successful | Happie Celebrations</title>
+                <meta name="description" content="Thank you, hope you find some good ideas" />
+            </Head>
+
+            <div className={`${Styles.container} container`}>
+                <div className="sub-container">
+                    <div className={Styles.imageContainer}>
+                        <Image width={200} height={200} src={SuccessImage} />
+                    </div>
+                    <h2>Payment Successful</h2>
+                    <br />
+                    <p>Page will automatically close in few seconds</p>
                 </div>
-                <h2>Payment Successful</h2>
-                <br />
-                <p>Page will automatically close in few seconds</p>
             </div>
-        </div>
+        </>
     )
 }
 

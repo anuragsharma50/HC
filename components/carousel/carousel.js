@@ -32,25 +32,14 @@ function Carousel({user,loading}) {
         <>
             <Swiper 
                 pagination={{ "dynamicBullets": true }} 
-                loop={true} autoplay={{ "delay": 30000, "disableOnInteraction": false  }} 
+                loop={true} autoplay={{ "delay": 5000, "disableOnInteraction": false  }} 
                 className="mySwiper"
             >
-                { !user && !loading &&
-                    <SwiperSlide>
-                        <div className={Styles.firstLook}>
-                            <div className={Styles.img}> <Image src={GiftImage} alt="Gift on the way" /> </div>
-                            <div className={Styles.content}>
-                            <h3>SignUp to get your First set of ideas for <br /> <b>Absolutely free</b></h3>
-                            <button className={`${Styles.mBtn} btn`} onClick={() => router.push('/signup')}>SignUp Now</button>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                }
                 {
                     !loading && user && user.referral ?
                     <SwiperSlide>
                         <div className={Styles.firstLook}>
-                            <div className={`${Styles.img} ${Styles.squareImg}`}> <Image src={YTImage} alt="youtube video" /> </div>
+                            <div className={`${Styles.img} ${Styles.squareImg}`}> <Image src={YTImage} alt="youtube video" priority /> </div>
                             <div className={Styles.content}>
                             <h3>Watch videos on youtube to know more about <br/> <b>Happie Celebrations</b></h3>
                             <button className={`${Styles.mBtn} btn`} onClick={() => window.open("https://youtube.com",'_blank')}>Watch Now</button>
@@ -62,10 +51,21 @@ function Carousel({user,loading}) {
 
                     <SwiperSlide>
                         <div className={Styles.firstLook}>
-                            <div className={`${Styles.img} ${Styles.squareImg}`}> <Image src={YTImage} alt="youtube video" /> </div>
+                            <div className={`${Styles.img} ${Styles.squareImg}`}> <Image src={YTImage} alt="youtube video" priority /> </div>
                             <div className={Styles.content}>
                             <h3>What is <br/> <b>Happie Celebrations ?</b></h3>
                             <button className={`${Styles.mBtn} btn`} onClick={() => window.open("https://youtube.com",'_blank')}>Watch Now</button>
+                            </div>
+                        </div>
+                    </SwiperSlide>
+                }
+                { !user && !loading &&
+                    <SwiperSlide>
+                        <div className={Styles.firstLook}>
+                            <div className={Styles.img}> <Image src={GiftImage} alt="Gift on the way" priority /> </div>
+                            <div className={Styles.content}>
+                            <h3>SignUp to get your First set of ideas for <br /> <b>Absolutely free</b></h3>
+                            <button className={`${Styles.mBtn} btn`} onClick={() => router.push('/signup')}>SignUp Now</button>
                             </div>
                         </div>
                     </SwiperSlide>
@@ -86,7 +86,7 @@ function Carousel({user,loading}) {
                         <div className={Styles.firstLook}>
                             <div className={`${Styles.img} ${Styles.squareImg}`}> <Image src={ShareImage} alt="share" /> </div>
                             <div className={Styles.content}>
-                            <h3>Use referal code of your friend and both <br /> of you will get <b>One more free idea</b></h3>
+                            <h3>Complete your first payment to <br /> activate your <b>Referral Code</b></h3>
                             <button className={`${Styles.mBtn} btn`} onClick={() => router.push('/referral')}>Enter code</button>
                             </div>
                         </div>

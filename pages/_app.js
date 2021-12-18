@@ -75,8 +75,9 @@ function MyApp({ Component, pageProps }) {
       />
 
       <Head>
-        <title>Happie Celebrations</title>
-        <meta name="description" content="Find Wish,Celebration and Gift Ideas for all ocassions" />
+        <html lang="en-us" />
+        <title>Happie Celebrations | Find Wish,Celebration and Gift Ideas</title>
+        <meta name="description" content="Find Wish, Celebration and Gift Ideas for all occasions" />
         <link rel="icon" href="/mini-logo.png" />
       </Head>
 

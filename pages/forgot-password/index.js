@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import Head from 'next/head'
 import { useState } from 'react'
 import { Formik,Form,Field,ErrorMessage} from 'formik'
 import * as Yup from 'yup'
@@ -40,57 +41,64 @@ function ForgotPassword() {
     }
 
     return (
-        <div className={`${Styles.container} container`}>
-            <div className="sub-container">
-                <div className={Styles.image}>
-                    <Image src={Logo} alt="happie celebrations" />
-                </div>
-                <div className={Styles.card}>
-                    <div className={Styles.cardDetails}>
-                        Enter the email address associated with your account and we will send you a link to 
-                        reset your password.
+        <>
+            <Head>
+                <title>Forget Page | Happie Celebrations</title>
+                <meta name="description" content="forget password, no worries" />
+            </Head>
+
+            <div className={`${Styles.container} container`}>
+                <div className="sub-container">
+                    <div className={Styles.image}>
+                        <Image src={Logo} alt="happie celebrations" />
                     </div>
+                    <div className={Styles.card}>
+                        <div className={Styles.cardDetails}>
+                            Enter the email address associated with your account and we will send you a link to 
+                            reset your password.
+                        </div>
 
-                    <Formik 
-                        initialValues={initialValues}
-                        onSubmit={onSubmit}
-                        validationSchema={validationSchema}
-                    >
-                        {
-                            props => (
-                                <Form className={`${Styles.formInput} form-input`}>
-                                    <label htmlFor="email">Email</label>
-                                    <Field type="text" id="email" name="email" onChange={(e) => removeServerError(props,e)} />
-                                    {
-                                        !errorMessage ?
-                                            
-                                            <ErrorMessage name="email">
-                                                {
-                                                    (ErrorMessage) => <span className="error-text">{ErrorMessage}</span>
-                                                }
-                                            </ErrorMessage>
-
-                                        :
-
-                                            <span className="error-text">{errorMessage}</span>
-                                    }
-                                    {/* <ErrorMessage name="email">
+                        <Formik 
+                            initialValues={initialValues}
+                            onSubmit={onSubmit}
+                            validationSchema={validationSchema}
+                        >
+                            {
+                                props => (
+                                    <Form className={`${Styles.formInput} form-input`}>
+                                        <label htmlFor="email">Email</label>
+                                        <Field type="text" id="email" name="email" onChange={(e) => removeServerError(props,e)} />
                                         {
-                                            (ErrorMessage) => <span className="error-text">{ErrorMessage}</span>
+                                            !errorMessage ?
+                                                
+                                                <ErrorMessage name="email">
+                                                    {
+                                                        (ErrorMessage) => <span className="error-text">{ErrorMessage}</span>
+                                                    }
+                                                </ErrorMessage>
+
+                                            :
+
+                                                <span className="error-text">{errorMessage}</span>
                                         }
-                                    </ErrorMessage>
-                                    <span className="error-text">{errorMessage}</span> */}
-                                    <button className={Styles.btn} type="submit">Submit</button>
-                                </Form>
-                            )
-                        }
-                    </Formik>
-                </div>
-                <div>
-                    Don&apos;t have an account? <Link href="/signup">Sign up</Link>
+                                        {/* <ErrorMessage name="email">
+                                            {
+                                                (ErrorMessage) => <span className="error-text">{ErrorMessage}</span>
+                                            }
+                                        </ErrorMessage>
+                                        <span className="error-text">{errorMessage}</span> */}
+                                        <button className={Styles.btn} type="submit">Submit</button>
+                                    </Form>
+                                )
+                            }
+                        </Formik>
+                    </div>
+                    <div>
+                        Don&apos;t have an account? <Link href="/signup">Sign up</Link>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

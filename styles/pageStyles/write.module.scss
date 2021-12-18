@@ -7,7 +7,7 @@
     :global(.form-title){
         padding: 15px;
         font-size: 20px;
-        font-family: 'Helverica Bold';
+        font-family: 'Roboto';
     }
 
     :global(.form){
@@ -166,6 +166,14 @@
             :global(.write-title){
                 font-size: 18px;
                 font-weight: 599;
+            }
+        }
+
+        :global(.submit){
+            padding: 10px;
+
+            :global(.submit-btn){
+                margin: 10px;
             }
         }
     }

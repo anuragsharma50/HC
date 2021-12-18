@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { useRouter } from "next/router"
+import Head from 'next/head'
 import { useState } from 'react'
 import IdeaForm from '../components/forms/ideaForm'
 import { motion } from "framer-motion"
@@ -21,6 +22,11 @@ function Celebration({user}) {
 
     return (
         <>
+            <Head>
+                <title>Get Celebration Ideas | Happie Celebrations</title>
+                <meta name="description" content="celebration ideas based on relation and ocassion" />
+            </Head>
+
             <LimitedIdeas modelState={modelState} setModelState={setModelState} output={output} />
             <motion.div 
                 className={`${Styles.container} container`}

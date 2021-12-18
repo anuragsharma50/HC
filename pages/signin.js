@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from "next/router"
 import { useEffect,useState } from 'react'
@@ -40,37 +41,44 @@ function SignIn({updateUser,user,loading}) {
     }
 
     return (
-        <div className={`${styles.container} container`}>
-            <div className="image">
-                <Image src={LoginImage} alt="girl showing laptop" />
+        <>
+            <Head>
+                <title>Sign In | Happie Celebrations</title>
+                <meta name="description" content="SignIn to find and write ideas" />
+            </Head>
+
+            <div className={`${styles.container} container`}>
+                <div className="image">
+                    <Image src={LoginImage} alt="girl showing laptop" />
+                </div>
+
+            <div className="form">
+                <div className="heading">
+                    <h2>Sign In</h2>
+                </div>
+
+                <SocialLogins />
+
+                <SignInForm user={user} updateUser={updateUser} setDisableState={setDisableState} />
+
+                <div className="reset-password">
+                    <Link href="/forgot-password">Forgot Password?</Link>
+                </div>
+
+                <div className="submit">
+                    <button form="signin-form" type="submit" className="submit-btn" disabled={disableState}>Submit</button>
+                </div>
+
+                <div className="signup-link">
+                    <p>Don’t have an account yet? </p>
+                    <Link href="/signup">
+                        <a>Create New Account</a>
+                    </Link>
+                </div>
+
             </div>
-
-        <div className="form">
-            <div className="heading">
-                <h2>Sign In</h2>
-            </div>
-
-            <SocialLogins />
-
-            <SignInForm user={user} updateUser={updateUser} setDisableState={setDisableState} />
-
-            <div className="reset-password">
-                <Link href="/forgot-password">Forgot Password?</Link>
-            </div>
-
-            <div className="submit">
-                <button form="signin-form" type="submit" className="submit-btn" disabled={disableState}>Submit</button>
-            </div>
-
-            <div className="signup-link">
-                <p>Don’t have an account yet? </p>
-                <Link href="/signup">
-                    <a>Create New Account</a>
-                </Link>
-            </div>
-
         </div>
-    </div>
+    </>
     )
 }
 

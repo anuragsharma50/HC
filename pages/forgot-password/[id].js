@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { useRouter } from "next/router"
+import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
 import { Formik,Form,Field,ErrorMessage} from 'formik'
@@ -45,47 +46,54 @@ const User = () => {
     }
 
     return (
-        <div className={`${Styles.container} container`}>
-        <div className="sub-container">
-            <div className={Styles.image}>
-                <Image src={Logo}  alt="Happie Celebrations" />
-            </div>
-            <div className={Styles.card}>
-                <div className={Styles.cardDetails}>
-                    Please Enter a password
-                </div>
+        <>
+            <Head>
+                <title>Create new password | Happie Celebrations</title>
+                <meta name="description" content="create new password to login again" />
+            </Head>
 
-                <Formik 
-                    initialValues={initialValues}
-                    onSubmit={onSubmit}
-                    validationSchema={validationSchema}
-                >
-                    {
-                        props => (
-                            <Form className={`${Styles.formInput} form-input`}>
-                                <label htmlFor="password">Password</label>
-                                <Field type="password" id="password" name="password" placeholder="Password" onChange={(e) => removeServerError(props,e)} />
-                                {
-                                    errorMessage ?
-                                        <span className="error-text">{errorMessage}</span>
-                                    :
-                                        <ErrorMessage name="password">
-                                            {
-                                                (ErrorMessage) => <span className="error-text">{ErrorMessage}</span>
-                                            }
-                                        </ErrorMessage>
-                                }
-                                <button className={Styles.btn} type="submit">Submit</button>
-                            </Form>
-                        )
-                    }
-                </Formik>
-            </div>
-            <div>
-                Remember your password? <Link href="/signin">Sign in</Link>
+            <div className={`${Styles.container} container`}>
+            <div className="sub-container">
+                <div className={Styles.image}>
+                    <Image src={Logo}  alt="Happie Celebrations" />
+                </div>
+                <div className={Styles.card}>
+                    <div className={Styles.cardDetails}>
+                        Please Enter a password
+                    </div>
+
+                    <Formik 
+                        initialValues={initialValues}
+                        onSubmit={onSubmit}
+                        validationSchema={validationSchema}
+                    >
+                        {
+                            props => (
+                                <Form className={`${Styles.formInput} form-input`}>
+                                    <label htmlFor="password">Password</label>
+                                    <Field type="password" id="password" name="password" placeholder="Password" onChange={(e) => removeServerError(props,e)} />
+                                    {
+                                        errorMessage ?
+                                            <span className="error-text">{errorMessage}</span>
+                                        :
+                                            <ErrorMessage name="password">
+                                                {
+                                                    (ErrorMessage) => <span className="error-text">{ErrorMessage}</span>
+                                                }
+                                            </ErrorMessage>
+                                    }
+                                    <button className={Styles.btn} type="submit">Submit</button>
+                                </Form>
+                            )
+                        }
+                    </Formik>
+                </div>
+                <div>
+                    Remember your password? <Link href="/signin">Sign in</Link>
+                </div>
             </div>
         </div>
-    </div>
+    </>
     )
 }
 

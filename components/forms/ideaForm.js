@@ -5,15 +5,13 @@ import SelectSearch from 'react-select-search';
 import axios from 'axios'
 
 import Styles from './idea.module.scss'
-import { useState } from 'react';
-import LimitedIdeas from '../modals/limitedIdeas';
 
 function IdeaForm({from,user,setDisableState,setModelState,setOutput}) {
 
     const router = useRouter()
 
     const initialValues = {
-        budget: 0,
+        budget: from === 'wish' ? 50 : 10,
         relation: 'friend',
         age: '',
         ocassion: 'birthday',

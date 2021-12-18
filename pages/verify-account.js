@@ -1,4 +1,5 @@
 import { useRouter } from "next/router"
+import Head from 'next/head'
 import OtpInput from 'react-otp-input'
 import { useState,useEffect } from 'react'
 import Countdown from 'react-countdown'
@@ -64,33 +65,40 @@ function OTP({user,updateUser}) {
     };
 
     return (
-        <div className={`${Styles.container} container`}>
-            <div className="sub-container">
-                <div className="heading">
-                    <h2>Email Verification</h2>
-                </div>
+        <>
+            <Head>
+                <title>Verify Account | Happie Celebrations</title>
+                <meta name="description" content="verify account to get access" />
+            </Head>
 
-                <div className={Styles.otpcontent}>
-                    <h4>Please check your Email for verification code</h4>
-                    <OtpInput
-                        className={Styles.OtpContainer}
-                        inputStyle={Styles.inputStyle}
-                        value={otp}
-                        onChange={handleChange}
-                        numInputs={6}
-                        // hasErrored={isServerError}
-                        isInputNum={true}
-                        shouldAutoFocus={true}
-                    />
-                    <div className={Styles.error}>{serverError}</div>
-                    <button onClick={submitOTP} className={Styles.btn}>Submit</button>
-                </div>
-                <div className={Styles.resendText}>
-                    <span>Didn&apos;t recieve any code? </span>
-                    <Countdown key={timeIndex} date={date} renderer={renderer} />
+            <div className={`${Styles.container} container`}>
+                <div className="sub-container">
+                    <div className="heading">
+                        <h2>Email Verification</h2>
+                    </div>
+
+                    <div className={Styles.otpcontent}>
+                        <h4>Please check your Email for verification code</h4>
+                        <OtpInput
+                            className={Styles.OtpContainer}
+                            inputStyle={Styles.inputStyle}
+                            value={otp}
+                            onChange={handleChange}
+                            numInputs={6}
+                            // hasErrored={isServerError}
+                            isInputNum={true}
+                            shouldAutoFocus={true}
+                        />
+                        <div className={Styles.error}>{serverError}</div>
+                        <button onClick={submitOTP} className={Styles.btn}>Submit</button>
+                    </div>
+                    <div className={Styles.resendText}>
+                        <span>Didn&apos;t recieve any code? </span>
+                        <Countdown key={timeIndex} date={date} renderer={renderer} />
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

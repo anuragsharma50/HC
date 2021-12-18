@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from "next/router"
 import { useState,useEffect } from 'react'
@@ -46,45 +47,52 @@ const SignUp = ({user,updateUser,loading}) => {
     }
 
     return (
-        <div className={`${styles.container} container`}>
-            <div className="image">
-                <Image src={DancingImage} alt="dancing" />
+        <>
+            <Head>
+                <title>Sign Up | Happie Celebrations</title>
+                <meta name="description" content="SignUp to get a free idea" />
+            </Head>
+             
+            <div className={`${styles.container} container`}>
+                <div className="image">
+                    <Image src={DancingImage} alt="dancing" />
+                </div>
+
+            <div className="form">
+                <div className="heading">
+                    <h2>SignUp</h2>
+                </div>
+
+                <SocialLogins />
+
+                <SignUpForm updateUser={updateUser} setDisableState={setDisableState} />
+
+                <div className="t-and-c">
+                    <input 
+                        defaultChecked
+                        onClick={e => handleChecked(e)} 
+                        type="checkbox" name="tc-checkbox" 
+                        value="tc-checkbox" 
+                        className="tc-checkbox" 
+                    />
+                    <label htmlFor="tc-checkbox">I agree with</label>
+                    <a href="">Terms and conditions</a>
+                </div>
+
+                <div className="submit">
+                    <button disabled={!checked || disableState} form="signup-form" type="submit" className="submit-btn">Submit</button>
+                </div>
+
+                <div className="signup-link">
+                    <p>Already have an account?</p>            
+                    <Link href="/signin">
+                        <a>Login</a>
+                    </Link>
+                </div>
+
             </div>
-
-        <div className="form">
-            <div className="heading">
-                <h2>SignUp</h2>
-            </div>
-
-            <SocialLogins />
-
-            <SignUpForm updateUser={updateUser} setDisableState={setDisableState} />
-
-            <div className="t-and-c">
-                <input 
-                    defaultChecked
-                    onClick={e => handleChecked(e)} 
-                    type="checkbox" name="tc-checkbox" 
-                    value="tc-checkbox" 
-                    className="tc-checkbox" 
-                />
-                <label htmlFor="tc-checkbox">I agree with</label>
-                <a href="">Terms and conditions</a>
-            </div>
-
-            <div className="submit">
-                <button disabled={!checked || disableState} form="signup-form" type="submit" className="submit-btn">Submit</button>
-            </div>
-
-            <div className="signup-link">
-                <p>Already have an account?</p>            
-                <Link href="/signin">
-                    <a>Login</a>
-                </Link>
-            </div>
-
         </div>
-    </div>
+    </>
     )
 }
 

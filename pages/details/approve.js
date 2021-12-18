@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Head from 'next/head'
 import { useRouter } from "next/router"
 import axios from 'axios'
 import { Formik,Form,Field,ErrorMessage} from 'formik'
@@ -76,47 +77,54 @@ function Approve({user}) {
     }, [])
 
     return (
-        <div className={`${Styles.container} container`}>
-            { status === 'User not found' ?
-                <div className={Styles.firstLook}>
-                    <div className={Styles.img}> <Image src={GiftImage} alt="approver" /> </div>
-                    <div className={Styles.content}>
-                    <h3>Become an approver</h3>
-                    <button onClick={becomeApprover} className={`${Styles.mBtn} btn`}>Click here</button>
-                    </div>
-                </div>
+        <>
+            <Head>
+                <title>Approve Instruction | Happie Celebrations</title>
+                <meta name="description" content="Instructions for approving ideas" />
+            </Head>
 
-                :
-                
-                <div className="sub-container">
-                    <div className="heading">
-                        <h2>Secret Code</h2>
+            <div className={`${Styles.container} container`}>
+                { status === 'User not found' ?
+                    <div className={Styles.firstLook}>
+                        <div className={Styles.img}> <Image src={GiftImage} alt="approver" /> </div>
+                        <div className={Styles.content}>
+                        <h3>Become an approver</h3>
+                        <button onClick={becomeApprover} className={`${Styles.mBtn} btn`}>Click here</button>
+                        </div>
                     </div>
-                    <Formik 
-                        initialValues={initialValues}
-                        onSubmit={onSubmit}
-                        validationSchema={validationSchema}
-                    >
-                        {props => (
-                            <Form className={Styles.referralForm}>
-                                <div className={Styles.inputs}>
-                                    <Field type="text" id="code" name="code" className={Styles.input} onChange={(e) => removeServerError(props,e)} />
-                                    <button type="submit" className={Styles.btn}>Submit</button>
-                                </div>
-                                <ErrorMessage name="code">
+
+                    :
+                    
+                    <div className="sub-container">
+                        <div className="heading">
+                            <h2>Secret Code</h2>
+                        </div>
+                        <Formik 
+                            initialValues={initialValues}
+                            onSubmit={onSubmit}
+                            validationSchema={validationSchema}
+                        >
+                            {props => (
+                                <Form className={Styles.referralForm}>
+                                    <div className={Styles.inputs}>
+                                        <Field type="text" id="code" name="code" className={Styles.input} onChange={(e) => removeServerError(props,e)} />
+                                        <button type="submit" className={Styles.btn}>Submit</button>
+                                    </div>
+                                    <ErrorMessage name="code">
+                                        {
+                                            (ErrorMessage) => <span className={Styles.errorText}>{ErrorMessage}</span>
+                                        }
+                                    </ErrorMessage>
                                     {
-                                        (ErrorMessage) => <span className={Styles.errorText}>{ErrorMessage}</span>
+                                        serverError && <span className={Styles.errorText}>{serverError}</span>
                                     }
-                                </ErrorMessage>
-                                {
-                                    serverError && <span className={Styles.errorText}>{serverError}</span>
-                                }
-                            </Form>
-                        )}
-                    </Formik>
-                </div>
-            }
-        </div>
+                                </Form>
+                            )}
+                        </Formik>
+                    </div>
+                }
+            </div>
+        </>
     )
 }
 
