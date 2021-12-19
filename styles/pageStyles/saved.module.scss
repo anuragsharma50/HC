@@ -10,6 +10,7 @@
         @include display-flex();
         height: 85vh;
         flex-direction: column;
+        background: #ffffffad;
     }
 
     .bottomHeader {
@@ -45,6 +46,7 @@
             max-width: none;
             font-family: 'Roboto';
             margin: 0px;
+            font-weight: 599;
         }
 
         .headingSkeleton {
@@ -100,8 +102,9 @@
         padding: 10px;
         min-height: 55vh;
         text-align: justify;
-        font-size: 14px;
+        font-size: 15px;
         width: 100%;
         background-color: #ffffffb0;
+        white-space: pre-line;
     }
 }

@@ -8,6 +8,7 @@ function DeleteAccount() {
                 <title>Delete Account | Happie Celebrations</title>
                 <meta name="description" content="Instrutions to delete account" />
             </Head>
+            
             <div className="container">
                 <div className="sub-container">
                     <div className="heading">

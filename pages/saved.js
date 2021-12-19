@@ -88,7 +88,7 @@ function Saved({loading,user}) {
                                         <Image src={TrashIcon} alt="delete" />
                                     </div>
                                 </div>
-                                <div className={Styles.ideaDescription}>{item.description}</div>
+                                <span className={Styles.ideaDescription}>{item.description}</span>
                             </div>
                         ))
 

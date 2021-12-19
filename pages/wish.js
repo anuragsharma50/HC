@@ -43,7 +43,7 @@ function Wish({user}) {
                 </div>
 
                 <div className="form">
-                    <div className="info"><a onClick={() => router.push('/explain/wish')}>Click here</a> to understand how to choose budget</div>
+                    <div className="info"><a onClick={() => router.push('/details/budget')}>Click here</a> to understand how to choose budget</div>
                     <div className="heading">
                         <h2>Wish</h2>
                     </div>

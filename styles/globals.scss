@@ -43,6 +43,7 @@ body{
         margin-top: 50px;
         min-height: 90vh;
         width: 100%;
+        background-color: #ffffffad;
     }
 
 
@@ -263,6 +264,7 @@ body{
 
 @font-face {
     font-family: 'Raleway Regular';
+    font-display: swap;
     src: url('../assets/fonts/raleway-v22-latin-regular.eot'); /* IE9 Compat Modes */
     src: local(''),
         url('../assets/fonts/raleway-v22-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -277,6 +279,7 @@ body{
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
+    font-display: swap;
     src: url('../assets/fonts/roboto-v29-latin-700.eot'); /* IE9 Compat Modes */
     src: local(''),
         url('../assets/fonts/roboto-v29-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */

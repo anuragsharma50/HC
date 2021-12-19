@@ -40,7 +40,7 @@ function Celebration({user}) {
                 </div>
 
                 <div className="form">
-                    <div className="info"><a onClick={() => router.push('/explain/celebrations')}>Click here</a> to understand how to choose budget</div>
+                    <div className="info"><a onClick={() => router.push('/details/budget')}>Click here</a> to understand how to choose budget</div>
                     <div className="heading">
                         <h2>Celebrate</h2>
                     </div>

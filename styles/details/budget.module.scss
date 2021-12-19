@@ -1,0 +1,25 @@
+@import '../commons.scss';
+
+.container {
+    .item {
+        padding: 20px;
+        line-height: 24px;
+
+        h3{
+            text-align: center;
+            font-size: 24px;
+            font-family: 'Roboto';
+        }
+
+        .img{
+            border: 1px solid #576272;
+            margin: 10px 0px;
+            padding: 5px 5px 0px 5px;
+        }
+
+        .text{
+            font-variant: lining-nums;
+            font-size: 18px;
+        }
+    }
+}
