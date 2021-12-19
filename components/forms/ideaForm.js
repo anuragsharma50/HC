@@ -110,13 +110,25 @@ function IdeaForm({from,user,setDisableState,setModelState,setOutput}) {
                                 placeholder="Select Relation"
                                 options={[
                                     { value: 'friend', name: 'Friend' },
-                                    { value: 'husband', name: 'Husband' },
-                                    { value: 'teacher', name: 'Teacher' },
-                                    { value: 'grandfather', name: 'Grandfather' },
-                                    { value: 'brother', name: 'Brother' },
-                                    { value: 'father', name: 'Father' },
-                                    { value: 'mother', name: 'Mother' },
-                                    { value: 'sister', name: 'Sister' },
+                                        { value: 'father', name: 'Father' },
+                                        { value: 'mother', name: 'Mother' },
+                                        { value: 'sister', name: 'Sister' },
+                                        { value: 'brother', name: 'Brother' },
+                                        { value: 'son', name: 'Son' },
+                                        { value: 'daughter', name: 'Daughter' },
+                                        { value: 'cousin', name: 'Cousin' },
+                                        { value: 'grandmother', name: 'GrandMother' },
+                                        { value: 'grandfather', name: 'Grandfather' },
+                                        { value: 'grandson', name: 'Grandson' },
+                                        { value: 'granddaughter', name: 'Granddaughter' },
+                                        { value: 'aunt', name: 'Aunt' },
+                                        { value: 'uncle', name: 'Uncle' },
+                                        { value: 'teacher', name: 'Teacher' },
+                                        { value: 'boyfriend', name: 'Boyfriend' },
+                                        { value: 'girlfriend', name: 'Girlfriend' },
+                                        { value: 'husband', name: 'Husband' },
+                                        { value: 'wife', name: 'Wife' },
+                                        { value: 'crush', name: 'Crush' },
                                 ]}
                                 value={props.values.relation}
                                 onChange={(e) => props.setFieldValue('relation', e)}
@@ -148,6 +160,10 @@ function IdeaForm({from,user,setDisableState,setModelState,setOutput}) {
                                 { value: 'new year', name: 'New Year' },
                                 { value: 'birthday', name: 'Birthday' },
                                 { value: 'christmas', name: 'Christmas' },
+                                { value: 'marriage anniversary', name: 'Marriage Anniversary' },
+                                { value: "valentine's day", name: "Valentine's Day" },
+                                { value: "propose", name: "Propose" },
+                                { value: "propose-marriage", name: "Propose - Marriage" },
                             ]}
                             value={props.values.ocassion}
                             onChange={(e) => props.setFieldValue('ocassion', e)}

@@ -39,7 +39,7 @@ function Approve() {
                 setServerError(e.response.data.error)
             }
         })
-        window.scrollTo({top:0,left:0,behaviour: 'smooth'})
+        // window.scrollTo({top:0,left:0,behaviour: 'smooth'})
     }
 
     const rejectIdea = () => {
@@ -141,13 +141,13 @@ function Approve() {
                             <div className={Styles.value}>
                                 <h5>Relation</h5>
                                 <div className={Styles.multiple}>
-                                    <p>Grandfather</p>
+                                    <p>{data && data.relation && data.relation.toString()}</p>
                                 </div>
                             </div>
                             <div className={Styles.value}>
                                 <h5>Ocassion</h5>
                                 <div className={Styles.multiple}>
-                                    <p>New Year</p>
+                                    <p>{data && data.ocassion && data.ocassion.toString()}</p>
                                 </div>
                             </div>
                         </div>
@@ -156,9 +156,9 @@ function Approve() {
                             <h2>{data.title || <Skeleton height={40} />}</h2>
                         </div>
 
-                        <div className="idea-description">
+                        <span className="idea-description">
                             {data.description || <Skeleton count={5} />}
-                        </div>
+                        </span>
                         {/* <div className="nocopy"></div> */}
 
                         {
