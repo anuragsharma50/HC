@@ -20,7 +20,7 @@ function LimitedIdeas({modelState,setModelState,output,user}) {
                 query: { ...output.values, from: output.from }})
             }
         }).catch((e) => {
-            if(user.currency){
+            if(user && user.currency){
                 window.open("/payment",'_blank')
             }else{
                 window.open("/pricing",'_blank')
