@@ -145,7 +145,7 @@ function Header({user,updateUser,loading}) {
 
             {/* Mobile Menu */}
             {
-                menuState && <Menu setMenuState={setMenuState} user={user} setModelState={setModelState} />
+                menuState && <Menu setMenuState={setMenuState} user={user} setModelState={setModelState} initials={initials} />
             }
 
             {/* Logout Modal */}

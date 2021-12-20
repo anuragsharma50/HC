@@ -12,7 +12,7 @@ import SurpriseBox from '../../assets/images/surprise-box.png'
 import Writing from '../../assets/images/writing.png'
 import Money from '../../assets/images/money.png'
 
-function Menu({user,setMenuState,setModelState}) {
+function Menu({user,setMenuState,setModelState,initials}) {
 
     const router = useRouter()
     const [showTippy, setShowTippy] = useState(false)
@@ -85,13 +85,20 @@ function Menu({user,setMenuState,setModelState}) {
                         <button onClick={() => navigate('signup')} className="btn">Sign Up</button>
                     </>
                     :
+                    <>
+                    { user.unverified &&
+                        // <div className="nav-buttons">
+                            <button onClick={() => navigate('verify-account')} className="btn">Verify Account</button>
+                        // </div> 
+                    }
                     <div className="menu-user" onClick={() => setShowTippy(!showTippy)}>
-                        <button className="user-avatar">AS</button>
+                        <button className="user-avatar">{initials}</button>
                         <div className="user-text">
                             <h3>{user.username}</h3>
                             <p>{user.email}</p>
                         </div>
                     </div>
+                    </>
                 }
             </motion.div>
         </div>
