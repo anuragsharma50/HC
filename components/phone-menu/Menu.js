@@ -88,8 +88,8 @@ function Menu({user,setMenuState,setModelState}) {
                     <div className="menu-user" onClick={() => setShowTippy(!showTippy)}>
                         <button className="user-avatar">AS</button>
                         <div className="user-text">
-                            <h3>Anurag Sharma hello aloo lelo</h3>
-                            <p>anuragsh868@gmail.com</p>
+                            <h3>{user.username}</h3>
+                            <p>{user.email}</p>
                         </div>
                     </div>
                 }
