@@ -6,6 +6,8 @@ import { Formik,Form,Field,ErrorMessage} from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
 import ClipLoader from "react-spinners/ClipLoader"
+import ReferButtons from "../components/referButtons/referButtons"
+
 
 function Referral({user,loading}) {
 
@@ -60,19 +62,28 @@ function Referral({user,loading}) {
         )
     }
 
-    if(user.referralcode) {
-        <div className={`${Styles.container} container`}>
-            <div className="sub-container">
-                <div className="heading">
-                    <h2>Referral</h2>
-                </div>
+    if(user && user.referralcode) {
+        return (
+            <div className={`${Styles.container} container`}>
+                <div className="sub-container">
+                    <div className="heading">
+                        <h2>Referral</h2>
+                    </div>
 
-                <h1>{user.referralCode}</h1>
-                <div className={Styles.details}>
-                    Enter your friend&apos;s referral code and you both will get one more free attempt.
+                    <div className={Styles.referralCode}>{user.referralcode}</div>
+                    
+                    <ReferButtons code={user && user.referralcode} />
+
+                    <div className={Styles.details}>
+                        Send this code to your friend and when they use this code, you both will get one more free idea.
+                    </div>
+                    <div className={Styles.details}>
+                        Note: They have to enter referral code before using their free idea.
+                    </div>
+
                 </div>
             </div>
-        </div>
+        )
     }
 
     return (

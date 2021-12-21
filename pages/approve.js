@@ -141,13 +141,13 @@ function Approve() {
                             <div className={Styles.value}>
                                 <h5>Relation</h5>
                                 <div className={Styles.multiple}>
-                                    <p>{data && data.relation && data.relation.toString()}</p>
+                                    <p>{data && data.relation && data.relation.toString() || <Skeleton height={20} />}</p>
                                 </div>
                             </div>
                             <div className={Styles.value}>
                                 <h5>Ocassion</h5>
                                 <div className={Styles.multiple}>
-                                    <p>{data && data.ocassion && data.ocassion.toString()}</p>
+                                    <p>{data && data.ocassion && data.ocassion.toString() || <Skeleton height={20} />}</p>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +159,6 @@ function Approve() {
                         <span className="idea-description">
                             {data.description || <Skeleton count={5} />}
                         </span>
-                        {/* <div className="nocopy"></div> */}
 
                         {
                             !showReason ?

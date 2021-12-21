@@ -1,40 +1,50 @@
 @import '../commons.scss';
 
-.referralForm{
-    @include display-flex();
-    flex-direction: column;
-    width: 100%;
-    margin: 15px 0px;
+.container{
 
-    .inputs {
-        @include display-flex();
-        flex-wrap: wrap;
-        padding: 5px;
-
-        .input{
-            width: 100%;
-            font-size: 20px;
-            padding: 5px;
-        }
-    
-        .btn {
-            @include button();
-            width: 120px;
-            height: 40px;
-            margin: 10px;
-        }
-
-        .btn:disabled{
-            background: gray;
-            cursor: initial;
-        }
+    .referralCode {
+        padding: 10px;
+        color: #015eb3;
+        font-family: 'Roboto';
+        font-size: 48px;
     }
 
-    .errorText {
-        color: red;
-        padding: 10px;
-        font-size: 18px;
-        font-weight: bold;
+    .referralForm{
+        @include display-flex();
+        flex-direction: column;
+        width: 100%;
+        margin: 15px 0px;
+    
+        .inputs {
+            @include display-flex();
+            flex-wrap: wrap;
+            padding: 5px;
+    
+            .input{
+                width: 100%;
+                font-size: 20px;
+                padding: 5px;
+            }
+        
+            .btn {
+                @include button();
+                width: 120px;
+                height: 40px;
+                margin: 10px;
+            }
+    
+            .btn:disabled{
+                background: gray;
+                cursor: initial;
+            }
+        }
+    
+        .errorText {
+            color: red;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
     }
 }
 
