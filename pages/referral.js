@@ -6,7 +6,7 @@ import { Formik,Form,Field,ErrorMessage} from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
 import ClipLoader from "react-spinners/ClipLoader"
-import ReferButtons from "../components/referButtons/referButtons"
+import ReferButtons from "../components/referButtons/ReferButtons"
 
 
 function Referral({user,loading}) {
