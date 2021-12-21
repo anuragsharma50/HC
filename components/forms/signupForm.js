@@ -1,8 +1,10 @@
+import { useRouter } from "next/router"
 import { useState } from 'react'
 import { Formik,Form,Field,ErrorMessage} from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
-import { useRouter } from "next/router";
+import goodEmails from '../emails/goodEmails'
+import {num,alphabets} from '../emails/badEmails'
 
 const SignUpForm = ({updateUser,setDisableState}) => {
 
@@ -16,22 +18,41 @@ const SignUpForm = ({updateUser,setDisableState}) => {
     }
     
     const onSubmit = values => {   
+        setErrorMessage("")
         setDisableState(true)
-        axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/signup`,{
-            username : values.name,
-            email : values.email,
-            password : values.password,
-        },{withCredentials:true}).then((res) => {
-            // console.log(res.data)
-            updateUser()
-            router.push('/verify-account')
-        }).catch((e) => {
-            if (e.response && e.response.data) {
-                // console.log(e.response.data.message)
-                setErrorMessage(e.response.data.message)
+
+        const emailDomain = values.email.split("@")[1]
+        let badEmail = false
+        
+        if(!goodEmails.includes(emailDomain)){
+            badEmail = true
+            if(!isNaN(emailDomain)){
+                badEmail = num.includes(emailDomain)
+            }else{
+                badEmail = alphabets[emailDomain[0]].includes(emailDomain)
             }
+        }
+
+        if(!badEmail){
+            axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/signup`,{
+                username : values.name,
+                email : values.email,
+                password : values.password,
+            },{withCredentials:true}).then((res) => {
+                // console.log(res.data)
+                updateUser()
+                router.push('/verify-account')
+            }).catch((e) => {
+                if (e.response && e.response.data) {
+                    // console.log(e.response.data.message)
+                    setErrorMessage(e.response.data.message)
+                }
+                setDisableState(false)
+            })
+        } else{
+            setErrorMessage("Sorry you are not allowed to signup using this email address.")
             setDisableState(false)
-        })
+        }
     }
     
     const validationSchema = Yup.object({

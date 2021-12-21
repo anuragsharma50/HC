@@ -98,7 +98,7 @@ function Carousel({user,loading}) {
                             <div className={`${Styles.img} ${Styles.squareImg}`}> <Image src={ShareImage} alt="share" /> </div>
                             <div className={Styles.content}>
                             <h3>Share your referal code with your friend and <br /> both of you will get <b>One more free idea</b></h3>
-                            <button className={`${Styles.mBtn} btn`} onClick={() => router.push('/referral')}>Referrer now</button>
+                            <button className={`${Styles.mBtn} btn`} onClick={() => router.push('/referral')}>Refer now</button>
                             </div>
                         </div>
                     </SwiperSlide>
