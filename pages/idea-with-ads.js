@@ -9,7 +9,7 @@ function ideaWithAds() {
     return (
         <>
             <Head>
-                <script data-ad-client="ca-pub-4545307603353405" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                {/* <script data-ad-client="ca-pub-4545307603353405" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> */}
                 <title>Ideas with Ads Page | Happie Celebrations</title>
                 <meta name="description" content="View ideas" />
             </Head>
