@@ -22,6 +22,14 @@ body{
     font-family: 'Raleway Regular';
 }
 
+.cookie-link {
+    font-weight: bold;
+    text-decoration: underline;
+    font-family: 'Roboto';
+    font-size: 13px;
+    cursor: pointer;
+}
+
 .container{
     display: flex;
     justify-content: space-between;

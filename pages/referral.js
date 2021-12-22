@@ -8,12 +8,12 @@ import axios from 'axios'
 import ClipLoader from "react-spinners/ClipLoader"
 import ReferButtons from "../components/referButtons/ReferButtons"
 
-
 function Referral({user,loading}) {
 
     const router = useRouter()
     const [serverError, setServerError] = useState('')
     const [disableState, setDisableState] = useState(false)
+
 
     const initialValues = {
         code: '',
@@ -80,7 +80,6 @@ function Referral({user,loading}) {
                     <div className={Styles.details}>
                         Note: They have to enter referral code before using their free idea.
                     </div>
-
                 </div>
             </div>
         )

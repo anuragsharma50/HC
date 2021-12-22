@@ -1,5 +1,6 @@
 import { useRouter } from "next/router"
 import Head from 'next/head'
+import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import CurrencyModal from '../components/modals/currency'
 import styles from '../styles/pageStyles/pricing.module.scss'
@@ -30,6 +31,11 @@ function Pricing({user,updateUser}) {
                 <title>Pricing | Happie Celebrations</title>
                 <meta name="description" content="prices to get an idea set" />
             </Head>
+
+            <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4545307603353405"
+                crossorigin="anonymous">
+
+            </Script>
 
             <div className={`${styles.container} container`}>
             <CurrencyModal modelState={modelState} setModelState={setModelState} 
@@ -83,7 +89,7 @@ function Pricing({user,updateUser}) {
                         </ul>
         
                         <div className="btn">
-                            <button title="Unavaliable" className="submit-btn" disabled>Watch Now</button>
+                            <button title="Unavaliable" className="submit-btn" onClick={() => router.push('/idea-with-ads')} >Watch Now</button>
                         </div>
                     </div>
         

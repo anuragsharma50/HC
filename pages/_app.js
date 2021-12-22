@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { useEffect,useState } from 'react'
 import * as gtag from '../lib/gtag'
+import CookieConsent from "react-cookie-consent"
 
 import { PopupProvider } from "react-popup-manager";
 import axios from 'axios'
@@ -91,6 +92,18 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps } user={user} updateUser={updateUser} loading={loading} />
       </PopupProvider>
       <Footer />
+
+      <CookieConsent
+        location="bottom"
+        buttonText="ACCEPT"
+        cookieName="cookieconsentvalue"
+        style={{ background: "#2b373be3",fontSize: "12px" }}
+        buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+        expires={150}
+      >
+        We use cookies to offer you a better experience, analyse site traffic, and serve targeted advertisements. by continuing to use this website, you consent to our use of cookies in accordance with our <span className="cookie-link" onClick={() => router.push('/cookie-policy')} >cookie policy</span>.
+        {/* <span style={{ fontSize: "10px" }}>We use cookies to offer you a better experience, analyse site traffic, and serve targeted advertisements. by continuing to use this website, you consent to our use of cookies in accordance with our cookie policy.</span> */}
+      </CookieConsent>
     </>
   )
 }
