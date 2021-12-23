@@ -1,28 +1,35 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Script from 'next/script'
+// import Script from 'next/script'
+// import { useEffect } from 'react'
+import GoogleAd from '../components/GoogleAd/GoogleAd'
 
 import Styles from '../styles/pageStyles/idea.module.scss'
 import Arrow from "../assets/images/arrow.png"
 
 function ideaWithAds() {
+
+    // useEffect(()=> {
+    //     // if(typeof window !== 'undefined'){
+    //     //     (window.adsbygoogle = window.adsbygoogle || []).push({})
+    //     // }
+    // }, [])
+
     return (
         <>
             <Head>
-                <script data-ad-client="ca-pub-4545307603353405" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <script data-ad-client={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE} async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                 <title>Ideas with Ads Page | Happie Celebrations</title>
                 <meta name="description" content="View ideas" />
             </Head>
-
-            {/* <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4545307603353405"
-                crossorigin="anonymous">
-            </Script> */}
 
             <div className={`${Styles.container} container`}>
                 <div className='sub-container'>
                     <div className="heading">
                         <h2>Idea one</h2>
                     </div>
+
+                    <GoogleAd adSlot={"1394339153"} />
 
                     <span className="idea-description">
                         This is idea one
