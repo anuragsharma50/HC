@@ -1,8 +1,8 @@
-// import Script from 'next/script'
+import Script from 'next/script'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { useEffect,useState } from 'react'
-// import * as gtag from '../lib/gtag'
+import * as gtag from '../lib/gtag'
 import CookieConsent from "react-cookie-consent"
 
 import { PopupProvider } from "react-popup-manager";
@@ -56,7 +56,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       {/* Global Site Tag (gtag.js) - Google Analytics */}
-      {/* <Script
+      <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
       />
@@ -73,7 +73,7 @@ function MyApp({ Component, pageProps }) {
             });
           `,
         }}
-      /> */}
+      />
 
       <Head>
         {/* <Html lang="en-us" /> */}
