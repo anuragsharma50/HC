@@ -128,6 +128,7 @@ function Header({user,updateUser,loading}) {
                             showTippy &&
                             <div className="tippy">
                                 <ul>
+                                <li onClick={() => goTo('/dashboard')}>Dashboard</li>
                                 <li onClick={() => goTo('saved')}>Saved Ideas</li>
                                 <li onClick={() => goTo('myideas')}>My Ideas</li>
                                 <li onClick={() => goTo('referral')}>Referral</li>

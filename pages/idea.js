@@ -97,13 +97,13 @@ function Idea(props) {
             }).catch((e) => {
                 if (e.response && e.response.data) {
                     console.log(e.response)
-                    if(e.response.data.message === "Unpaid Ideas"){
-                        setSaveError({title: "Free Ideas",message:"You need to make payment to save ideas."})
-                        setModelState2(true)
-                    }else{
+                    // if(e.response.data.message === "Unpaid Ideas"){
+                    //     setSaveError({title: "Free Ideas",message:"You need to make payment to save ideas."})
+                    //     setModelState2(true)
+                    // }else{
                         setSaveError({title: "Already saved",message:"This idea is already saved in your collection."})
                         setModelState2(true)
-                    }
+                    // }
                 }
                 // console.log(e.response.data)
             })

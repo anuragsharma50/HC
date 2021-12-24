@@ -5,17 +5,18 @@ import { withRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import GoogleAd from '../components/GoogleAd/GoogleAd'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import Styles from '../styles/pageStyles/idea.module.scss'
 import Arrow from "../assets/images/arrow.png"
 
-function ideaWithAds(props) {
+function IdeaWithAds(props) {
 
     const query = props.router.query
     const [data, setData] = useState({title: '', description: '',_id: '' })
     const [disableVote, setDisableVote] = useState(false)
-    const [error, setError] = useState('')
-    const [sameCount, setSameCount] = useState(0)
+    // const [error, setError] = useState('')
 
     const getIdea = () => {
         axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.catagory}/one-idea/?ocassion=${query.ocassion}&relation=${query.relation}&age=${query.age}&gender=${query.gender}&budget=${parseInt(query.budget)+5}`,
@@ -72,13 +73,13 @@ function ideaWithAds(props) {
             <div className={`${Styles.container} container`}>
                 <div className='sub-container'>
                     <div className="heading">
-                        <h2>{data && data.title}</h2>
+                        <h2>{data && data.title || <Skeleton height={40} />}</h2>
                     </div>
 
-                    {/* <GoogleAd adSlot={"1394339153"} /> */}
+                    <GoogleAd adSlot={"3783934435"} />
 
                     <span className="idea-description">
-                        {data && data.description}
+                        {data && data.description || <Skeleton count={5} height={25} className={Styles.skeleton} /> }
                     </span>
 
                     <div className="idea-buttons">
@@ -109,4 +110,4 @@ function ideaWithAds(props) {
     )
 }
 
-export default withRouter(ideaWithAds)
+export default withRouter(IdeaWithAds)

@@ -1,0 +1,55 @@
+@import '../commons.scss';
+
+.container {
+    flex-direction: column;
+    justify-content: unset;
+    padding: 0px;
+    font-variant: lining-nums;
+
+    .bottomHeader {
+        text-align: center;
+        padding: 10px;
+        background-color: $red;
+        color: white;
+        margin-top: 46px;
+    }
+
+    .dashboardContent{
+        flex: 1 1;
+        display: flex;
+        width: 100%;
+        z-index: 0;
+        min-height: 93vh;
+        background-color: #ffffffd4;
+        padding: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .userDetails {
+        padding: 15px;
+        box-shadow: 1px 1px 10px #80808040;
+        border-radius: 8px;
+        margin: 10px;
+        background-color: white;
+        height: 100%;
+        min-width: 280px;
+
+        .name{
+            color: #1766af;
+        }
+
+        p{
+            padding: 5px 0px;
+        }
+
+        button{
+            @include button();
+            width: 100%;
+        }
+
+        .or{
+            text-align: center;
+        }
+    }
+}

@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }) {
     axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/getuser`,
     {withCredentials:true},
     ).then((response) => {
-        // console.log(response)
+        console.log(response)
         if(response.data){
           if(!response.data.error){
             setUser(response.data)

@@ -7,7 +7,7 @@ import AdsIdeaForm from '../components/forms/adsIdeaForm'
 
 import styles from '../styles/pageStyles/form-page.module.scss'
 
-function formWithAds({user}) {
+function FormWithAds({user}) {
 
     const router = useRouter()
     const [disableState, setDisableState] = useState(false)
@@ -52,4 +52,4 @@ function formWithAds({user}) {
     )
 }
 
-export default formWithAds
+export default FormWithAds
