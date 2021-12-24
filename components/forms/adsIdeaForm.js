@@ -1,17 +1,17 @@
 import { useRouter } from "next/router"
-import { Formik,Form,Field,ErrorMessage} from 'formik'
+import { Formik,Form,Field,ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import SelectSearch from 'react-select-search'
-import axios from 'axios'
 
 import Styles from './idea.module.scss'
 
-function IdeaForm({from,user,setDisableState,setModelState,setOutput}) {
+function AdsIdeaForm({user,setDisableState}) {
 
     const router = useRouter()
 
     const initialValues = {
-        budget: from === 'wish' ? 50 : 10,
+        catagory: 'wish',
+        budget: 10,
         relation: 'friend',
         age: '',
         ocassion: 'birthday',
@@ -22,38 +22,9 @@ function IdeaForm({from,user,setDisableState,setModelState,setOutput}) {
         setDisableState(true)
         if(!user){
             router.push('/signin')
+        } else{
+            router.push({pathname: '/idea-with-ads', query: { ...values }})
         }
-        // console.log('Form values',values)
-        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${from}/count?ocassion=${values.ocassion}&relation=${values.relation}&age=${values.age}&gender=${values.gender}&budget=${values.budget+10}`,
-        {withCredentials:true}).then((res) => {
-            // console.log(res.data)
-            if(res.data.ideasCount < 15) {
-                setOutput({ count: res.data.ideasCount,values,from })
-                setModelState(true)
-            }else{
-                axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/payment`,{withCredentials:true}).then((res) => {
-                    // console.log(res.data)
-                    router.push({pathname: '/idea',
-                    query: { ...values,from }})
-                }).catch((e) => {
-                    router.push('/pricing')
-                    // console.log(e.response)
-                    // console.log(e)
-                    // if (e.response && e.response.data) {
-                    //     // console.log(e.response)
-                    //     // setErrorMessage(e.response.data.message)
-                    // }
-                })
-            }
-            setDisableState(false)
-        }).catch((e) => {
-            // console.log(e.response)
-            // console.log(e)
-            // if (e.response && e.response.data) {
-            //     // console.log(e.response)
-            //     // setErrorMessage(e.response.data.message)
-            // }
-        })
     }
     
     const validationSchema = Yup.object({
@@ -68,7 +39,25 @@ function IdeaForm({from,user,setDisableState,setModelState,setOutput}) {
         >
             {
                 props => (
-                <Form className={`${Styles.formInput} form-input`} id='idea-form'>
+                <Form className={`${Styles.formInput} form-input`} id='ads-idea-form'>
+
+                    <div className="radio-container">
+                        <label>Select Catagory to write idea</label>
+                        <div className="radio-buttons" role="group" aria-labelledby="my-radio-group">
+                            <div className="radio-item">
+                                <Field type="radio" id="wish" name="catagory" value="wish" />
+                                <label htmlFor="wish">Wish</label>
+                            </div>
+                            <div className="radio-item">
+                                <Field type="radio" id="celebration" name="catagory" value="celebration" />
+                                <label htmlFor="celebration">Celebration</label>
+                            </div>
+                            <div className="radio-item">
+                                <Field type="radio" id="gift" name="catagory" value="gift" />
+                                <label htmlFor="gift">Gift</label>
+                            </div>
+                        </div>
+                    </div>
 
                     <div className="radio-container">
                         <label>Select Gender</label>
@@ -176,4 +165,4 @@ function IdeaForm({from,user,setDisableState,setModelState,setOutput}) {
     )
 }
 
-export default IdeaForm
+export default AdsIdeaForm

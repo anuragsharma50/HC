@@ -67,7 +67,7 @@ function Payment({user,loading}) {
                         <>
                             <div className={Styles.total}>
                                 <div className={Styles.subTotal}>
-                                    <p>Total</p> <h3>₹{set*19}</h3>
+                                    <p>Total</p> <h3>₹{set*9}</h3>
                                 </div>
                             </div>
 
@@ -95,7 +95,7 @@ function Payment({user,loading}) {
 
                         //     <div className={Styles.total}>
                         //         <div className={Styles.subTotal}>
-                        //             <p>Price</p> <h3>${set}</h3>
+                        //             <p>Price</p> <h3>${set*0.25}</h3>
                         //         </div>
                         //         <div className={Styles.subTotal}>
                         //             <p>paypal fees</p> <h3>${set*0.05 + 0.5}</h3>

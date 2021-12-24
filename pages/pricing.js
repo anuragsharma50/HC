@@ -1,4 +1,5 @@
 import { useRouter } from "next/router"
+import Link from 'next/link'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import CurrencyModal from '../components/modals/currency'
@@ -42,9 +43,71 @@ function Pricing({user,updateUser}) {
                 </div>
 
                 <div className="lists">
+
                     <div className="details">
                         <div className="detail-title">
-                            <h2>Per ideas set</h2>
+                            <h2>Get free ideas</h2>
+                            <h1>Free</h1>
+                        </div>
+
+                        <ul>
+                            <li>Good ideas for free</li>
+                            <li><Link href="/referral">Refer a friend</Link> and you both will get a free idea set.</li>
+                            <li>Write an idea and after approval get one free ideas set and ₹ 1</li>
+                        </ul>
+
+                        <div className="btn">
+                            <button style={{backgroundColor: '#a30062'}} className="submit-btn" onClick={() => router.push('/write')} >Write Now</button>
+                        </div>
+                    </div>
+
+                    <div className="details">
+                        <div className="detail-title">
+                            <h2>Watch ADs</h2>
+                            <h1>Free</h1>
+                        </div>
+        
+                        <ul>
+                            <li>Ads will also be avaliable while watching ideas.</li>
+                            <li>Ideas can&apos;t be saved</li>
+                        </ul>
+        
+                        <div className="btn">
+                            <button style={{backgroundColor: '#0762b5'}} className="submit-btn" onClick={() => router.push('/form-with-ads')} >Watch Now</button>
+                        </div>
+                    </div>
+
+                    <div className="details">
+                        <div className="detail-title">
+                            <h2>Good Ideas</h2>
+                            <div className="amount">
+                                {
+                                    currency === 'INR' ?
+                                        <>
+                                            <span>₹</span><h1>9</h1>
+                                        </>
+                                    :
+                                        <>
+                                            <span>$</span><h1>0.25</h1>
+                                        </>
+                                }
+                            </div>
+                        </div>
+        
+                        <ul>
+                            <li>Get good ideas in any one catatory.</li>
+                            <li>15 Ideas without intruption</li>
+                            <li>Save up to 2 ideas</li>
+                        </ul>
+        
+                        <div className="btn">
+                            <button className="submit-btn" onClick={goToPayment} >Choose Plan</button>
+                        </div>
+                    </div>
+
+                    {/* <div className="details">
+                        <div className="detail-title">
+                            <h2>Premium Ideas</h2>
                             <div className="amount">
                                 {
                                     currency === 'INR' ?
@@ -62,33 +125,15 @@ function Pricing({user,updateUser}) {
                         <ul>
                             <li>Get ideas in any one catatory.</li>
                             <li>25 Ideas without intruption</li>
-                            <li>Save up to 3 ideas</li>
+                            <li>Save up to 4 ideas</li>
                         </ul>
         
                         <div className="btn">
-                            <button className="submit-btn" onClick={goToPayment}>Choose Plan</button>
+                            <button className="submit-btn" onClick={goToPayment} disabled={true}>Choose Plan</button>
                         </div>
-                    </div>
-
-                    <div className="details">
-                        <div className="detail-title">
-                            <h2>Watch AD</h2>
-                            <h1>Free</h1>
-                        </div>
-        
-                        <ul>
-                            <li>Watch an AD and get one idea for free.</li>
-                            <li>No choice of idea, Again watch AD to get idea.</li>
-                            <li>Ideas can&apos;t be saved</li>
-                        </ul>
-        
-                        <div className="btn">
-                            <button title="Unavaliable" className="submit-btn" onClick={() => router.push('/idea-with-ads')} >Watch Now</button>
-                        </div>
-                    </div>
+                    </div> */}
         
                 </div>
-
             </div>
         </div>
     </>

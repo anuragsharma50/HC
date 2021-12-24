@@ -72,6 +72,26 @@
         :global(.btn:disabled) {
             opacity: 0.3;
         }
+
+        :global(.green-btn) {
+            border: 1px solid green;
+            background: #c0f1c0;
+            color: black;
+
+            :global(.img){
+                transform: rotate(-90deg);
+            }
+        }
+
+        :global(.red-btn) {
+            border: 1px solid red;
+            background: #f9caca;
+            color: black;
+
+            :global(.img){
+                transform: rotate(90deg);
+            }
+        }
     }
 }
 
@@ -81,6 +101,10 @@
         :global(.idea-buttons){
             span{
                 display: block;
+            }
+
+            :global(.btn){
+                height: 45px;
             }
     
             :global(.sec-btn){

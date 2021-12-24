@@ -30,8 +30,7 @@ function Idea(props) {
     const query = props.router.query
 
     const fetchIdeas = () => {
-        // console.log(query)
-        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}?ocassion=${query.ocassion}&relation=${query.relation}&age=${query.age}&gender=${query.gender}&budget=${query.budget+10}&set=${set}`,
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}?ocassion=${query.ocassion}&relation=${query.relation}&age=${query.age}&gender=${query.gender}&budget=${parseInt(query.budget)+10}&set=${set}`,
         {withCredentials:true}).then((res) => {
             // // console.log(res.data)
             if(!data[0]){
@@ -50,7 +49,7 @@ function Idea(props) {
         axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}/count?ocassion=${query.ocassion}&relation=${query.relation}&age=${query.age}&gender=${query.gender}&budget=${query.budget+10}&set=${set+1}`,
         {withCredentials:true}).then((res) => {
             // console.log(res.data)
-            if(res.data.ideasCount < 25) {
+            if(res.data.ideasCount < 15) {
                 setOutput({ count: res.data.ideasCount,query,set,setSet,user:props.user })
                 setModelState(true)
             }else{
@@ -83,8 +82,8 @@ function Idea(props) {
     }
 
     const save = () => {
-        if(saved.length == set*3){
-            setSaveError({title: "3 ideas already saved",message:"You can save only 3 ideas at a time."})
+        if(saved.length == set*2){
+            setSaveError({title: "2 ideas already saved",message:"You can save only 2 ideas at a time."})
             setModelState2(true)
         }else{
             axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}/save/${data[index]._id}`,
@@ -153,7 +152,7 @@ function Idea(props) {
                     {
                         !data[index] && 
                             (
-                                (index == 25*set  && index > 0) ?
+                                (index == 15*set  && index > 0) ?
                                 <div className="more-ideas"><a onClick={moreIdeas}>Get more ideas</a></div>   :
                                 <div className="more-ideas"><div>More ideas are not avaliable in this catagory. you can again take a look at previous ideas or 
                                     <span style={{paddingLeft:'3px'}}><Link href="/"> go to homepage.</Link></span></div>
