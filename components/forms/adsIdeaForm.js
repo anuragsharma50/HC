@@ -21,11 +21,11 @@ function AdsIdeaForm({user,setDisableState}) {
     
     const onSubmit = values => {
         setDisableState(true)
-        if(!user){
-            router.push('/signin')
-        } else{
+        // if(!user){
+        //     router.push('/signin')
+        // } else{
             router.push({pathname: '/idea-with-ads', query: { ...values }})
-        }
+        // }
     }
     
     const validationSchema = Yup.object({
