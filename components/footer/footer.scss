@@ -42,7 +42,7 @@
     .footer-logo{
         @include display-flex();
         flex-direction: column;
-        padding: 10px;
+        margin: 10px;
         cursor: pointer;
 
         .logo{
@@ -50,6 +50,7 @@
             border: 1px solid;
             padding: 5px;
             margin: 5px;
+            z-index: -1;
         }
     }
 

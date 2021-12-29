@@ -65,7 +65,7 @@ function IdeaWithAds(props) {
     return (
         <>
             <Head>
-                <script data-ad-client={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE} async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                {/* <script data-ad-client={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE} async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> */}
                 <title>Ideas with Ads Page | Happie Celebrations</title>
                 <meta name="description" content="View ideas" />
             </Head>

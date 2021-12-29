@@ -61,6 +61,7 @@ function Menu({user,setMenuState,setModelState,initials}) {
                     showTippy && user && 
                     <>
                         {/* <div onClick={() => navigate('wish')} className="item"><span>Profile</span></div> */}
+                        <div onClick={() => navigate('dashboard')} className="item"><span>Dashboard</span></div>
                         <div onClick={() => navigate('saved')} className="item"><span>Saved Ideas</span></div>
                         <div onClick={() => navigate('myideas')} className="item"><span>My Ideas</span></div>
                         <div onClick={() => navigate('referral')} className="item"><span>Referral</span></div>
