@@ -15,11 +15,46 @@
             border: 1px solid #576272;
             margin: 10px 0px;
             padding: 5px 5px 0px 5px;
+            display: flex;
+            justify-content: center;
+            background: white;
         }
 
-        .text{
-            font-variant: lining-nums;
-            font-size: 18px;
+        .table{
+            width: 100%;
+            border: 1px solid;
+            text-align: center;
+
+            .tableHeading {
+                // border-bottom: 1px solid;
+                font-family: "Roboto";
+            }
+
+            p{
+                border-bottom: 1px solid;
+            }
+        }
+    }
+
+    table{
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+        font-variant: lining-nums;
+
+        th{
+            border: 1px solid;
+            padding: 0px 10px;
+            border-collapse: collapse;
+            font-family: 'Roboto';
+            font-size: 17px;
+        }
+
+        td{
+            border: 1px solid;
+            padding: 0px 10px;
+            border-collapse: collapse;
+            font-weight: bold;
         }
     }
 }

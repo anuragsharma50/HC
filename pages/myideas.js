@@ -11,12 +11,15 @@ import ClipLoader from "react-spinners/ClipLoader"
 
 import Styles from '../styles/pageStyles/saved.module.scss'
 import TrashIcon from '../assets/images/trash.png'
+import ConfirmDelete from '../components/modals/ConfirmDelete'
 
 function MyIdeas({user,loading}) {
 
     const router = useRouter()
     const [data, setData] = useState([])
     const [serverError, setServerError] = useState('')
+    const [modelState, setModelState] = useState(false)
+    const [deleteItem, setDeleteItem] = useState()
 
     useEffect(() => {
         if(!user && !loading) {
@@ -34,16 +37,22 @@ function MyIdeas({user,loading}) {
         })
     }, [user,loading])
 
-    const deleteIdea = (item) => {
-        axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${item.catagory}/${item._id}`,{withCredentials:true}).then((res) => {
+    const deleteConfirmation = (item) => {
+        setDeleteItem(item)
+        setModelState(true)
+    }
+
+    const deleteIdea = () => {
+        axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${deleteItem.catagory}/${deleteItem._id}`,{withCredentials:true}).then((res) => {
             // console.log(res.data)
             let newData = data.filter(data => {
-                return data._id != item._id;
+                return data._id != deleteItem._id;
             });
             setData(newData)
         }).catch((e) => {
             // console.log(e.response)
         })
+        setModelState(false)
     }
 
     if(loading) {
@@ -77,6 +86,8 @@ function MyIdeas({user,loading}) {
             </Head>
 
             <div className={`${Styles.container} container`}>
+
+                <ConfirmDelete modelState={modelState} setModelState={setModelState} deleteIdea={deleteIdea} />
                 
                 <div className={Styles.bottomHeader}>
                     <h2>My Ideas</h2>
@@ -109,7 +120,7 @@ function MyIdeas({user,loading}) {
                             </div>
                             <div className={Styles.headingContainer}>
                                 <h3 className="heading">{item.title}</h3>
-                                <div className={Styles.delete} onClick={() => deleteIdea(item)}>
+                                <div className={Styles.delete} onClick={() => deleteConfirmation(item)}>
                                     <Image src={TrashIcon} alt="delete" />
                                 </div>
                             </div>
