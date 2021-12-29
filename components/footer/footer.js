@@ -5,6 +5,7 @@ import Logo from '../../assets/images/Logo.png'
 import FB from '../../assets/images/fb-footer.png'
 import Insta from '../../assets/images/insta-footer.png'
 import Twitter from '../../assets/images/twitter-footer.png'
+import Youtube from '../../assets/images/youtube-mini.png'
 
 function Footer() {
     return (
@@ -27,6 +28,7 @@ function Footer() {
                     <li><Image src={FB} alt="facebook-icon" /></li>
                     <li><Image src={Insta} alt="instagram-icon" /></li>
                     <li><Image src={Twitter} alt="twitter-icon" /></li>
+                    <li><Image src={Youtube} alt="youtube-icon" /></li>
                 </ul>
             </div>
 

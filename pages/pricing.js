@@ -53,7 +53,7 @@ function Pricing({user,updateUser}) {
                         <ul>
                             <li>Good ideas for free</li>
                             <li><Link href="/referral">Refer a friend</Link> and you both will get a free idea set.</li>
-                            <li>Write an idea and after approval get one free ideas set and ₹ 1</li>
+                            <li><Link href="/write">Write an idea</Link> and after approval get one free idea set and ₹ 1</li>
                         </ul>
 
                         <div className="btn">
@@ -73,7 +73,7 @@ function Pricing({user,updateUser}) {
                         </ul>
         
                         <div className="btn">
-                            <button style={{backgroundColor: '#0762b5'}} className="submit-btn" onClick={() => router.push('/form-with-ads')} >Watch Now</button>
+                            <button style={{backgroundColor: '#0762b5'}} className="submit-btn" onClick={() => router.push('/form-with-ads')} >View Ideas</button>
                         </div>
                     </div>
 
@@ -97,7 +97,7 @@ function Pricing({user,updateUser}) {
                         <ul>
                             <li>Get good ideas in any one catatory.</li>
                             <li>15 Ideas without intruption</li>
-                            <li>Save up to 2 ideas</li>
+                            <li>Save up to 3 ideas</li>
                         </ul>
         
                         <div className="btn">

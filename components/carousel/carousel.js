@@ -86,7 +86,7 @@ function Carousel({user,loading}) {
                         <div className={Styles.firstLook}>
                             <div className={`${Styles.img} ${Styles.squareImg}`}> <Image src={ShareImage} alt="share" /> </div>
                             <div className={Styles.content}>
-                            <h3>Complete your first payment to <br /> activate your <b>Referral Code</b></h3>
+                            <h3>View free idea to <br /> activate your <b>Referral Code</b></h3>
                             <button className={`${Styles.mBtn} btn`} onClick={() => router.push('/referral')}>Enter code</button>
                             </div>
                         </div>
@@ -110,7 +110,7 @@ function Carousel({user,loading}) {
                         <div className={Styles.firstLook}>
                             <div className={Styles.img}> <Image src={WalletImage} alt="wallet" /> </div>
                             <div className={Styles.content}>
-                            <h3>It&apos;s just {user.currency === 'INR' ? '₹ 19' : '$ 0.5'  } for <br /> <b> happiness </b> of your friend</h3>
+                            <h3>It&apos;s just {user.currency === 'INR' ? '₹ 9' : '$ 0.25'  } for <br /> <b> happiness </b> of your friend</h3>
                             <button className={`${Styles.mBtn} btn`} onClick={() => router.push('/referral')}>Referrer now</button>
                             </div>
                         </div>

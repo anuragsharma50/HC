@@ -23,11 +23,30 @@ function Idea(props) {
     const [modelState, setModelState] = useState(false)
     const [modelState2, setModelState2] = useState(false)
     const [saveError, setSaveError] = useState({})
+    const [disableVote, setDisableVote] = useState(false)
     const [output, setOutput] = useState({
         count: 0,
         values: {},
     })
     const query = props.router.query
+
+    const goodIdea = () => {
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}/good-idea/${data[index]._id}`,
+        {withCredentials:true}).then((res) => {
+            setDisableVote(true)
+        }).catch((e) => {
+            // console.log(e.response)
+        })
+    }
+
+    const badIdea = () => {
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}/bad-idea/${data[index]._id}`,
+        {withCredentials:true}).then((res) => {
+            setDisableVote(true)
+        }).catch((e) => {
+            // console.log(e.response)
+        })
+    }
 
     const fetchIdeas = () => {
         axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}?ocassion=${query.ocassion}&relation=${query.relation}&age=${query.age}&gender=${query.gender}&budget=${parseInt(query.budget)+10}&set=${set}`,
@@ -82,8 +101,8 @@ function Idea(props) {
     }
 
     const save = () => {
-        if(saved.length == set*2){
-            setSaveError({title: "2 ideas already saved",message:"You can save only 2 ideas at a time."})
+        if(saved.length == set*3){
+            setSaveError({title: "3 ideas already saved",message:"You can save only 3 ideas at a time."})
             setModelState2(true)
         }else{
             axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}/save/${data[index]._id}`,
@@ -159,6 +178,26 @@ function Idea(props) {
                                 </div> 
                             )
                     }
+
+                    {
+                        data[index] && 
+                        <div className="idea-buttons show-btn-text">
+                            <button className="red-btn btn" onClick={badIdea} disabled={disableVote}>
+                                <div className="img">
+                                    <Image src={Arrow} alt="arrow" />
+                                </div>
+                                <span>Bad Idea</span>
+                            </button>
+
+                            <button className="green-btn btn" onClick={goodIdea} disabled={disableVote}>
+                                <span>Good Idea</span>
+                                <div className="img">
+                                    <Image src={Arrow} alt="arrow" />
+                                </div>
+                            </button>
+                        </div>
+                    }
+
 
                     <div className="idea-buttons">
                         <button className="sec-btn btn" onClick={() => setIndex(index - 1)} disabled={index == 0}>

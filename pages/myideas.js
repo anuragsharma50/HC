@@ -24,7 +24,7 @@ function MyIdeas({user,loading}) {
         }
 
         axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/myideas`,{withCredentials:true}).then((res) => {
-            // console.log(res.data)
+            console.log(res.data)
             setData(res.data)
         }).catch((e) => {
             if (e.response && e.response.data) {
@@ -98,6 +98,13 @@ function MyIdeas({user,loading}) {
                                 </div>
 
                             }
+                            {/* { item.approvalStatus === 'Approved' &&
+                                <>
+                                    <div className={`${Styles.catagory} ${Styles.extraWide}`}>Good - {item.good || 0}</div>
+                                    <div className={`${Styles.catagory} ${Styles.extraWide}`}>Bad - {item.bad || 0}</div>
+                                    <div className={`${Styles.catagory} ${Styles.extraWide}`}>Total Save - {item.save || 0}</div>
+                                </>
+                            } */}
                             <div className={Styles.catagory}>{item.catagory}</div>
                             </div>
                             <div className={Styles.headingContainer}>

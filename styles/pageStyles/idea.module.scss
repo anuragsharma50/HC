@@ -11,7 +11,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 60vh;
+            height: 79vh;
         }
 
         :global(.heading){
@@ -91,6 +91,12 @@
             :global(.img){
                 transform: rotate(90deg);
             }
+        }
+    }
+
+    :global(.show-btn-text){
+        span{
+            display: block;
         }
     }
 }

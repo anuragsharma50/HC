@@ -76,7 +76,7 @@ function IdeaWithAds(props) {
                         <h2>{data && data.title || <Skeleton height={40} />}</h2>
                     </div>
 
-                    <GoogleAd adSlot={"3783934435"} />
+                    {/* <GoogleAd adSlot={"3783934435"} /> */}
 
                     <span className="idea-description">
                         {data && data.description || <Skeleton count={5} height={25} className={Styles.skeleton} /> }

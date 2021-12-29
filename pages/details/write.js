@@ -20,16 +20,17 @@ function Write() {
                     </div>
 
                     <div className={Styles.content}>
-                        <h3>Every time someone saves your idea you will get <b>₹3</b><b>( $0.04 )</b></h3>
+                        <h3>Get <b>₹1</b><b>( $0.013 )</b> if your idea gets approved.</h3>
+                        <h3>and Every time someone saves your idea you will get <b>₹2</b><b>( $0.026 ).</b></h3>
                         
                         <div className={Styles.list}>
                             <p>Process Of idea Submission</p>
                             <ol>
                                 <li>You write an idea</li>
                                 <li>Manual checking of idea</li>
-                                <li>You will get a notification on registered email</li>
+                                <li>You will get a notification on your registered email</li>
                                 <li>someone save your idea</li>
-                                <li>amount will be updated</li>
+                                <li>Your earnings will be updated</li>
                             </ol>
                         </div>
 

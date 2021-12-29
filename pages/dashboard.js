@@ -47,7 +47,7 @@ function Dashboard({user,loading}) {
 
                     <div className={Styles.userDetails}>
                         <h1>{user && user.prePayment || 0 }</h1>
-                        <p>Good Ideas Avaliable</p>
+                        <p>Good Idea sets Avaliable</p>
                     </div>
 
                     <div className={Styles.userDetails}>
@@ -77,7 +77,7 @@ function Dashboard({user,loading}) {
 
                     <div className={Styles.userDetails}>
                         <h1>{ user && user.free }</h1>
-                        <p>Free Ideas Avaliable</p>
+                        <p>Free Idea sets Avaliable</p>
                         <br />
                         <p>Get more free ideas by :</p>
                         <button onClick={() => router.push('/referral')}>Referring a friend</button>

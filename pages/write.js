@@ -2,11 +2,13 @@ import Head from 'next/head'
 import { useState } from 'react'
 import WriteForm from '../components/forms/writeForm'
 import IdeaSubmitted from '../components/modals/ideaSubmitted'
+import { useRouter } from "next/router"
 import styles from '../styles/pageStyles/write.module.scss'
 import styles2 from '../styles/pageStyles/form-page.module.scss'
 
 function Idea({user}) {
 
+    const router = useRouter()
     const [disableState, setDisableState] = useState(false)
     const [modelState, setModelState] = useState(false)
 
@@ -20,6 +22,7 @@ function Idea({user}) {
             <IdeaSubmitted modelState={modelState} setModelState={setModelState} />
             <div className={`${styles.container} ${styles2.container} container`}>
                 <div className="form">
+                <div className="info"><a onClick={() => router.push('/details/write')}>Click here</a> to understand more</div>
                     <div className="heading">
                         <h2>Write</h2>
                     </div>
