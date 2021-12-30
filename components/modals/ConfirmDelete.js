@@ -22,7 +22,7 @@ function ConfirmDelete({modelState,setModelState,deleteIdea}) {
                         <div className={Styles.modalContent}> 
                             <p>Do you really want to delete this idea?</p> 
                             <br/ >
-                            <p>This action can't be undone</p>
+                            <p>This action can&apos;t be undone</p>
                         </div>
                         <div className={Styles.modalButtons}>
                             <button className={`${Styles.secondry} ${Styles.btn}`} onClick={() => setModelState(false)}>Cancel</button>
