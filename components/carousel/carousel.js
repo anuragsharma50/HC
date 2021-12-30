@@ -42,7 +42,8 @@ function Carousel({user,loading}) {
                             <div className={`${Styles.img} ${Styles.squareImg}`}> <Image src={YTImage} alt="youtube video" priority /> </div>
                             <div className={Styles.content}>
                             <h3>Watch videos on youtube to know more about <br/> <b>Happie Celebrations</b></h3>
-                            <button className={`${Styles.mBtn} btn`} onClick={() => window.open("https://youtube.com",'_blank')}>Watch Now</button>
+                            <button className={`${Styles.mBtn} btn`} onClick={() => window.open("https://www.youtube.com/watch?v=--BWrp0QWK4",'_blank')}>Watch Now</button>
+                            <button className={`${Styles.mBtn} btn`} onClick={() => window.open("https://www.youtube.com/watch?v=bRhi8tsPBjw",'_blank')}>हिंदी में देखें</button>
                             </div>
                         </div>
                     </SwiperSlide>
@@ -54,7 +55,8 @@ function Carousel({user,loading}) {
                             <div className={`${Styles.img} ${Styles.squareImg}`}> <Image src={YTImage} alt="youtube video" priority /> </div>
                             <div className={Styles.content}>
                             <h3>What is <br/> <b>Happie Celebrations ?</b></h3>
-                            <button className={`${Styles.mBtn} btn`} onClick={() => window.open("https://www.youtube.com/watch?v=sxD5E3h9AbA",'_blank')}>Watch Now</button>
+                            <button className={`${Styles.mBtn} btn`} onClick={() => window.open("https://www.youtube.com/watch?v=--BWrp0QWK4",'_blank')}>Watch Now</button>
+                            <button className={`${Styles.mBtn} btn`} onClick={() => window.open("https://www.youtube.com/watch?v=bRhi8tsPBjw",'_blank')}>हिंदी में देखें</button>
                             </div>
                         </div>
                     </SwiperSlide>
