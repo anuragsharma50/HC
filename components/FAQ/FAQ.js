@@ -27,7 +27,7 @@ function FAQ() {
         content: <p>To get a referral code you need to view ideas in the free idea set that you get. After that you can check your referral code <Link href="/referral">here</Link></p>
       },
       {
-        title: "Where to contact is anything goes wrong?",
+        title: "Where to contact if anything goes wrong?",
         content: <p>you can contact us <Link href="/contact-us">here</Link> </p>
       }]
   }
