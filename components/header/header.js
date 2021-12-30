@@ -65,9 +65,6 @@ function Header({user,updateUser,loading}) {
                         <Link passHref href="/write">
                             <li>Write</li>
                         </Link>
-                        <Link passHref href="/pricing">
-                            <li>Pricing</li>
-                        </Link>
                         {
                             user && user.isApprover &&
                             <Link passHref href="/details/approve">
@@ -128,10 +125,8 @@ function Header({user,updateUser,loading}) {
                             showTippy &&
                             <div className="tippy">
                                 <ul>
-                                <li onClick={() => goTo('/dashboard')}>Dashboard</li>
                                 <li onClick={() => goTo('saved')}>Saved Ideas</li>
                                 <li onClick={() => goTo('myideas')}>My Ideas</li>
-                                <li onClick={() => goTo('referral')}>Referral</li>
                                 <li onClick={logoutButton}>Logout</li>
                                 </ul>
                             </div>

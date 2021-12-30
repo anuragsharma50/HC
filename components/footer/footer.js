@@ -45,7 +45,7 @@ function Footer() {
         </div>
 
         <div className="footer-bottom">
-            <h3 className="copyright">Copyright © 2021. Happie Celebration. All rights reserved.</h3>
+            <h3 className="copyright">Copyright © 2021. Happie Celebrations. All rights reserved.</h3>
             <div className="terms">
                 <h3>
                     <Link href="/terms-and-conditions-of-use">Terms &amp; Conditions</Link>
@@ -54,7 +54,7 @@ function Footer() {
                     <Link href="/privacy-policy">Privacy Policy</Link>
                 </h3>
                 <h3>
-                    <Link href="/refund-policy">Refund Policy</Link>
+                    <Link href="/cookie-policy">Cookie Policy</Link>
                 </h3>
             </div>
         </div>

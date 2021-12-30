@@ -10,7 +10,6 @@ import WishIcon from '../../assets/images/Wish-icon.png'
 import Confetti from '../../assets/images/confetti.png'
 import SurpriseBox from '../../assets/images/surprise-box.png'
 import Writing from '../../assets/images/writing.png'
-import Money from '../../assets/images/money.png'
 
 function Menu({user,setMenuState,setModelState,initials}) {
 
@@ -54,17 +53,13 @@ function Menu({user,setMenuState,setModelState,initials}) {
                         <div onClick={() => navigate('celebration')} className="item"><Image src={Confetti} alt="confetti" /><span>Celebrate</span></div>
                         <div onClick={() => navigate('gift')} className="item"><Image src={SurpriseBox} alt="surprise-box" /><span>Gift</span></div>
                         <div onClick={() => navigate('write')} className="item"><Image src={Writing} alt="writing" /><span>Write</span></div>
-                        <div onClick={() => navigate('pricing')} className="item"><Image src={Money} alt="money" /><span>Pricing</span></div>
                     </>
                 }
                 {
                     showTippy && user && 
                     <>
-                        {/* <div onClick={() => navigate('wish')} className="item"><span>Profile</span></div> */}
-                        <div onClick={() => navigate('dashboard')} className="item"><span>Dashboard</span></div>
                         <div onClick={() => navigate('saved')} className="item"><span>Saved Ideas</span></div>
                         <div onClick={() => navigate('myideas')} className="item"><span>My Ideas</span></div>
-                        <div onClick={() => navigate('referral')} className="item"><span>Referral</span></div>
                         <div onClick={() => setModelState(true)} className="item"><span>Logout</span></div>
                     </>
                 }

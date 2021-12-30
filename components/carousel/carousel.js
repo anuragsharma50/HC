@@ -64,7 +64,7 @@ function Carousel({user,loading}) {
                         <div className={Styles.firstLook}>
                             <div className={Styles.img}> <Image src={GiftImage} alt="Gift on the way" priority /> </div>
                             <div className={Styles.content}>
-                            <h3>SignUp to get your First set of ideas for <br /> <b>Absolutely free</b></h3>
+                            <h3>SignUp to view ideas for <br /> <b>Absolutely free</b></h3>
                             <button className={`${Styles.mBtn} btn`} onClick={() => router.push('/signup')}>SignUp Now</button>
                             </div>
                         </div>
@@ -75,43 +75,8 @@ function Carousel({user,loading}) {
                         <div className={Styles.firstLook}>
                             <div className={Styles.img}> <Image src={HalloweenImage} alt="halloween" /> </div>
                             <div className={Styles.content}>
-                            <h3>Use your free attempt to find some <br /> <b>Amazing ideas</b></h3>
+                            <h3>find some <br /> <b>Amazing </b> wishing ideas</h3>
                             <button className={`${Styles.mBtn} btn`} onClick={() => router.push('/wish')}>View Ideas</button>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                }
-                {   !loading && user && !user.referral &&
-                    <SwiperSlide>
-                        <div className={Styles.firstLook}>
-                            <div className={`${Styles.img} ${Styles.squareImg}`}> <Image src={ShareImage} alt="share" /> </div>
-                            <div className={Styles.content}>
-                            <h3>View free idea to <br /> activate your <b>Referral Code</b></h3>
-                            <button className={`${Styles.mBtn} btn`} onClick={() => router.push('/referral')}>Enter code</button>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                }
-                {   !loading && user && user.referral &&
-                    <SwiperSlide>
-                        <div className={Styles.firstLook}>
-                            <div className={`${Styles.img} ${Styles.squareImg}`}> <Image src={ShareImage} alt="share" /> </div>
-                            <div className={Styles.content}>
-                            <h3>Share your referal code with your friend and <br /> both of you will get <b>One more free idea</b></h3>
-                            <button className={`${Styles.mBtn} btn`} onClick={() => router.push('/referral')}>Refer now</button>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                }
-                {
-                    user &&  user.currency && !loading &&
-
-                    <SwiperSlide>
-                        <div className={Styles.firstLook}>
-                            <div className={Styles.img}> <Image src={WalletImage} alt="wallet" /> </div>
-                            <div className={Styles.content}>
-                            <h3>It&apos;s just {user.currency === 'INR' ? '₹ 9' : '$ 0.25'  } for <br /> <b> happiness </b> of your friend</h3>
-                            <button className={`${Styles.mBtn} btn`} onClick={() => router.push('/referral')}>Referrer now</button>
                             </div>
                         </div>
                     </SwiperSlide>
@@ -122,7 +87,7 @@ function Carousel({user,loading}) {
                         <div className={Styles.firstLook}>
                             <div style={{padding:20}} className={Styles.img}> <Image src={WriteImage} alt="write" /> </div>
                             <div className={Styles.content}>
-                            <h3>Write ideas and get <br /> <b> Money Rewards </b></h3>
+                            <h3>Got a great idea? <br /> <b> Share </b> it with us</h3>
                             <button className={`${Styles.mBtn} btn`} onClick={() => router.push('/write')}>Write now</button>
                             </div>
                         </div>

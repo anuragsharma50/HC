@@ -28,7 +28,7 @@ function IdeaForm({from,user,setDisableState,setModelState,setOutput}) {
         axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${from}/count?ocassion=${values.ocassion}&relation=${values.relation}&age=${values.age}&gender=${values.gender}&budget=${values.budget+10}`,
         {withCredentials:true}).then((res) => {
             // console.log(res.data)
-            if(res.data.ideasCount < 15) {
+            if(res.data.ideasCount === 0) {
                 setOutput({ count: res.data.ideasCount,values,from })
                 setModelState(true)
             }else{

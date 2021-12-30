@@ -55,22 +55,14 @@ export default function Home({user,loading}) {
             <button className="btn" onClick={() => router.push('/gift')}>Plan Now</button>
           </div>
         </div>
-        {/* <div className={Styles.item}>
-          <div className={Styles.img}> <Image src={IdeaImage} alt="write idea" /> </div>
-          <div className={Styles.text}>
-            <h3>Share your idea</h3>
-            <p>If you have a great idea then you can share it with us and get Money rewards.</p>
-            <button className="btn">Know more</button>
-          </div>
-        </div> */}
 
         <div className={Styles.writeItem}>
-          <h3>Got a celebration Idea? Share it with us</h3>
+          <h3>Got a great idea? Share it with us</h3>
           <div className={Styles.content}>
             <div className={Styles.img}> <Image src={IdeaImage} alt="surprise" /> </div>
             <div className={Styles.text}>
               <p>If you have a great idea for the celebration of any festival, wishing someone or
-                  planning a surprise gift. then you can share it with us and get Money rewards.</p>
+                  planning a surprise gift. then you can share it with us.</p>
               <button className="btn" onClick={() => router.push('/details/write')}>Know more</button>
             </div>
           </div>

@@ -57,10 +57,11 @@ function Idea(props) {
             }else{
                 setData([...data,...res.data])
             }
+            setLoading(false)
         }).catch((e) => {
             // console.log(e.response)
+            setLoading(false)
         })
-        setLoading(false)
     }
 
     const moreIdeas = () => {
@@ -68,7 +69,7 @@ function Idea(props) {
         axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}/count?ocassion=${query.ocassion}&relation=${query.relation}&age=${query.age}&gender=${query.gender}&budget=${query.budget+10}&set=${set+1}`,
         {withCredentials:true}).then((res) => {
             // console.log(res.data)
-            if(res.data.ideasCount < 15) {
+            if(res.data.ideasCount === 0) {
                 setOutput({ count: res.data.ideasCount,query,set,setSet,user:props.user })
                 setModelState(true)
             }else{
@@ -101,32 +102,22 @@ function Idea(props) {
     }
 
     const save = () => {
-        if(saved.length == set*3){
-            setSaveError({title: "3 ideas already saved",message:"You can save only 3 ideas at a time."})
-            setModelState2(true)
-        }else{
-            axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}/save/${data[index]._id}`,
-            {withCredentials:true}).then((res) => {
-                // console.log(res.data)
-                if(!saved.length == 0){
-                    setSaved([...saved,index])
-                } else{
-                    setSaved([index])
-                }
-            }).catch((e) => {
-                if (e.response && e.response.data) {
-                    console.log(e.response)
-                    // if(e.response.data.message === "Unpaid Ideas"){
-                    //     setSaveError({title: "Free Ideas",message:"You need to make payment to save ideas."})
-                    //     setModelState2(true)
-                    // }else{
-                        setSaveError({title: "Already saved",message:"This idea is already saved in your collection."})
-                        setModelState2(true)
-                    // }
-                }
-                // console.log(e.response.data)
-            })
-        }
+        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}/save/${data[index]._id}`,
+        {withCredentials:true}).then((res) => {
+            // console.log(res.data)
+            if(!saved.length == 0){
+                setSaved([...saved,index])
+            } else{
+                setSaved([index])
+            }
+        }).catch((e) => {
+            if (e.response && e.response.data) {
+                console.log(e.response)
+                setSaveError({title: "Already saved",message:"This idea is already saved in your collection."})
+                setModelState2(true)
+            }
+            // console.log(e.response.data)
+        })
     }
 
     useEffect(() => {
