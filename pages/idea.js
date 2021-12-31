@@ -12,6 +12,7 @@ import Styles from '../styles/pageStyles/idea.module.scss'
 import Arrow from "../assets/images/arrow.png"
 import LimitedIdeas from '../components/modals/limitedIdeas'
 import SaveError from '../components/modals/saveError'
+import SignIn from '../components/modals/signIn'
 
 function Idea(props) {
 
@@ -22,6 +23,7 @@ function Idea(props) {
     const [saved, setSaved] = useState([])
     const [modelState, setModelState] = useState(false)
     const [modelState2, setModelState2] = useState(false)
+    const [signInModel, setSignInModel] = useState(false)
     const [saveError, setSaveError] = useState({})
     const [disableVote, setDisableVote] = useState(false)
     const [output, setOutput] = useState({
@@ -73,22 +75,7 @@ function Idea(props) {
                 setOutput({ count: res.data.ideasCount,query,set,setSet,user:props.user })
                 setModelState(true)
             }else{
-                axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/payment`,{withCredentials:true}).then((res) => {
-                    // console.log(res.data)
-                    setSet(set + 1)
-                }).catch((e) => {
-                    if(props.user.currency){
-                        window.open("/payment",'_blank')
-                    }else{
-                        window.open("/pricing",'_blank')
-                    }
-                    // console.log(e.response)
-                    // console.log(e)
-                    // if (e.response && e.response.data) {
-                    //     // console.log(e.response)
-                    //     // setErrorMessage(e.response.data.message)
-                    // }
-                })
+                setSet(set + 1)
             }
         }).catch((e) => {
             // console.log(e.response)
@@ -102,22 +89,27 @@ function Idea(props) {
     }
 
     const save = () => {
-        axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}/save/${data[index]._id}`,
-        {withCredentials:true}).then((res) => {
-            // console.log(res.data)
-            if(!saved.length == 0){
-                setSaved([...saved,index])
-            } else{
-                setSaved([index])
-            }
-        }).catch((e) => {
-            if (e.response && e.response.data) {
-                console.log(e.response)
-                setSaveError({title: "Already saved",message:"This idea is already saved in your collection."})
-                setModelState2(true)
-            }
-            // console.log(e.response.data)
-        })
+        if(!props.user){
+            setSignInModel(true)
+        }
+        else{
+            axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${query.from}/save/${data[index]._id}`,
+            {withCredentials:true}).then((res) => {
+                // console.log(res.data)
+                if(!saved.length == 0){
+                    setSaved([...saved,index])
+                } else{
+                    setSaved([index])
+                }
+            }).catch((e) => {
+                if (e.response && e.response.data) {
+                    console.log(e.response)
+                    setSaveError({title: "Already saved",message:"This idea is already saved in your collection."})
+                    setModelState2(true)
+                }
+                // console.log(e.response.data)
+            })
+        }
     }
 
     useEffect(() => {
@@ -146,6 +138,7 @@ function Idea(props) {
             <div className={`${Styles.container} container`}>
                 <LimitedIdeas modelState={modelState} setModelState={setModelState} output={output} />
                 <SaveError modelState={modelState2} setModelState={setModelState2} errorTitle={saveError.title} errorMessage={saveError.message} />
+                <SignIn modelState={signInModel} setModelState={setSignInModel} />
                 <div className="sub-container">
                     { data[index] && 
                         <>

@@ -20,10 +20,10 @@ function IdeaForm({from,user,setDisableState,setModelState,setOutput}) {
     }
     
     const onSubmit = values => {
-        setDisableState(true)
-        if(!user){
-            router.push('/signin')
-        }
+        // setDisableState(true)
+        // if(!user){
+        //     router.push('/signin')
+        // }
         // console.log('Form values',values)
         axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${from}/count?ocassion=${values.ocassion}&relation=${values.relation}&age=${values.age}&gender=${values.gender}&budget=${values.budget+10}`,
         {withCredentials:true}).then((res) => {
@@ -32,19 +32,19 @@ function IdeaForm({from,user,setDisableState,setModelState,setOutput}) {
                 setOutput({ count: res.data.ideasCount,values,from })
                 setModelState(true)
             }else{
-                axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/payment`,{withCredentials:true}).then((res) => {
-                    // console.log(res.data)
-                    router.push({pathname: '/idea',
-                    query: { ...values,from }})
-                }).catch((e) => {
-                    router.push('/pricing')
-                    // console.log(e.response)
-                    // console.log(e)
-                    // if (e.response && e.response.data) {
-                    //     // console.log(e.response)
-                    //     // setErrorMessage(e.response.data.message)
-                    // }
-                })
+                router.push({pathname: '/idea',
+                query: { ...values,from }})
+                // axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users/payment`,{withCredentials:true}).then((res) => {
+                //     // console.log(res.data)
+                // }).catch((e) => {
+                //     router.push('/pricing')
+                //     // console.log(e.response)
+                //     // console.log(e)
+                //     // if (e.response && e.response.data) {
+                //     //     // console.log(e.response)
+                //     //     // setErrorMessage(e.response.data.message)
+                //     // }
+                // })
             }
             setDisableState(false)
         }).catch((e) => {

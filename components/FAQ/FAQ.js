@@ -13,7 +13,7 @@ function FAQ() {
       {
         title: "What is happie Celebrations?",
         content: <p>A website to find Wishing, celebration, and gifting ideas based on relationship, age, gender, and budget for different occasions be it birthday,new year,any festival,etc. watch 
-          {' '} <a href="https://www.youtube.com/watch?v=sxD5E3h9AbA" rel="noopener noreferrer" target="_blank">this</a> {' '} video to know more 
+          {' '} <a href="https://www.youtube.com/watch?v=--BWrp0QWK4" rel="noopener noreferrer" target="_blank">this</a> {' '} video to know more 
         </p>
       },
       {
