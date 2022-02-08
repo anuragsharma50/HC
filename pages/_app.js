@@ -5,7 +5,6 @@ import { useEffect,useState } from 'react'
 import * as gtag from '../lib/gtag'
 import CookieConsent from "react-cookie-consent"
 
-import { PopupProvider } from "react-popup-manager";
 import axios from 'axios'
 
 import Header from '../components/header/header'
@@ -87,10 +86,8 @@ function MyApp({ Component, pageProps }) {
         <link rel="manifest" href="/site.webmanifest" /> */}
       </Head>
 
-      <PopupProvider>
-        <Header user={user} updateUser={updateUser} loading={loading} />
-        <Component {...pageProps } user={user} updateUser={updateUser} loading={loading} />
-      </PopupProvider>
+      <Header user={user} updateUser={updateUser} loading={loading} />
+      <Component {...pageProps } user={user} updateUser={updateUser} loading={loading} />
       <Footer />
 
       <CookieConsent
@@ -101,7 +98,7 @@ function MyApp({ Component, pageProps }) {
         buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
         expires={150}
       >
-        We use cookies to offer you a better experience, analyse site traffic, and serve targeted advertisements. by continuing to use this website, you consent to our use of cookies in accordance with our <span className="cookie-link" onClick={() => router.push('/cookie-policy')} >cookie policy</span>.
+        We use cookies to offer you a better experience, analyse site traffic. by continuing to use this website, you consent to our use of cookies in accordance with our <span className="cookie-link" onClick={() => router.push('/cookie-policy')} >cookie policy</span>.
         {/* <span style={{ fontSize: "10px" }}>We use cookies to offer you a better experience, analyse site traffic, and serve targeted advertisements. by continuing to use this website, you consent to our use of cookies in accordance with our cookie policy.</span> */}
       </CookieConsent>
     </>

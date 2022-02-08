@@ -26,9 +26,9 @@ function Footer() {
                 <ul className="social">
                     <li className="links-heading">Follow Us</li>
                     <li><Image src={FB} alt="facebook-icon" /></li>
-                    <li><Image src={Insta} alt="instagram-icon" /></li>
+                    <li><a target="_blank" href='https://www.instagram.com/birthday_tips/'><Image src={Insta} alt="instagram-icon" /></a></li>
                     <li><Image src={Twitter} alt="twitter-icon" /></li>
-                    <li><Image src={Youtube} alt="youtube-icon" /></li>
+                    <li><a target="_blank" href='https://www.youtube.com/channel/UCYS43J3IxTBVtwhMmYForYQ'><Image src={Youtube} alt="youtube-icon" /></a></li>
                 </ul>
             </div>
 
@@ -45,7 +45,7 @@ function Footer() {
         </div>
 
         <div className="footer-bottom">
-            <h3 className="copyright">Copyright © 2021. Happie Celebrations. All rights reserved.</h3>
+            <h3 className="copyright">Copyright © 2022. Happie Celebrations. All rights reserved.</h3>
             <div className="terms">
                 <h3>
                     <Link href="/terms-and-conditions-of-use">Terms &amp; Conditions</Link>
