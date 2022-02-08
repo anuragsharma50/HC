@@ -26,9 +26,9 @@ function Footer() {
                 <ul className="social">
                     <li className="links-heading">Follow Us</li>
                     <li><Image src={FB} alt="facebook-icon" /></li>
-                    <li><a target="_blank" href='https://www.instagram.com/birthday_tips/'><Image src={Insta} alt="instagram-icon" /></a></li>
+                    <li><a target="_blank" rel="noreferrer noopener" href='https://www.instagram.com/birthday_tips/'><Image src={Insta} alt="instagram-icon" /></a></li>
                     <li><Image src={Twitter} alt="twitter-icon" /></li>
-                    <li><a target="_blank" href='https://www.youtube.com/channel/UCYS43J3IxTBVtwhMmYForYQ'><Image src={Youtube} alt="youtube-icon" /></a></li>
+                    <li><a target="_blank" rel="noreferrer noopener" href='https://www.youtube.com/channel/UCYS43J3IxTBVtwhMmYForYQ'><Image src={Youtube} alt="youtube-icon" /></a></li>
                 </ul>
             </div>
 
